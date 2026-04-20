@@ -258,6 +258,108 @@
       min-height: 150px;
     }
 
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      pointer-events: none;
+    }
+
+    body[dir="rtl"] .toast-container {
+      right: auto;
+      left: 2rem;
+    }
+
+    .toast {
+      background: var(--surface-color);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      color: var(--text-primary);
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-neon);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-width: 300px;
+      transform: translateX(120%);
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      pointer-events: auto;
+    }
+
+    body[dir="rtl"] .toast {
+      transform: translateX(-120%);
+    }
+
+    .toast.active {
+      transform: translateX(0);
+    }
+
+    .toast-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .toast-success .toast-icon {
+      background: rgba(16, 185, 129, 0.1);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .toast-error .toast-icon {
+      background: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .toast-content {
+      flex-grow: 1;
+    }
+
+    .toast-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+    }
+
+    .toast-message {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .toast-close {
+      cursor: pointer;
+      opacity: 0.5;
+      transition: 0.3s;
+    }
+
+    .toast-close:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 576px) {
+      .toast-container {
+        top: 1rem;
+        right: 1rem;
+        left: 1rem;
+      }
+      .toast {
+        min-width: auto;
+        width: 100%;
+      }
+    }
+
     /* Project Modal */
     .modal {
       position: fixed;
@@ -915,6 +1017,7 @@
 </head>
 
 <body>
+  <div class="toast-container" id="toastContainer"></div>
   <div id="canvas-container"></div>
   <div class="custom-cursor"></div>
   <div class="custom-cursor-outline"></div>
@@ -1282,9 +1385,11 @@
         "contact-email-label": "Email", "contact-phone-label": "Phone", "contact-loc-label": "Location",
         "form-name": "Name", "form-email": "Email", "form-msg": "Message", "form-submit": "Send Message",
          "form-sending": "Sending...",
-         "form-success": "Message sent successfully!",
-        "form-error": "Failed to send message. Please try again later.",
-        "footer-tagline": "Building the future, one pixel at a time."
+          "form-success": "Message sent successfully!",
+          "form-error": "Failed to send message. Please try again later.",
+          "toast-success-title": "Success",
+          "toast-error-title": "Error",
+          "footer-tagline": "Building the future, one pixel at a time."
       },
       fr: {
         "nav-about": "À Propos", "nav-skills": "Compétences", "nav-experience": "Expérience", "nav-projects": "Projets", "nav-contact": "Contact",
@@ -1314,9 +1419,11 @@
         "contact-email-label": "Email", "contact-phone-label": "Téléphone", "contact-loc-label": "Emplacement",
         "form-name": "Nom", "form-email": "Email", "form-msg": "Message", "form-submit": "Envoyer le message",
          "form-sending": "Envoi...",
-         "form-success": "Message envoyé avec succès !",
-        "form-error": "Échec de l'envoi du message. Veuillez réessayer plus tard.",
-        "footer-tagline": "Bâtir le futur, un pixel à la fois."
+          "form-success": "Message envoyé avec succès !",
+          "form-error": "Échec de l'envoi du message. Veuillez réessayer plus tard.",
+          "toast-success-title": "Succès",
+          "toast-error-title": "Erreur",
+          "footer-tagline": "Bâtir le futur, un pixel à la fois."
       },
       ar: {
         "nav-about": "عني", "nav-skills": "المهارات", "nav-experience": "الخبرة", "nav-projects": "المشاريع", "nav-contact": "اتصل بي",
@@ -1346,9 +1453,11 @@
         "contact-email-label": "البريد الإلكتروني", "contact-phone-label": "الهاتف", "contact-loc-label": "الموقع",
         "form-name": "الاسم", "form-email": "البريد الإلكتروني", "form-msg": "الرسالة", "form-submit": "إرسال الرسالة",
          "form-sending": "جاري الإرسال...",
-         "form-success": "تم إرسال الرسالة بنجاح!",
-        "form-error": "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى لاحقاً.",
-        "footer-tagline": "بناء المستقبل، بكسل تلو الآخر."
+          "form-success": "تم إرسال الرسالة بنجاح!",
+          "form-error": "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى لاحقاً.",
+          "toast-success-title": "نجاح",
+          "toast-error-title": "خطأ",
+          "footer-tagline": "بناء المستقبل، بكسل تلو الآخر."
       }
     };
 
@@ -1517,6 +1626,45 @@
       });
     };
 
+    // Toast Notification System
+    const showToast = (type, message) => {
+      const container = document.getElementById('toastContainer');
+      const lang = localStorage.getItem('lang') || 'en';
+      const title = translations[lang][`toast-${type}-title`];
+      const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.innerHTML = `
+        <div class="toast-icon">
+          <i class="fas ${icon}"></i>
+        </div>
+        <div class="toast-content">
+          <div class="toast-title">${title}</div>
+          <div class="toast-message">${message}</div>
+        </div>
+        <i class="fas fa-times toast-close"></i>
+      `;
+
+      container.appendChild(toast);
+
+      // Animate in
+      setTimeout(() => toast.classList.add('active'), 100);
+
+      // Auto remove
+      const removeToast = () => {
+        toast.classList.remove('active');
+        setTimeout(() => toast.remove(), 500);
+      };
+
+      const autoRemove = setTimeout(removeToast, 5000);
+
+      toast.querySelector('.toast-close').addEventListener('click', () => {
+        clearTimeout(autoRemove);
+        removeToast();
+      });
+    };
+
     // Contact Form
     const initContactForm = () => {
       emailjs.init("UIo5qdpIXiIeTNqpH");
@@ -1531,20 +1679,20 @@
         const originalBtnText = btn.innerHTML;
 
         // Disable button and show sending state
-         btn.disabled = true;
-         const lang = localStorage.getItem('lang') || 'en';
-         btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${translations[lang]['form-sending']}`;
+        btn.disabled = true;
+        const lang = localStorage.getItem('lang') || 'en';
+        btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${translations[lang]['form-sending']}`;
 
-         emailjs.sendForm('service_dz1y5dn', 'template_w0f0xlh', this)
-           .then(() => {
-             const lang = localStorage.getItem('lang') || 'en';
-             alert(translations[lang]['form-success']);
-             this.reset();
-           }, (error) => {
-             console.error('EmailJS Error:', error);
-             const lang = localStorage.getItem('lang') || 'en';
-             alert(translations[lang]['form-error']);
-           })
+        emailjs.sendForm('service_dz1y5dn', 'template_w0f0xlh', this)
+          .then(() => {
+            const lang = localStorage.getItem('lang') || 'en';
+            showToast('success', translations[lang]['form-success']);
+            this.reset();
+          }, (error) => {
+            console.error('EmailJS Error:', error);
+            const lang = localStorage.getItem('lang') || 'en';
+            showToast('error', translations[lang]['form-error']);
+          })
           .finally(() => {
             // Restore button state
             btn.disabled = false;
