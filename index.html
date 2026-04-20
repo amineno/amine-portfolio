@@ -90,8 +90,12 @@
       letter-spacing: -0.02em;
     }
 
+    body {
+      font-size: clamp(0.9rem, 1vw + 0.5rem, 1.1rem);
+    }
+
     .section-title {
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2rem, 8vw, 4rem);
       text-align: center;
       background: var(--primary-gradient);
       -webkit-background-clip: text;
@@ -103,9 +107,9 @@
       text-align: center;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 0.8rem;
-      margin-bottom: 4rem;
+      letter-spacing: clamp(2px, 1vw, 4px);
+      font-size: clamp(0.7rem, 0.8vw, 0.8rem);
+      margin-bottom: clamp(2rem, 5vw, 4rem);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -115,7 +119,7 @@
     .section-subtitle::before,
     .section-subtitle::after {
       content: '';
-      width: 40px;
+      width: clamp(20px, 5vw, 40px);
       height: 1px;
       background: var(--primary-gradient);
     }
@@ -123,11 +127,11 @@
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 clamp(1rem, 3vw, 2rem);
     }
 
     section {
-      padding: 8rem 0;
+      padding: clamp(4rem, 10vw, 8rem) 0;
       position: relative;
     }
 
@@ -135,7 +139,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.8rem 2rem;
+      padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1.2rem, 4vw, 2rem);
       border-radius: var(--border-radius-btn);
       font-weight: 600;
       cursor: pointer;
@@ -143,6 +147,7 @@
       border: 1px solid transparent;
       gap: 0.5rem;
       outline: none;
+      font-size: clamp(0.85rem, 1vw, 1rem);
     }
 
     .btn-primary {
@@ -504,13 +509,19 @@
     }
 
     .loader-circle {
-      width: 80px;
-      height: 80px;
+      width: clamp(60px, 10vw, 80px);
+      height: clamp(60px, 10vw, 80px);
       border: 2px solid transparent;
       border-top: 2px solid var(--accent-color);
       border-radius: 50%;
       animation: spin 1s linear infinite;
       margin-bottom: 2rem;
+    }
+
+    .loader-name {
+      color: #fff;
+      letter-spacing: clamp(2px, 1vw, 5px);
+      font-size: clamp(1rem, 2vw, 1.5rem);
     }
 
     @keyframes spin {
@@ -610,12 +621,13 @@
       justify-content: center;
       text-align: center;
       overflow: hidden;
-      padding-top: 100px;
+      padding-top: clamp(80px, 10vw, 120px);
+      padding-bottom: clamp(2rem, 5vw, 4rem);
     }
 
     .hero-content h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
-      margin-bottom: 1.5rem;
+      font-size: clamp(2.5rem, 10vw, 6rem);
+      margin-bottom: clamp(1rem, 3vw, 1.5rem);
     }
 
     .hero-content h1 span {
@@ -625,60 +637,64 @@
     }
 
     .hero-subtitle {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      margin-bottom: clamp(1.5rem, 4vw, 2rem);
       color: var(--text-primary);
       opacity: 0.9;
     }
 
     .hero-desc {
       max-width: 700px;
-      margin: 0 auto 3rem;
+      margin: 0 auto clamp(2rem, 5vw, 3rem);
       color: var(--text-muted);
-      font-size: 1.1rem;
+      font-size: clamp(0.95rem, 1.2vw, 1.1rem);
       line-height: 1.8;
     }
 
     .hero-stats {
       display: flex;
       justify-content: center;
-      gap: 4rem;
-      margin-bottom: 4rem;
+      gap: clamp(1.5rem, 5vw, 4rem);
+      margin-bottom: clamp(2rem, 5vw, 4rem);
+      flex-wrap: wrap;
     }
 
     .stat-item h3 {
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
       color: var(--accent-color);
     }
 
     .stat-item p {
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: clamp(0.75rem, 0.9vw, 0.9rem);
       margin-top: 0.5rem;
     }
 
     .hero-ctas {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: clamp(0.8rem, 2vw, 1.5rem);
+      flex-wrap: wrap;
     }
 
     /* About */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
-      gap: 6rem;
+      gap: clamp(2rem, 8vw, 6rem);
       align-items: center;
     }
 
     .about-img-container {
       position: relative;
+      max-width: 500px;
+      margin: 0 auto;
     }
 
     .about-img-container::before {
       content: '';
       position: absolute;
-      inset: -20px;
+      inset: -15px;
       border: 2px solid var(--accent-color);
       border-radius: 30px;
       opacity: 0.2;
@@ -688,6 +704,7 @@
 
     .about-img {
       width: 100%;
+      height: auto;
       border-radius: 30px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
       filter: grayscale(20%);
@@ -699,27 +716,38 @@
       transform: scale(1.02);
     }
 
+    .about-text {
+      text-align: left;
+    }
+
     .about-text h3 {
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
       margin-bottom: 1.5rem;
     }
 
     .about-text p {
       color: var(--text-muted);
       margin-bottom: 2rem;
-      font-size: 1.1rem;
+      font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+    }
+
+    .about-ctas {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
     }
 
     /* Skills */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 30vw, 280px), 1fr));
+      gap: clamp(1.5rem, 3vw, 2rem);
     }
 
     .skill-card {
       background: var(--surface-color);
-      padding: 2.5rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
       border-radius: 24px;
       border: 1px solid var(--glass-border);
       transition: 0.4s;
@@ -733,7 +761,7 @@
 
     .skill-card h4 {
       margin-bottom: 2rem;
-      font-size: 1.3rem;
+      font-size: clamp(1.1rem, 1.3vw, 1.3rem);
       border-bottom: 1px solid var(--glass-border);
       padding-bottom: 1rem;
     }
@@ -766,8 +794,8 @@
     /* Projects */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 30vw, 300px), 1fr));
+      gap: clamp(1.5rem, 3vw, 2.5rem);
     }
 
     .project-card {
@@ -785,11 +813,11 @@
     }
 
     .project-img {
-      height: 180px;
+      height: clamp(150px, 20vw, 180px);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 3rem;
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 800;
       color: #fff;
       background: var(--primary-gradient);
@@ -797,7 +825,7 @@
     }
 
     .project-content {
-      padding: 2.5rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
     }
 
     .project-tag {
@@ -811,14 +839,14 @@
     }
 
     .project-title {
-      font-size: 1.5rem;
+      font-size: clamp(1.2rem, 1.5vw, 1.5rem);
       margin-bottom: 1rem;
     }
 
     .project-desc {
       color: var(--text-muted);
       margin-bottom: 1.5rem;
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 1vw, 1rem);
     }
 
     .project-links {
@@ -838,13 +866,13 @@
     /* Services */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(240px, 25vw, 260px), 1fr));
+      gap: clamp(1.5rem, 3vw, 2rem);
     }
 
     .service-card {
       background: var(--surface-color);
-      padding: 3rem 2rem;
+      padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 3vw, 2rem);
       border-radius: 30px;
       border: 1px solid var(--glass-border);
       text-align: center;
@@ -858,7 +886,7 @@
     }
 
     .service-card i {
-      font-size: 3.5rem;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
       background: var(--primary-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -867,7 +895,7 @@
     }
 
     .service-card h4 {
-      font-size: 1.5rem;
+      font-size: clamp(1.2rem, 1.5vw, 1.5rem);
       margin-bottom: 1rem;
     }
 
@@ -889,17 +917,17 @@
     }
 
     .timeline-item {
-      padding-left: 3rem;
+      padding-left: clamp(1.5rem, 5vw, 3rem);
       position: relative;
-      margin-bottom: 4rem;
+      margin-bottom: clamp(2rem, 5vw, 4rem);
     }
 
     .timeline-dot {
       position: absolute;
       left: -6px;
       top: 5px;
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: var(--accent-color);
       box-shadow: 0 0 15px var(--accent-glow);
@@ -909,18 +937,24 @@
       color: var(--accent-color);
       font-weight: 700;
       margin-bottom: 0.5rem;
+      font-size: clamp(0.85rem, 1vw, 1rem);
     }
 
     .timeline-content {
       background: var(--surface-color);
-      padding: 2.5rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
       border-radius: 24px;
       border: 1px solid var(--glass-border);
     }
 
+    .timeline-content h4 {
+      font-size: clamp(1.1rem, 1.3vw, 1.3rem);
+      margin-bottom: 0.5rem;
+    }
+
     /* Footer */
     footer {
-      padding: 6rem 0;
+      padding: clamp(4rem, 8vw, 6rem) 0;
       border-top: 1px solid var(--glass-border);
       text-align: center;
       background: var(--footer-bg);
@@ -930,12 +964,12 @@
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: clamp(1rem, 3vw, 2rem);
       margin-bottom: 2rem;
     }
 
     .social-links a {
-      font-size: 1.5rem;
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
       color: var(--text-muted);
       transition: 0.3s;
     }
@@ -943,6 +977,25 @@
     .social-links a:hover {
       color: var(--accent-color);
       transform: translateY(-5px);
+    }
+
+    .contact-socials {
+      justify-content: flex-start !important;
+      margin-top: 1rem;
+      padding-left: 0.5rem;
+    }
+
+    [dir="rtl"] .contact-socials {
+      justify-content: flex-end !important;
+      padding-left: 0;
+      padding-right: 0.5rem;
+    }
+
+    .timeline-company {
+      color: var(--accent-color);
+      font-size: clamp(0.8rem, 0.9vw, 0.9rem);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
     }
 
     [dir="rtl"] {
@@ -960,7 +1013,7 @@
 
     [dir="rtl"] .timeline-item {
       padding-left: 0;
-      padding-right: 3rem;
+      padding-right: clamp(1.5rem, 5vw, 3rem);
     }
 
     [dir="rtl"] .timeline::before {
@@ -973,10 +1026,22 @@
       right: -6px;
     }
 
+    [dir="rtl"] .about-text {
+      text-align: right;
+    }
+
     @media (max-width: 968px) {
       .about-grid {
         grid-template-columns: 1fr;
         text-align: center;
+      }
+
+      .about-text {
+        text-align: center;
+      }
+
+      .about-ctas {
+        justify-content: center;
       }
 
       .nav-links {
@@ -985,16 +1050,27 @@
         top: 0;
         right: -100%;
         height: 100vh;
-        width: 300px;
+        width: min(300px, 80vw);
         background: var(--bg-color);
         flex-direction: column !important;
         align-items: center;
         justify-content: center;
-        gap: 3rem;
+        gap: 2.5rem;
         transition: 0.5s;
         z-index: 1001;
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
         border-left: 1px solid var(--glass-border);
+      }
+
+      body[dir="rtl"] .nav-links {
+        right: auto;
+        left: -100%;
+        border-left: none;
+        border-right: 1px solid var(--glass-border);
+      }
+
+      body[dir="rtl"] .nav-links.active {
+        left: 0;
       }
 
       .nav-links.active {
@@ -1006,11 +1082,54 @@
         font-size: 1.5rem;
         cursor: pointer;
         z-index: 1002;
+        padding: 0.5rem;
       }
 
       .hero-stats {
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-stats {
         flex-direction: column;
-        gap: 2rem;
+        align-items: center;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      .hero-ctas .btn {
+        width: 100%;
+      }
+
+      .contact-form {
+        padding: 1.5rem;
+      }
+
+      .modal-content {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    /* Modal Mobile Adjustments */
+    @media (max-width: 768px) {
+      .modal-content {
+        padding: 3rem 2rem;
+        width: 95%;
+        border-radius: 30px;
+      }
+
+      .modal-title {
+        font-size: 1.8rem;
+      }
+
+      .modal-features {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1024,7 +1143,7 @@
 
   <div id="loader">
     <div class="loader-circle"></div>
-    <h2 style="color: #fff; letter-spacing: 5px;" data-i18n="loader-name">AMINE NOUIOUI</h2>
+    <h2 class="loader-name" data-i18n="loader-name">AMINE NOUIOUI</h2>
   </div>
 
   <header id="header">
@@ -1088,7 +1207,7 @@
           engineering and intuitive data visualization, ensuring that every product I build is not only functional but
           delivers measurable business impact. With experience spanning from banking automation to global SaaS
           platforms, I pride myself on delivering clean, future-proof code with an elite user experience.</p>
-        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+        <div class="about-ctas">
           <a href="#contact" class="btn btn-primary" data-i18n="nav-contact">Hire Me</a>
           <a href="MOHAMED%20.pdf" class="btn btn-outline" data-i18n="btn-cv"><i class="fas fa-download"></i> Download
             CV</a>
@@ -1181,8 +1300,7 @@
           <div class="timeline-content">
             <div class="timeline-date" data-i18n="exp0-date">Jul 2024 – Present</div>
             <h4 data-i18n="exp0-title">Lead Full Stack Developer</h4>
-            <div class="timeline-company" style="color: var(--accent-color); font-size: 0.9rem; margin-bottom: 0.5rem;">
-              Freelance / Contract</div>
+            <div class="timeline-company">Freelance / Contract</div>
             <p data-i18n="exp0-desc">Architecting custom SaaS solutions and high-traffic e-commerce platforms for
               international clients. Focusing on React, Node.js, and complex MySQL optimizations.</p>
           </div>
@@ -1192,8 +1310,7 @@
           <div class="timeline-content">
             <div class="timeline-date" data-i18n="exp1-date">Feb 2025 – Jun 2025</div>
             <h4 data-i18n="exp1-title">Full Stack Intern</h4>
-            <div class="timeline-company" style="color: var(--accent-color); font-size: 0.9rem; margin-bottom: 0.5rem;">
-              MC Solution - Tunis</div>
+            <div class="timeline-company">MC Solution - Tunis</div>
             <p data-i18n="exp1-desc">Revitalized core billing systems, implementing JWT-based security and real-time
               dashboard analytics which improved operational efficiency by 40%.</p>
           </div>
@@ -1203,8 +1320,7 @@
           <div class="timeline-content">
             <div class="timeline-date" data-i18n="exp2-date">Jun 2024 – Sep 2024</div>
             <h4 data-i18n="exp2-title">BI Intern @ Amen Bank</h4>
-            <div class="timeline-company" style="color: var(--accent-color); font-size: 0.9rem; margin-bottom: 0.5rem;">
-              Amen Bank - Tunis</div>
+            <div class="timeline-company">Amen Bank - Tunis</div>
             <p data-i18n="exp2-desc">Spearheaded the automation of recursive banking reports through Power BI, creating
               interactive visualizations that reduced manual data entry for the finance team.</p>
           </div>
@@ -1308,7 +1424,7 @@
               <p>Tunis, Tunisia</p>
             </div>
           </div>
-          <div class="social-links" style="justify-content: flex-start; margin-top: 1rem; padding-left: 1rem;">
+          <div class="social-links contact-socials">
             <a href="https://github.com/amineno"><i class="fab fa-github"></i></a>
             <a href="https://linkedin.com"><i class="fab fa-linkedin"></i></a>
             <a href="https://wa.me/21653236163"><i class="fab fa-whatsapp"></i></a>
