@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GroomGo - Tableau de Bord Administrateur</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/admin-dashboard.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-paw"></i> GroomGo Admin</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#overview" class="nav-item active" data-section="overview">
+                <i class="fas fa-chart-line"></i>
+                <span>Vue d'ensemble</span>
+            </a>
+            <a href="#reservations" class="nav-item" data-section="reservations">
+                <i class="fas fa-calendar-check"></i>
+                <span>Réservations</span>
+            </a>
+            <a href="#messages" class="nav-item" data-section="messages">
+                <i class="fas fa-envelope"></i>
+                <span>Messages</span>
+                <span class="badge" id="messageCount">0</span>
+            </a>
+            <a href="#adoptions" class="nav-item" data-section="adoptions">
+                <i class="fas fa-heart"></i>
+                <span>Demandes d'adoption</span>
+                <span class="badge" id="adoptionCount">0</span>
+            </a>
+            <a href="#settings" class="nav-item" data-section="settings">
+                <i class="fas fa-cog"></i>
+                <span>Paramètres</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="btn-logout" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Déconnexion
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="topbar">
+            <button class="sidebar-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="topbar-right">
+                <div class="notification-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge" id="notificationCount">0</span>
+                </div>
+                <div class="user-info">
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=6366f1&color=fff" alt="Admin" class="user-avatar">
+                    <span class="user-name">Administrateur</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Sections -->
+        <div class="dashboard-content">
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section active">
+                <h1 class="section-title">Tableau de Bord</h1>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Réservations Totales</h3>
+                            <p class="stat-number" id="totalBookings">0</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> +12% ce mois
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Revenus du Mois</h3>
+                            <p class="stat-number" id="monthlyRevenue">0 DT</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> +8% vs mois dernier
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Clients Actifs</h3>
+                            <p class="stat-number" id="activeClients">0</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> +5 nouveaux
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Note Moyenne</h3>
+                            <p class="stat-number" id="avgRating">4.8/5</p>
+                            <span class="stat-change neutral">
+                                <i class="fas fa-minus"></i> Stable
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="charts-row">
+                    <div class="chart-container">
+                        <h3>Évolution des Revenus</h3>
+                        <div class="chart-wrapper" style="position: relative; height: 250px;">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Répartition des Services</h3>
+                        <div class="chart-wrapper" style="position: relative; height: 250px;">
+                            <canvas id="servicesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h3>Activité Récente</h3>
+                    <div class="activity-list" id="activityList">
+                        <!-- Activities will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reservations Section -->
+            <section id="reservations" class="dashboard-section">
+                <h1 class="section-title">Gestion des Réservations</h1>
+                
+                <!-- Filters -->
+                <div class="filters-bar">
+                    <div class="filter-group">
+                        <label><i class="fas fa-info-circle"></i> Statut:</label>
+                        <select id="statusFilter" class="filter-select">
+                            <option value="all">Tous</option>
+                            <option value="pending">En attente</option>
+                            <option value="confirmed">Confirmées</option>
+                            <option value="completed">Terminées</option>
+                            <option value="cancelled">Annulées</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label><i class="fas fa-calendar-alt"></i> Date:</label>
+                        <input type="date" id="dateFilter" class="filter-input">
+                    </div>
+                    <div class="filter-group">
+                        <label><i class="fas fa-cut"></i> Service:</label>
+                        <select id="serviceFilter" class="filter-select">
+                            <option value="all">Tous</option>
+                            <option value="complet">Toilettage Complet</option>
+                            <option value="demi">Demi-Complet</option>
+                            <option value="baignoire">Baignoire</option>
+                        </select>
+                    </div>
+                    <button class="btn-filter" onclick="applyFilters()">
+                        <i class="fas fa-filter"></i> Filtrer
+                    </button>
+                </div>
+
+                <!-- Reservations Table -->
+                <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-top: 2rem; overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; border-spacing: 0;">
+                        <thead>
+                            <tr style="background: #1e3a8a;">
+                                <th style="padding: 1rem; text-align: left; font-weight: 600; color: white; border-bottom: 2px solid #3b82f6; width: 10%;">ID</th>
+                                <th style="padding: 1rem; text-align: left; font-weight: 600; color: white; border-bottom: 2px solid #3b82f6; width: 15%;">Client</th>
+                                <th style="padding: 1rem; text-align: left; font-weight: 600; color: white; border-bottom: 2px solid #3b82f6; width: 18%;">Service</th>
+                                <th style="padding: 1rem; text-align: left; font-weight: 600; color: white; border-bottom: 2px solid #3b82f6; width: 12%;">Date</th>
+                                <th style="padding: 1rem; text-align: left; font-weight: 600; color: white; border-bottom: 2px solid #3b82f6; width: 10%;">Heure</th>
+                                <th style="padding: 1rem; text-align: left; font-weight: 600; color: white; border-bottom: 2px solid #3b82f6; width: 13%;">Statut</th>
+                                <th style="padding: 1rem; text-align: left; font-weight: 600; color: white; border-bottom: 2px solid #3b82f6; width: 10%;">Prix</th>
+                                <th style="padding: 1rem; text-align: left; font-weight: 600; color: white; border-bottom: 2px solid #3b82f6; width: 12%;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reservationsTableBody">
+                            <!-- Reservations will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+            <!-- Messages Section -->
+            <section id="messages" class="dashboard-section">
+                <h1 class="section-title">Messages</h1>
+                
+                <div class="messages-container">
+                    <!-- Messages Sidebar -->
+                    <div class="messages-sidebar">
+                        <div class="messages-header">
+                            <input type="text" placeholder="Rechercher..." class="search-input" id="messageSearch">
+                        </div>
+                        <div class="messages-list" id="messagesList">
+                            <!-- Message items will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Message Content -->
+                    <div class="message-content">
+                        <div class="message-header" id="messageHeader">
+                            <div class="message-sender-info">
+                                <h3>Sélectionnez un message</h3>
+                            </div>
+                        </div>
+                        <div class="message-body" id="messageBody">
+                            <div class="empty-message">
+                                <i class="fas fa-envelope-open"></i>
+                                <p>Aucun message sélectionné</p>
+                            </div>
+                        </div>
+                        <div class="message-reply" id="messageReply" style="display: none;">
+                            <textarea placeholder="Tapez votre réponse..." class="reply-textarea" id="replyText"></textarea>
+                            <button class="btn-primary" onclick="sendReply()">
+                                <i class="fas fa-paper-plane"></i> Envoyer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Adoptions Section -->
+            <section id="adoptions" class="dashboard-section">
+                <h1 class="section-title">Demandes d'Adoption</h1>
+                
+                <!-- Filters -->
+                <div class="filters-bar">
+                    <button class="filter-btn active" data-status="all">Toutes</button>
+                    <button class="filter-btn" data-status="pending">En attente</button>
+                    <button class="filter-btn" data-status="approved">Approuvées</button>
+                    <button class="filter-btn" data-status="rejected">Refusées</button>
+                </div>
+                
+                <!-- Adoptions Table -->
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Animal</th>
+                                <th>Demandeur</th>
+                                <th>Contact</th>
+                                <th>Date</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adoptionsTableBody">
+                            <tr>
+                                <td colspan="7" class="text-center">Chargement...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="dashboard-section">
+                <h1 class="section-title">Paramètres</h1>
+                
+                <div class="settings-container">
+                    <div class="settings-group">
+                        <h3>Paramètres Généraux</h3>
+                        <div class="setting-item">
+                            <label>Nom de l'entreprise</label>
+                            <input type="text" value="GroomGo" class="setting-input">
+                        </div>
+                        <div class="setting-item">
+                            <label>Email de contact</label>
+                            <input type="email" value="contact@groomgo.tn" class="setting-input">
+                        </div>
+                        <div class="setting-item">
+                            <label>Téléphone</label>
+                            <input type="tel" value="+216 XX XXX XXX" class="setting-input">
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group">
+                        <h3>Notifications</h3>
+                        <div class="setting-item">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span>Notifications par email</span>
+                        </div>
+                        <div class="setting-item">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span>Notifications SMS</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="saveSettings()">
+                        <i class="fas fa-save"></i> Enregistrer les modifications
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Modal pour Voir Détails -->
+    <div class="modal-overlay" id="viewModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2><i class="fas fa-eye"></i> Détails de la Réservation</h2>
+                <button class="modal-close" onclick="document.getElementById('viewModal').classList.remove('show'); document.getElementById('viewModal').style.display='none'; console.log('X viewModal fermé');">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="viewModalContent">
+                <!-- Contenu des détails -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour Modifier -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2><i class="fas fa-edit"></i> Modifier la Réservation</h2>
+                <button class="modal-close" onclick="document.getElementById('editModal').classList.remove('show'); document.getElementById('editModal').style.display='none'; console.log('X editModal fermé');">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="editModalContent">
+                <!-- Formulaire de modification -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour Confirmer Suppression -->
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal-container modal-small">
+            <div class="modal-header">
+                <h2><i class="fas fa-exclamation-triangle"></i> Confirmer la Suppression</h2>
+                <button class="modal-close" onclick="document.getElementById('deleteModal').classList.remove('show'); document.getElementById('deleteModal').style.display='none'; console.log('X deleteModal fermé');">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="deleteModalContent">
+                <!-- Contenu de confirmation -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/admin-dashboard.js"></script>
+</body>
+</html>

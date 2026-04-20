@@ -1,0 +1,256 @@
+/* ========================================
+   CONTACT SECTION - Modern & Elegant
+   ======================================== */
+
+#contact {
+    background: transparent;
+}
+
+/* Contact Cards */
+.contact-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.contact-card:hover::before {
+    opacity: 1;
+}
+
+.contact-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background: linear-gradient(180deg, #3b82f6, #1e40af, #3b82f6);
+    transform: scaleY(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.contact-card:hover::after {
+    transform: scaleY(1);
+}
+
+.contact-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(59, 130, 246, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+
+
+/* Icon Circle */
+.icon-circle {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.85rem;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1e40af 100%);
+    color: white;
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3), inset 0 -2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-circle::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 30%;
+    height: 30%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    filter: blur(8px);
+}
+
+.contact-card:hover .icon-circle {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.45), inset 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.icon-circle.primary,
+.icon-circle.success,
+.icon-circle.info,
+.icon-circle.warning {
+    background: linear-gradient(135deg, #3b82f6, #1e40af);
+    color: white;
+}
+
+/* Contact Form */
+.contact-form-wrapper {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    padding: 3.5rem;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-form-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #2563eb, #1e40af, #2563eb, #3b82f6);
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.contact-form-wrapper h4 {
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 2.5rem;
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.contact-form-wrapper h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+    border-radius: 2px;
+}
+
+.contact-form-wrapper h4 i {
+    color: #3b82f6;
+    margin-right: 0.5rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Form Controls */
+.contact-form-wrapper .form-control,
+.contact-form-wrapper .form-select {
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: white;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form-wrapper .form-control:hover,
+.contact-form-wrapper .form-select:hover {
+    border-color: #cbd5e1;
+}
+
+.contact-form-wrapper .form-control:focus,
+.contact-form-wrapper .form-select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1), inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    background: white;
+    transform: translateY(-1px);
+}
+
+.contact-form-wrapper .form-label {
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Submit Button */
+.contact-form-wrapper .btn-primary {
+    padding: 1.125rem 3rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1e40af 100%);
+    border: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.35), inset 0 -2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-form-wrapper .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.contact-form-wrapper .btn-primary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.contact-form-wrapper .btn-primary:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5), inset 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-wrapper .btn-primary:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-card {
+        padding: 1.25rem;
+    }
+    
+    .contact-form-wrapper {
+        padding: 1.5rem;
+    }
+    
+    .icon-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+}

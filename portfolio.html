@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohamed Amine Nouioui - Full Stack Developer & BI Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+  <style>
+    :root {
+      --bg-color: #020205;
+      --surface-color: rgba(10, 10, 20, 0.6);
+      --accent-color: #00f2ff;
+      --accent-secondary: #7000ff;
+      --accent-glow: rgba(0, 242, 255, 0.5);
+      --primary-gradient: linear-gradient(135deg, #00f2ff 0%, #7000ff 100%);
+      --text-primary: #ffffff;
+      --text-muted: #94a3b8;
+      --border-color: rgba(255, 255, 255, 0.05);
+      --glass-bg: rgba(255, 255, 255, 0.02);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --font-main: 'Outfit', sans-serif;
+      --font-heading: 'Space Grotesk', sans-serif;
+      --border-radius-card: 24px;
+      --border-radius-btn: 14px;
+      --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      --shadow-neon: 0 0 20px var(--accent-glow);
+      --footer-bg: rgba(0, 0, 0, 0.5);
+    }
+
+    body.light-mode {
+      --bg-color: #f1f5f9;
+      --surface-color: rgba(255, 255, 255, 0.7);
+      --accent-color: #6366f1;
+      --accent-secondary: #a855f7;
+      --accent-glow: rgba(99, 102, 241, 0.3);
+      --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      --text-primary: #0f172a;
+      --text-muted: #64748b;
+      --border-color: rgba(0, 0, 0, 0.05);
+      --glass-bg: rgba(255, 255, 255, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.8);
+      --shadow-neon: 0 10px 30px rgba(99, 102, 241, 0.1);
+      --footer-bg: linear-gradient(to bottom, #f1f5f9, #e2e8f0);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      text-align: center;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 0.8rem;
+      margin-bottom: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .section-subtitle::before,
+    .section-subtitle::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--primary-gradient);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 8rem 0;
+      position: relative;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 2rem;
+      border-radius: var(--border-radius-btn);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid transparent;
+      gap: 0.5rem;
+      outline: none;
+    }
+
+    .btn-primary {
+      background: var(--primary-gradient);
+      color: #000;
+      box-shadow: 0 0 15px var(--accent-glow);
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+
+    .btn-outline {
+      background: var(--glass-bg);
+      border-color: var(--glass-border);
+      color: var(--text-primary);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+      transform: translateY(-3px);
+    }
+
+    /* Contact Form Styles */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    @media (max-width: 968px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      background: var(--surface-color);
+      padding: 1.5rem;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      transition: 0.3s;
+    }
+
+    .contact-item:hover {
+      border-color: var(--accent-color);
+      transform: translateX(10px);
+    }
+
+    .contact-item i {
+      font-size: 1.8rem;
+      color: var(--accent-color);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      background: var(--surface-color);
+      padding: 3rem;
+      border-radius: 30px;
+      border: 1px solid var(--glass-border);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-left: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 1rem;
+      color: var(--text-primary);
+      font-family: var(--font-main);
+      transition: 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent-color);
+      outline: none;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    /* Project Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(20px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    .modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: var(--surface-color);
+      max-width: 800px;
+      width: 90%;
+      max-height: 85vh;
+      border-radius: 40px;
+      border: 1px solid var(--glass-border);
+      padding: 4rem;
+      position: relative;
+      overflow-y: auto;
+      transform: translateY(30px);
+      transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .modal.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .modal-close:hover {
+      color: var(--accent-color);
+      transform: rotate(90deg);
+    }
+
+    .modal-tag {
+      font-size: 0.8rem;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .modal-title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .modal-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .feature-item {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 1.5rem;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+    }
+
+    .feature-item i {
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* Custom Cursor */
+    .custom-cursor {
+      width: 10px;
+      height: 10px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 10000;
+      mix-blend-mode: difference;
+    }
+
+    .custom-cursor-outline {
+      width: 35px;
+      height: 35px;
+      border: 1px solid var(--accent-color);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.15s ease-out;
+    }
+
+    /* Three.js Canvas */
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: 0.8s ease;
+    }
+
+    .loader-circle {
+      width: 80px;
+      height: 80px;
+      border: 2px solid transparent;
+      border-top: 2px solid var(--accent-color);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 2rem;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Navbar */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      transition: 0.4s;
+    }
+
+    header.scrolled {
+      padding: 0.5rem 0;
+      background: rgba(2, 2, 5, 0.8);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo span {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent-color);
+      text-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .theme-toggle,
+    .lang-switch {
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: 0.3s;
+    }
+
+    .theme-toggle:hover,
+    .lang-switch:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding-top: 100px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-content h1 span {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+      opacity: 0.9;
+    }
+
+    .hero-desc {
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .stat-item h3 {
+      font-size: 2.5rem;
+      color: var(--accent-color);
+    }
+
+    .stat-item p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-img-container {
+      position: relative;
+    }
+
+    .about-img-container::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      border: 2px solid var(--accent-color);
+      border-radius: 30px;
+      opacity: 0.2;
+      transform: rotate(-5deg);
+      z-index: -1;
+    }
+
+    .about-img {
+      width: 100%;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      filter: grayscale(20%);
+      transition: 0.5s;
+    }
+
+    .about-img:hover {
+      filter: grayscale(0%);
+      transform: scale(1.02);
+    }
+
+    .about-text h3 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-card {
+      background: var(--surface-color);
+      padding: 2.5rem;
+      border-radius: 24px;
+      border: 1px solid var(--glass-border);
+      transition: 0.4s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent-color);
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
+    }
+
+    .skill-card h4 {
+      margin-bottom: 2rem;
+      font-size: 1.3rem;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 1rem;
+    }
+
+    .skill-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .skill-bar {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: var(--primary-gradient);
+      width: 0;
+      transition: 1.5s ease-out;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .project-card {
+      background: var(--surface-color);
+      border-radius: 30px;
+      border: 1px solid var(--glass-border);
+      overflow: hidden;
+      transition: 0.4s;
+      position: relative;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent-color);
+      transform: translateY(-10px);
+    }
+
+    .project-img {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      background: var(--primary-gradient);
+      opacity: 0.8;
+    }
+
+    .project-content {
+      padding: 2.5rem;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      background: rgba(0, 242, 255, 0.1);
+      color: var(--accent-color);
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .link-btn {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent-color);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--surface-color);
+      padding: 3rem 2rem;
+      border-radius: 30px;
+      border: 1px solid var(--glass-border);
+      text-align: center;
+      transition: 0.4s;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent-secondary);
+      transform: translateY(-10px);
+      box-shadow: 0 10px 40px rgba(112, 0, 255, 0.15);
+    }
+
+    .service-card i {
+      font-size: 3.5rem;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    .service-card h4 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Experience */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: var(--glass-border);
+    }
+
+    .timeline-item {
+      padding-left: 3rem;
+      position: relative;
+      margin-bottom: 4rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -6px;
+      top: 5px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent-color);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .timeline-date {
+      color: var(--accent-color);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content {
+      background: var(--surface-color);
+      padding: 2.5rem;
+      border-radius: 24px;
+      border: 1px solid var(--glass-border);
+    }
+
+    /* Footer */
+    footer {
+      padding: 6rem 0;
+      border-top: 1px solid var(--glass-border);
+      text-align: center;
+      background: var(--footer-bg);
+      position: relative;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-links a {
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-color);
+      transform: translateY(-5px);
+    }
+
+    [dir="rtl"] {
+      text-align: right;
+    }
+
+    [dir="rtl"] .nav-links {
+      flex-direction: row-reverse;
+    }
+
+    [dir="rtl"] .hero-ctas,
+    [dir="rtl"] .hero-stats {
+      flex-direction: row-reverse;
+    }
+
+    [dir="rtl"] .timeline-item {
+      padding-left: 0;
+      padding-right: 3rem;
+    }
+
+    [dir="rtl"] .timeline::before {
+      left: auto;
+      right: 0;
+    }
+
+    [dir="rtl"] .timeline-dot {
+      left: auto;
+      right: -6px;
+    }
+
+    @media (max-width: 968px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .nav-links {
+        display: flex;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 300px;
+        background: var(--bg-color);
+        flex-direction: column !important;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        transition: 0.5s;
+        z-index: 1001;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        border-left: 1px solid var(--glass-border);
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .mobile-menu-btn {
+        display: block !important;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1002;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="canvas-container"></div>
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-outline"></div>
+
+  <div id="loader">
+    <div class="loader-circle"></div>
+    <h2 style="color: #fff; letter-spacing: 5px;" data-i18n="loader-name">AMINE NOUIOUI</h2>
+  </div>
+
+  <header id="header">
+    <div class="container nav-container">
+      <a href="#" class="logo">AMINE<span>.</span></a>
+      <nav class="nav-links">
+        <a href="#home" data-i18n="nav-about">About</a>
+        <a href="#skills" data-i18n="nav-skills">Skills</a>
+        <a href="#experience" data-i18n="nav-experience">Experience</a>
+        <a href="#projects" data-i18n="nav-projects">Projects</a>
+        <a href="#contact" data-i18n="nav-contact">Contact</a>
+      </nav>
+      <div class="nav-controls">
+        <button class="lang-switch" id="langSwitch">EN</button>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+        <div class="mobile-menu-btn" style="display: none;">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="hero" id="home">
+
+    <div class="container hero-content">
+      <h1 data-i18n="hero-title">Building Fast Apps & <span>BI Dashboards</span></h1>
+      <p class="hero-subtitle" data-i18n="hero-subtitle">Full Stack Developer · BI Analyst</p>
+      <p class="hero-desc" data-i18n="hero-desc">Based in Tunis, building high-performance digital products for global
+        clients. Specializing in React, Node, and Data Intelligence.</p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <h3 class="counter" data-target="3">0</h3>
+          <p data-i18n="stat-exp">Years EXP</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="counter" data-target="10">0</h3>
+          <p data-i18n="stat-projects">Projects</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="counter" data-target="3">0</h3>
+          <p data-i18n="stat-langs">Languages</p>
+        </div>
+      </div>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn btn-primary" data-i18n="btn-work">My Work</a>
+        <a href="https://wa.me/21653236163" target="_blank" class="btn btn-outline"
+          data-i18n="btn-whatsapp">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-img-container fade-up">
+        <img src="me.jpg" alt="Amine" class="about-img">
+      </div>
+      <div class="about-text fade-up">
+        <p class="section-subtitle" data-i18n="about-subtitle">Who I Am</p>
+        <h3 data-i18n="about-h3">Architecting Data-Driven Digital Solutions</h3>
+        <p data-i18n="about-p">I am a results-driven Full Stack Developer and Business Intelligence Analyst specialized
+          in building scalable, high-performance ecosystems. My expertise lies at the intersection of robust backend
+          engineering and intuitive data visualization, ensuring that every product I build is not only functional but
+          delivers measurable business impact. With experience spanning from banking automation to global SaaS
+          platforms, I pride myself on delivering clean, future-proof code with an elite user experience.</p>
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <a href="#contact" class="btn btn-primary" data-i18n="nav-contact">Hire Me</a>
+          <a href="MOHAMED%20.pdf" class="btn btn-outline" data-i18n="btn-cv"><i class="fas fa-download"></i> Download
+            CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="bg-surface">
+    <div class="container">
+      <h2 class="section-title fade-up" data-i18n="skills-title">Technical Arsenal</h2>
+      <p class="section-subtitle fade-up" data-i18n="skills-subtitle">My Stack</p>
+      <div class="skills-grid">
+        <div class="skill-card fade-up">
+          <h4 data-i18n="skill-frontend">Frontend</h4>
+          <div class="skill-item">
+            <div class="skill-info"><span>React.js</span><span>90%</span></div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="90%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>JavaScript / TS</span><span>85%</span></div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="85%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-card fade-up">
+          <h4 data-i18n="skill-backend">Backend</h4>
+          <div class="skill-item">
+            <div class="skill-info"><span>Node.js / Express</span><span>88%</span></div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="88%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>MySQL / SQL</span><span>92%</span></div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="92%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-card fade-up">
+          <h4 data-i18n="skill-db">BI & Data</h4>
+          <div class="skill-item">
+            <div class="skill-info"><span>Power BI</span><span>95%</span></div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="95%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>Data Analysis</span><span>88%</span></div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="88%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-card fade-up">
+          <h4 data-i18n="skill-tools">DevOps & Ecosystem</h4>
+          <div class="skill-item">
+            <div class="skill-info"><span>Git / GitHub</span><span>95%</span></div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="95%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>Docker & Cloud</span><span>80%</span></div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="80%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>CI / CD (Vercel)</span><span>85%</span></div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="85%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title fade-up" data-i18n="exp-title">Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item fade-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date" data-i18n="exp0-date">Jul 2024 – Present</div>
+            <h4 data-i18n="exp0-title">Lead Full Stack Developer</h4>
+            <div class="timeline-company" style="color: var(--accent-color); font-size: 0.9rem; margin-bottom: 0.5rem;">
+              Freelance / Contract</div>
+            <p data-i18n="exp0-desc">Architecting custom SaaS solutions and high-traffic e-commerce platforms for
+              international clients. Focusing on React, Node.js, and complex MySQL optimizations.</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date" data-i18n="exp1-date">Feb 2025 – Jun 2025</div>
+            <h4 data-i18n="exp1-title">Full Stack Intern</h4>
+            <div class="timeline-company" style="color: var(--accent-color); font-size: 0.9rem; margin-bottom: 0.5rem;">
+              MC Solution - Tunis</div>
+            <p data-i18n="exp1-desc">Revitalized core billing systems, implementing JWT-based security and real-time
+              dashboard analytics which improved operational efficiency by 40%.</p>
+          </div>
+        </div>
+        <div class="timeline-item fade-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date" data-i18n="exp2-date">Jun 2024 – Sep 2024</div>
+            <h4 data-i18n="exp2-title">BI Intern @ Amen Bank</h4>
+            <div class="timeline-company" style="color: var(--accent-color); font-size: 0.9rem; margin-bottom: 0.5rem;">
+              Amen Bank - Tunis</div>
+            <p data-i18n="exp2-desc">Spearheaded the automation of recursive banking reports through Power BI, creating
+              interactive visualizations that reduced manual data entry for the finance team.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title fade-up" data-i18n="projects-title">Featured Work</h2>
+      <div class="projects-grid">
+        <div class="project-card fade-up" data-tilt>
+          <div class="project-img" style="background: linear-gradient(45deg, #B76E79, #f472b6);">SB</div>
+          <div class="project-content">
+            <span class="project-tag">E-commerce</span>
+            <h4 class="project-title">Saria Beauty</h4>
+            <p class="project-desc" data-i18n="p-sb-desc">A luxury beauty e-commerce platform featuring a sophisticated
+              shopping experience, a multilingual interface, and an AI-powered chat assistant.</p>
+            <div class="project-links">
+              <a href="#" class="btn-detail" data-project="sb"><i class="fas fa-plus"></i> <span
+                  data-i18n="btn-details">Details</span></a>
+              <a href="https://www.sariabeauty.com/" class="link-btn"><i class="fas fa-external-link-alt"></i> Demo</a>
+              <a href="https://github.com/amineno/SariaBeautyy" class="link-btn"><i class="fab fa-github"></i>
+                GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card fade-up" data-tilt>
+          <div class="project-img" style="background: linear-gradient(45deg, #3b82f6, #0ea5e9);">GG</div>
+          <div class="project-content">
+            <span class="project-tag">Service Platform</span>
+            <h4 class="project-title">Groom'go</h4>
+            <p class="project-desc" data-i18n="p-gg-desc">A premium mobile pet grooming platform with an intelligent
+              booking system and a modern glassmorphic interface.</p>
+            <div class="project-links">
+              <a href="#" class="btn-detail" data-project="gg"><i class="fas fa-plus"></i> <span
+                  data-i18n="btn-details">Details</span></a>
+              <a href="https://groom-go-three.vercel.app" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i> Demo</a>
+              <a href="https://github.com/amineno/Groom-go" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title fade-up" data-i18n="services-title">My Services</h2>
+      <div class="services-grid">
+        <div class="service-card fade-up" data-tilt>
+          <i class="fas fa-code"></i>
+          <h4 data-i18n="service1-title">Web Apps</h4>
+          <p data-i18n="service1-desc">Full-cycle product development from architectural design to deployment using
+            high-performance stacks like React and Node.js.</p>
+        </div>
+        <div class="service-card fade-up" data-tilt>
+          <i class="fas fa-chart-line"></i>
+          <h4 data-i18n="service3-title">BI Solutions</h4>
+          <p data-i18n="service3-desc">Transforming raw data into actionable business intelligence through interactive
+            Power BI dashboards and advanced SQL analytics.</p>
+        </div>
+        <div class="service-card fade-up" data-tilt>
+          <i class="fas fa-cloud"></i>
+          <h4 data-i18n="service4-title">Cloud Integration</h4>
+          <p data-i18n="service4-desc">Implementing scalable cloud infrastructures (AWS/Vercel) with optimized CI/CD
+            pipelines for zero-downtime deployment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title fade-up" data-i18n="contact-title">Contact</h2>
+      <p class="section-subtitle fade-up" data-i18n="contact-subtitle">Let's build something together</p>
+
+      <div class="contact-container">
+        <div class="contact-info fade-up">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h5 data-i18n="contact-email-label">Email</h5>
+              <p>aminenouioul18@icloud.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h5 data-i18n="contact-phone-label">Phone</h5>
+              <p>+216 53 236 163</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-location-dot"></i>
+            <div>
+              <h5 data-i18n="contact-loc-label">Location</h5>
+              <p>Tunis, Tunisia</p>
+            </div>
+          </div>
+          <div class="social-links" style="justify-content: flex-start; margin-top: 1rem; padding-left: 1rem;">
+            <a href="https://github.com/amineno"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com"><i class="fab fa-linkedin"></i></a>
+            <a href="https://wa.me/21653236163"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <form class="contact-form fade-up">
+          <div class="form-group">
+            <label for="name" data-i18n="form-name">Name</label>
+            <input type="text" id="name" placeholder="" required>
+          </div>
+          <div class="form-group">
+            <label for="email" data-i18n="form-email">Email</label>
+            <input type="email" id="email" placeholder="" required>
+          </div>
+          <div class="form-group">
+            <label for="message" data-i18n="form-msg">Message</label>
+            <textarea id="message" placeholder="I'd like to talk about a project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" data-i18n="form-submit">Send Message <i
+              class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p data-i18n="footer-tagline">Building the future, one pixel at a time.</p>
+      <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">© 2026 Mohamed Amine Nouioui. All rights
+        reserved.</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="projectModal">
+    <div class="modal-content">
+      <i class="fas fa-times modal-close"></i>
+      <span class="modal-tag" id="modalTag">Category</span>
+      <h2 class="modal-title" id="modalTitle">Project Title</h2>
+      <div class="modal-desc" id="modalDesc">Detailed description here...</div>
+      <div class="modal-features" id="modalFeatures">
+        <!-- Features populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        "nav-about": "About", "nav-skills": "Skills", "nav-experience": "Experience", "nav-projects": "Projects", "nav-contact": "Contact",
+        "hero-title": "Building Fast Apps & <span>BI Dashboards</span>", "hero-subtitle": "Full Stack Developer · BI Analyst",
+        "hero-desc": "Based in Tunis, building high-performance digital products for global clients. Specializing in React, Node, and Data Intelligence.",
+        "stat-exp": "Years EXP", "stat-projects": "Projects", "stat-langs": "Languages",
+        "btn-work": "My Work", "btn-whatsapp": "WhatsApp", "btn-cv": "Download CV",
+        "about-subtitle": "Executive Summary", "about-h3": "Architecting Data-Driven Digital Solutions",
+        "about-p": "I am a results-driven Full Stack Developer and Business Intelligence Analyst specialized in building scalable, high-performance ecosystems. My expertise lies at the intersection of robust backend engineering and intuitive data visualization, ensuring that every product I build is not only functional but delivers measurable business impact.",
+        "skills-title": "Technical Arsenal", "skills-subtitle": "Core Stack",
+        "skill-frontend": "Frontend Engineering", "skill-backend": "Backend Systems", "skill-db": "BI & Data Intelligence", "skill-tools": "DevOps & Ecosystem",
+        "exp-title": "Professional Experience",
+        "exp0-date": "Jul 2024 – Present", "exp0-title": "Lead Full Stack Developer", "exp0-desc": "Architecting custom SaaS solutions and high-traffic e-commerce platforms for international clients. Focusing on React, Node.js, and complex MySQL optimizations.",
+        "exp1-date": "Feb 2025 – Jun 2025", "exp1-title": "Full Stack Intern", "exp1-desc": "Revitalized core billing systems, implementing JWT-based security and real-time dashboard analytics which improved operational efficiency by 40%.",
+        "exp2-date": "Jun 2024 – Sep 2024", "exp2-title": "BI Intern @ Amen Bank", "exp2-desc": "Spearheaded the automation of recursive banking reports through Power BI, creating interactive visualizations that reduced manual data entry.",
+        "projects-title": "Strategic Projects",
+        "p-sb-desc": "A luxury beauty e-commerce platform featuring a sophisticated shopping experience, a multilingual interface, and an AI-powered chat assistant.",
+        "p-gg-desc": "A premium mobile pet grooming platform with an intelligent booking system and a modern glassmorphic interface.",
+        "btn-details": "Details",
+        "sb-full": "Saria Beauty is a high-end e-commerce ecosystem designed for the cosmetic industry. It features a responsive React frontend, secure JWT authentication, and a robust admin dashboard for product and order management. The platform includes a wishlist system, real-time reviews, and a unique AI chat assistant to guide users through their beauty journey.",
+        "gg-full": "Groom'go is a complete digital solution for mobile pet grooming services. It features an advanced booking engine that calculates service costs based on pet size and location, a full product catalog, and an admin dashboard with deep analytics. Designed with a stunning glassmorphic UI, it provides a seamless experience for both pet owners and administrators.",
+        "contact-title": "Contact", "contact-subtitle": "Let's build something together",
+        "contact-email-label": "Email", "contact-phone-label": "Phone", "contact-loc-label": "Location",
+        "form-name": "Name", "form-email": "Email", "form-msg": "Message", "form-submit": "Send Message",
+        "footer-tagline": "Building the future, one pixel at a time."
+      },
+      fr: {
+        "nav-about": "À Propos", "nav-skills": "Compétences", "nav-experience": "Expérience", "nav-projects": "Projets", "nav-contact": "Contact",
+        "hero-title": "Apps Rapides & <span>Dashboards BI</span>", "hero-subtitle": "Développeur Full Stack · Analyste BI",
+        "hero-desc": "Basé à Tunis, je crée des produits numériques haute performance. Expert en React, Node et Intelligence Données.",
+        "stat-exp": "Ans d'EXP", "stat-projects": "Projets", "stat-langs": "Langues",
+        "btn-work": "Mes Travaux", "btn-whatsapp": "WhatsApp", "btn-cv": "Télécharger CV",
+        "about-subtitle": "Synthèse Executive", "about-h3": "Architecture de Solutions Numériques Orientées Données",
+        "about-p": "Je suis un développeur Full Stack et analyste en Business Intelligence axé sur les résultats, spécialisé dans la création d'écosystèmes évolutifs et performants. Mon expertise se situe à l'intersection de l'ingénierie backend robuste et de la visualisation de données intuitive, garantissant que chaque produit que je construis est non seulement fonctionnel mais délivre un impact commercial mesurable.",
+        "skills-title": "Arsenal Technique", "skills-subtitle": "Stack Principal",
+        "skill-frontend": "Ingénierie Frontend", "skill-backend": "Systèmes Backend", "skill-db": "Intelligence BI & Données", "skill-tools": "DevOps & Écosystème",
+        "exp-title": "Expérience Professionnelle",
+        "exp0-date": "Juil 2024 – Présent", "exp0-title": "Développeur Full Stack Principal", "exp0-desc": "Architecture de solutions SaaS personnalisées et de plateformes e-commerce à fort trafic. Accent sur React, Node.js et les optimisations MySQL complexes.",
+        "exp1-date": "Fév 2025 – Juin 2025", "exp1-title": "Stage Full Stack", "exp1-desc": "Revitalisation des systèmes de facturation de base, implémentation de la sécurité JWT et analyses de tableaux de bord en temps réel.",
+        "exp2-date": "Juin 2024 – Sep 2024", "exp2-title": "Stage BI @ Amen Bank", "exp2-desc": "Direction de l'automatisation des rapports bancaires récursifs via Power BI, créant des visualisations interactives.",
+        "projects-title": "Projets Stratégiques",
+        "p-sb-desc": "Une plateforme e-commerce de beauté de luxe dotée d'une interface multilingue et d'un assistant de chat alimenté par l'IA.",
+        "p-gg-desc": "Une plateforme premium de toilettage mobile pour animaux avec un système de réservation intelligent.",
+        "services-title": "Services Clés",
+        "service1-title": "Architecture Web", "service1-desc": "Développement complet de produits, de la conception architecturale au déploiement utilisant des stacks haute performance comme React et Node.js.",
+        "service3-title": "Intelligence BI", "service3-desc": "Transformation de données brutes en intelligence stratégique via des tableaux de bord Power BI interactifs et des analyses SQL avancées.",
+        "service4-title": "Intégration Cloud", "service4-desc": "Mise en œuvre d'infrastructures cloud évolutives (AWS/Vercel) avec des pipelines CI/CD optimisés.",
+        "btn-details": "Détails",
+        "sb-full": "Saria Beauty est un écosystème e-commerce haut de gamme conçu pour l'industrie cosmétique. Il comprend un frontend React réactif, une authentification JWT sécurisée et un tableau de bord administrateur robuste. La plateforme inclut un système de liste de souhaits, des avis en temps réel et un assistant IA unique.",
+        "gg-full": "Groom'go est une solution numérique complète pour les services de toilettage mobile. Elle comprend un moteur de réservation avancé qui calcule les coûts en fonction de la taille de l'animal et de l'emplacement, un catalogue de produits complet et un tableau de bord administrateur avec des analyses approfondies.",
+        "contact-title": "Contact", "contact-subtitle": "Construisons quelque chose ensemble",
+        "contact-email-label": "Email", "contact-phone-label": "Téléphone", "contact-loc-label": "Emplacement",
+        "form-name": "Nom", "form-email": "Email", "form-msg": "Message", "form-submit": "Envoyer le message",
+        "footer-tagline": "Bâtir le futur, un pixel à la fois."
+      },
+      ar: {
+        "nav-about": "عني", "nav-skills": "المهارات", "nav-experience": "الخبرة", "nav-projects": "المشاريع", "nav-contact": "اتصل بي",
+        "hero-title": "بناء تطبيقات سريعة و <span>لوحات BI</span>", "hero-subtitle": "مطور Full Stack · محلل BI",
+        "hero-desc": "مقيم في تونس، أقوم ببناء منتجات رقمية عالية الأداء لعملاء عالميين. متخصص في React و Node وذكاء البيانات.",
+        "stat-exp": "سنوات الخبرة", "stat-projects": "مشاريع", "stat-langs": "لغات",
+        "btn-work": "أعمالي", "btn-whatsapp": "واتساب", "btn-cv": "تحميل السيرة الذاتية",
+        "about-subtitle": "ملخص تنفيذي", "about-h3": "هندسة الحلول الرقمية القائمة على البيانات",
+        "about-p": "أنا مطور Full Stack ومحلل ذكاء أعمال (BI) مهتم بالنتائج، متخصص في بناء أنظمة قابلة للتوسع وعالية الأداء. تكمن خبرتي في التقاطع بين هندسة المواجهات الخلفية القوية وتصور البيانات البديهي، مما يضمن أن كل منتج أبني ليس وظيفيًا فحسب، بل يقدم تأثيرًا تجاريًا ملموسًا.",
+        "skills-title": "العتاد التقني", "skills-subtitle": "المهارات الأساسية",
+        "skill-frontend": "هندسة الواجهات", "skill-backend": "أنظمة المواجهات الخلفية", "skill-db": "ذكاء الأعمال والبيانات", "skill-tools": "DevOps والأنظمة",
+        "exp-title": "الخبرة المهنية",
+        "exp0-date": "جويلية 2024 - الآن", "exp0-title": "مطور Full Stack رئيسي", "exp0-desc": "هندسة حلول SaaS مخصصة ومنصات تجارة إلكترونية عالية الحركة لعملاء دوليين. التركيز على React و Node.js وتحسينات MySQL المعقدة.",
+        "exp1-date": "فيفري 2025 - جوان 2025", "exp1-title": "متربص مطور Full Stack", "exp1-desc": "تحديث أنظمة الفوترة الأساسية، وتطبيق حماية JWT وتحليلات لوحة التحكم في الوقت الفعلي.",
+        "exp2-date": "جوان 2024 - سبتمبر 2024", "exp2-title": "متربص BI @ بنك الأمان", "exp2-desc": "قيادة أتمتة التقارير المصرفية المتكررة عبر Power BI، وإنشاء تصورات تفاعلية قللت من إدخال البيانات يدويًا.",
+        "projects-title": "المشاريع الاستراتيجية",
+        "p-sb-desc": "منصة تجارة إلكترونية فاخرة للجمال تتميز بواجهة متعددة اللغات ومساعد دردشة مدعوم بالذكاء الاصطناعي.",
+        "p-gg-desc": "منصة فاخرة لخدمات تنظيف الحيوانات الأليفة المتنقلة مع نظام حجز ذكي.",
+        "services-title": "الخدمات الأساسية",
+        "service1-title": "هندسة الويب", "service1-desc": "تطوير المنتج بالكامل من التصميم الهندسي إلى النشر باستخدام تقنيات عالية الأداء مثل React و Node.js.",
+        "service3-title": "ذكاء الأعمال", "service3-desc": "تحويل البيانات الخام إلى رؤى استراتيجية من خلال لوحات Power BI التفاعلية وتحليلات SQL المتقدمة.",
+        "service4-title": "تكامل السحابة", "service4-desc": "تنفيذ بنيات تحتية سحابية قابلة للتوسع (AWS/Vercel) مع خطوط أنابيب CI/CD محسنة.",
+        "btn-details": "التفاصيل",
+        "sb-full": "Saria Beauty هو نظام تجارة إلكترونية متطور مصمم لصناعة التجميل. يتميز بواجهة React سريعة الاستجابة، وتوثيق JWT آمن، ولوحة تحكم مسؤول قوية لإدارة المنتجات والطلبات. تتضمن المنصة نظام قائمة الرغبات، ومراجعات حقيقية، ومساعد دردشة بالذكاء الاصطناعي.",
+        "gg-full": "Groom'go هو حل رقمي كامل لخدمات الحلاقة المتنقلة للحيوانات الأليفة. يتميز بمحرك حجز متقدم يحسب تكاليف الخدمة بناءً على حجم الحيوان الأليف ومقره، وكتالوج منتجات كامل، ولوحة تحكم مسؤول مع تحليلات عميقة.",
+        "contact-title": "اتصل بي", "contact-subtitle": "فلنبنِ شيئًا معًا",
+        "contact-email-label": "البريد الإلكتروني", "contact-phone-label": "الهاتف", "contact-loc-label": "الموقع",
+        "form-name": "الاسم", "form-email": "البريد الإلكتروني", "form-msg": "الرسالة", "form-submit": "إرسال الرسالة",
+        "footer-tagline": "بناء المستقبل، بكسل تلو الآخر."
+      }
+    };
+
+    const updateLanguage = (lang) => {
+      document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.getElementById('langSwitch').innerText = lang.toUpperCase();
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) el.innerHTML = translations[lang][key];
+      });
+      localStorage.setItem('lang', lang);
+    };
+
+    document.getElementById('langSwitch').addEventListener('click', () => {
+      const current = localStorage.getItem('lang') || 'en';
+      const next = current === 'en' ? 'fr' : current === 'fr' ? 'ar' : 'en';
+      updateLanguage(next);
+    });
+
+    // Theme Toggle
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      themeBtn.innerText = isLight ? '☀️' : '🌙';
+
+      // Update Three.js particles color
+      const color = isLight ? 0x6366f1 : 0x00f2ff;
+      if (window.particles) window.particles.material.color.setHex(color);
+    });
+
+    // Mobile Menu
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      const icon = menuBtn.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        const icon = menuBtn.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+      });
+    });
+
+    // Project Details Modal Logic
+    const modal = document.getElementById('projectModal');
+    const modalClose = document.querySelector('.modal-close');
+
+    const projectData = {
+      sb: { icon: 'fa-magic', features: ['AI Chat Assistant', 'Multilingual Support', 'React Frontend'] },
+      gg: { icon: 'fa-paw', features: ['Intelligent Booking', 'Glassmorphism UI', 'Admin Analytics'] }
+    };
+
+    document.querySelectorAll('.btn-detail').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pid = btn.getAttribute('data-project');
+        const lang = localStorage.getItem('lang') || 'en';
+        const card = btn.closest('.project-card');
+
+        document.getElementById('modalTag').innerText = card.querySelector('.project-tag').innerText;
+        document.getElementById('modalTitle').innerText = card.querySelector('.project-title').innerText;
+        document.getElementById('modalDesc').innerText = translations[lang][pid + '-full'];
+
+        const featuresContainer = document.getElementById('modalFeatures');
+        featuresContainer.innerHTML = '';
+        projectData[pid].features.forEach(feat => {
+          featuresContainer.innerHTML += `
+                    <div class="feature-item">
+                        <i class="fas ${projectData[pid].icon}"></i>
+                        <span>${feat}</span>
+                    </div>
+                `;
+        });
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Three.js Background
+    const initThree = () => {
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.getElementById('canvas-container').appendChild(renderer.domElement);
+      const geometry = new THREE.BufferGeometry();
+      const vertices = [];
+      for (let i = 0; i < 5000; i++) {
+        vertices.push(THREE.MathUtils.randFloatSpread(10));
+        vertices.push(THREE.MathUtils.randFloatSpread(10));
+        vertices.push(THREE.MathUtils.randFloatSpread(10));
+      }
+      geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+      const isLight = document.body.classList.contains('light-mode');
+      const material = new THREE.PointsMaterial({
+        color: isLight ? 0x6366f1 : 0x00f2ff,
+        size: 0.005,
+        transparent: true,
+        opacity: isLight ? 0.3 : 0.5
+      });
+      const points = new THREE.Points(geometry, material);
+      window.particles = points; // Store for theme toggling
+      scene.add(points);
+      camera.position.z = 2;
+      const animate = () => {
+        requestAnimationFrame(animate);
+        points.rotation.y += 0.001;
+        renderer.render(scene, camera);
+      };
+      animate();
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    };
+
+    // Cursor
+    const initCursor = () => {
+      const cursor = document.querySelector('.custom-cursor');
+      const outline = document.querySelector('.custom-cursor-outline');
+      document.addEventListener('mousemove', (e) => {
+        gsap.to(cursor, { x: e.clientX - 5, y: e.clientY - 5, duration: 0 });
+        gsap.to(outline, { x: e.clientX - 17, y: e.clientY - 17, duration: 0.15 });
+      });
+      document.querySelectorAll('a, button, .project-card').forEach(el => {
+        el.addEventListener('mouseenter', () => gsap.to(outline, { scale: 1.5, borderColor: '#7000ff' }));
+        el.addEventListener('mouseleave', () => gsap.to(outline, { scale: 1, borderColor: '#00f2ff' }));
+      });
+    };
+
+    // GSAP
+    const initGSAP = () => {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from('.hero-content > *', { opacity: 0, y: 30, duration: 1, stagger: 0.2, ease: "power2.out" });
+      document.querySelectorAll('.counter').forEach(c => {
+        const target = +c.getAttribute('data-target');
+        gsap.to(c, { innerText: target, duration: 2, snap: { innerText: 1 }, scrollTrigger: { trigger: c, start: "top 90%" }, onUpdate: function () { c.innerText += (target == 3 || target == 10 ? "+" : ""); } });
+      });
+      document.querySelectorAll('.skill-progress').forEach(p => {
+        gsap.to(p, { width: p.getAttribute('data-width'), duration: 1.5, scrollTrigger: { trigger: p, start: "top 90%" } });
+      });
+      document.querySelectorAll('.fade-up').forEach(f => {
+        gsap.from(f, { opacity: 0, y: 50, duration: 1, scrollTrigger: { trigger: f, start: "top 85%" } });
+      });
+    };
+
+    window.addEventListener('load', () => {
+      initThree();
+      initCursor();
+      initGSAP();
+      updateLanguage(localStorage.getItem('lang') || 'en');
+      setTimeout(() => { document.getElementById('loader').style.opacity = '0'; setTimeout(() => document.getElementById('loader').style.display = 'none', 800); }, 1000);
+    });
+  </script>
+</body>
+
+</html>

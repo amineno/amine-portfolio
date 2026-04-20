@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produits & Accessoires - Groom'go</title>
+    <meta name="description" content="Découvrez notre gamme de produits de toilettage et accessoires pour animaux de compagnie de qualité professionnelle.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/logo.png" type="image/png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/products.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/Gemini_Generated_Image_imsa1bimsa1bimsa-removebg-preview.png" alt="Groom'go Logo" class="navbar-logo">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#home">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="notes.html">Avis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary ms-2" href="login.html">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary ms-2 text-white" href="booking.html">Réserver</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="products-hero">
+        <div class="container">
+            <div class="row align-items-center min-vh-50">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="hero-title">Produits & Accessoires</h1>
+                    <p class="hero-subtitle">Découvrez notre sélection de produits de qualité professionnelle pour le bien-être et la beauté de vos animaux de compagnie</p>
+                    <div class="cart-summary" id="cartSummary">
+                        <button class="btn btn-outline-primary" onclick="toggleCart()">
+                            <i class="fas fa-shopping-cart me-2"></i>
+                            Panier (<span id="cartCount">0</span>)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="filter-tabs">
+                        <button class="filter-btn active" data-category="all">Tous les produits</button>
+                        <button class="filter-btn" data-category="shampoo">Produits cosmitiques</button>
+                        <button class="filter-btn" data-category="accessories">Accessoires</button>
+                        <button class="filter-btn" data-category="tools">Produits Alimentaires</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section py-5">
+        <div class="container">
+            <div class="row g-4" id="productsGrid">
+                
+                <!-- Outils de Toilettage -->
+                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.22.jpeg" alt="Peigne Démêloir Anti-Nœuds Professionnel" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(1)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Peigne Démêloir Anti-Nœuds Professionnel pour Animaux</h5>
+                            <p class="product-description">Peigne démêloir double face pour chiens et chats.
+                                 Il enlève les nœuds et le sous-poil mort.
+                                 Facile à utiliser, rend le pelage sain et réduit la perte de poils.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(4.8)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">35 DT</span>
+                                <span class="original-price">40 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.22 (2).jpeg" alt="Brosse de Bain en Silicone avec Réservoir" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(2)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Brosse de Bain en Silicone pour Chiens et Chats avec Réservoir de Shampoing
+
+</h5>
+                            <p class="product-description">Brosse de bain en silicone pour animaux, avec réservoir de shampoing intégré.
+                                 Elle nettoie et masse en même temps. 
+                                Rend le bain plus rapide et agréable pour votre chien ou chat.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.2)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">28 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brosses de Toilettage -->
+                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-14 at 23.47.27 (2).jpeg" alt="Brosse de Toilettage avec Distributeur de Savon" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(3)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Brosse de Toilettage pour Douche avec Distributeur de Savon</h5>
+                            <p class="product-description">Petite brosse de douche et de massage pour animaux. Elle est dotée d'un réservoir pour le shampoing, ce qui facilite grandement le bain. 
+                                Le silicone doux nettoie en profondeur les chiens et les chats tout en les massant.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(4.9)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">42 DT</span>
+                                <span class="original-price">48 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.22 (1).jpeg" alt="Brosse de Massage Électrique USB" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(4)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Brosse de Massage Électrique et Nettoyante pour Animaux (USB)</h5>
+                            <p class="product-description">Brosse de toilettage et de bain rechargeable par USB pour chiens et chats. Les picots en silicone massent la peau et améliorent la circulation. Elle peut s'utiliser pour brosser ou pour appliquer le shampoing. Rends le soin plus efficace et relaxant.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.3)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">38 DT</span>
+                                <span class="original-price">45 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produits Cosmétiques -->
+                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-14 at 23.57.14.jpeg" alt="Huile de Brillance et Antinœuds" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(5)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Huile de Brillance et Antinœuds pour le Toilettage des Animaux</h5>
+                            <p class="product-description">Spray de soin pour le pelage des animaux, conçu pour faciliter le brossage et le démêlage. Il rend le poil doux, brillant, et aide à prévenir les nœuds. Idéal avant d'utiliser la brosse ou le peigne.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(4.7)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">55 DT</span>
+                                <span class="original-price">62 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-14 at 23.57.14 (1).jpeg" alt="Spray de Soin Apaisant à la Lavande" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(6)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Spray de Soin Apaisant pour Animaux à la Lavande</h5>
+                            <p class="product-description">Spray de soin pour chiens et chats. Aide à rafraîchir et parfumer le pelage. Le flacon ambré préserve les ingrédients, et la lavande peut aider à apaiser l'animal. Utiliser après le brossage ou entre les bains.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.4)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">32 DT</span>
+                                <span class="original-price">38 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soins Cosmétiques -->
+                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-14 at 23.57.14 (2).jpeg" alt="Sérum Hydratant Naturel" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(7)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Sérum Hydratant Naturel pour Chien et Chat</h5>
+                            <p class="product-description">Huile concentrée de soin pour la peau et le pelage des chiens et des chats. Le flacon avec pipette assure un dosage précis. Elle nourrit la peau, hydrate le poil sec et aide à maintenir un pelage sain et brillant.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(4.6)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">48 DT</span>
+                                <span class="original-price">55 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.53.jpeg" alt="Kit Complet pour Chat" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(8)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Tout pour Votre Chat : Cage de Transport, Arbre à Chat et Maisonnette</h5>
+                            <p class="product-description">Ensemble d'accessoires de base pour le bien-être de votre chat. Il comprend : une cage de transport solide pour les déplacements, un poteau griffoir en sisal pour les griffes, une maisonnette ou un lit pour le repos, et une gamelle simple. Parfait pour un nouveau propriétaire ou pour renouveler l'équipement.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.1)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">65 DT</span>
+                                <span class="original-price">75 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.23.jpeg" alt="Balle de Jeu Interactive Lumineuse" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(9)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Balle de Jeu Interactive Lumineuse pour Chat</h5>
+                            <p class="product-description">Balle de jeu lumineuse et interactive pour chat. Elle garde votre chat actif et amusé seul.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(4.8)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">42 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-15 at 11.38.24 (1).jpeg" alt="Shampoing Professionnel Hydratant" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(8)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Shampoing Professionnel Hydratant pour Chien et Chat</h5>
+                            <p class="product-description">Shampoing professionnel enrichi en agents hydratants naturels. Formule douce qui nettoie en profondeur tout en préservant l'équilibre naturel de la peau. Laisse le pelage doux et brillant.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(4.7)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">42 DT</span>
+                                <span class="original-price">48 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-15 at 11.38.24 (2).jpeg" alt="Lotion Démêlante Professionnelle" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(9)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Lotion Démêlante Professionnelle - Tous Pelages</h5>
+                            <p class="product-description">Lotion démêlante professionnelle pour tous types de pelages. Facilite le brossage, élimine les nœuds sans effort et protège le poil des cassures. Formule enrichie en vitamines.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.5)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">36 DT</span>
+                                <span class="original-price">42 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accessoires de Toilettage -->
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.53 (2).jpeg" alt="Ensemble Laisse et Collier Tressés" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(18)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Ensemble Laisse et Collier Tressés pour Chien</h5>
+                            <p class="product-description">Ensemble laisse et collier tressés en corde pour chien. Le collier intègre une chaîne pour un meilleur contrôle. Très solide pour la promenade.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(4.9)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">85 DT</span>
+                                <span class="original-price">95 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.53 (3).jpeg" alt="Jouet Distributeur de Friandises" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(19)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Jouet Distributeur de Friandises pour Chat</h5>
+                            <p class="product-description">Balle qui distribue des croquettes ou friandises. Stimule votre chat mentalement et l'encourage à jouer.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.5)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">38 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.23 (3).jpeg" alt="Jouet Os à Mâcher Solide" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(20)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Jouet Os à Mâcher Solide pour Chien </h5>
+                            <p class="product-description">Os jouet solide pour chien. Idéal pour mâcher ou pour les jeux de lancer et de rapport. Aide à garder le chien actif et occupé.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(4.7)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">48 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.23 (2).jpeg" alt="Vêtement de Protection Respirant" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(21)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Vêtement de Protection Respirant pour Chien</h5>
+                            <p class="product-description">Gilet léger et respirant en tissu mesh pour chien. Idéal pour le confort et une légère protection durant les promenades estivales.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.3)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">32 DT</span>
+                                <span class="original-price">38 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.24.jpeg" alt="Ensemble Harnais et Laisse Complet" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(22)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Ensemble Harnais, Laisse et Distributeur de Sacs pour Chien</h5>
+                            <p class="product-description">Set Sape De Woof complet : harnais rembourré, laisse, et distributeur de sacs. Très confortable et stylé pour la promenade.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(4.6)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">35 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accessoires et Jouets -->
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.54 (3).jpeg" alt="Bandana Tie-Dye Coloré" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(23)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Bandana Tie-Dye Coloré pour Chien et Chat</h5>
+                            <p class="product-description">Bandana coloré (motif tie-dye) pour chiens et chats. C'est l'accessoire parfait pour ajouter une touche de style et de fun. Tissu doux et facile à attacher.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(4.8)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">58 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.55.jpeg" alt="Assortiment d'Accessoires Essentiels" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(24)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Assortiment d'Accessoires Essentiels pour Chien </h5>
+                            <p class="product-description">Ensemble d'accessoires de base pour chien. Il inclut un collier clouté, une laisse rétractable, un jouet en corde, une gamelle à croquettes et un os à mâcher. Tout pour le soin et le jeu.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.4)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">72 DT</span>
+                                <span class="original-price">80 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.23 (1).jpeg" alt="Coussin de Luxe en Similicuir" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(25)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Coussin de Luxe en Similicuir pour Chien</h5>
+                            <p class="product-description">Lit confortable et matelassé pour chien. Fait de cuir ou de similicuir (couleur cognac). Offre un couchage doux avec un design moderne pour votre intérieur.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(4.7)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">44 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produits Alimentaires -->
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="tools">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-15 at 11.40.19 (3).jpeg" alt="Nourriture Humide Premium" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(10)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Maxi Pot de Bâtonnets Tendres de Friandises pour Chien et Chat</h5>
+                            <p class="product-description">Friandises en bâtonnets à mâcher, idéales pour la récompense et l'éducation. 
+                                La texture tendre les rend faciles à manger.
+                                 Ce pot grand format convient pour les chiens et les chats de toute taille.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(4.7)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">38 DT</span>
+                                <span class="original-price">42 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="tools">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-15 at 11.40.19 (4).jpeg" alt="Croquettes Spéciales Chiot" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(11)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Croquettes Complètes Premium pour Chat</h5>
+                            <p class="product-description">Alimentation sèche complète et premium pour votre chat.
+                                 Ces croquettes sont formulées pour apporter tous les nutriments essentiels et assurer une bonne santé digestive.
+                                 La taille et la forme des croquettes sont adaptées aux chats de tous âges.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(4.9)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">52 DT</span>
+                                <span class="original-price">58 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="tools">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-15 at 11.40.20 (1).jpeg" alt="Alimentation Naturelle Chat" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(12)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Nourriture Humide Complète pour Chiens</h5>
+                            <p class="product-description">Alimentation humide en conserve pour chiens ("FRECH FOOD"). 
+                                Repas complet, riche en protéines et facile à servir. 
+                                Une option très appétissante qui assure une bonne hydratation à votre animal.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.6)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">48 DT</span>
+                                <span class="original-price">55 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="tools">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/WhatsApp Image 2025-10-15 at 11.40.21.jpeg" alt="Nourriture Bio Chat" class="img-fluid">
+                            <div class="product-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(15)">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h5 class="product-title">Alimentation Crue (BARF)</h5>
+                            <p class="product-description">Nourriture fraîche pour animaux (type BARF), riche en protéines. Le sachet assure une conservation et une fraîcheur optimales. Repas complet.</p>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(4.9)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">62 DT</span>
+                                <span class="original-price">68 DT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h5>Panier d'achat</h5>
+            <button class="btn-close" onclick="toggleCart()"></button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Votre panier est vide</p>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter">
+            <div class="cart-total">
+                <strong>Total: <span id="cartTotal">0 DT</span></strong>
+            </div>
+            <button class="btn btn-primary w-100 mt-3" onclick="checkout()">
+                Passer commande
+            </button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/products.js"></script>
+</body>
+</html>
