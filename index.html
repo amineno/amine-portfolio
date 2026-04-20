@@ -15,6 +15,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     :root {
       --bg-color: #020205;
@@ -1123,7 +1124,7 @@
             <div class="project-links">
               <a href="#" class="btn-detail" data-project="sb"><i class="fas fa-plus"></i> <span
                   data-i18n="btn-details">Details</span></a>
-              <a href="https://saria-beauty.vercel.app" class="link-btn"><i class="fas fa-external-link-alt"></i>
+              <a href="https://sariabeauty.com" class="link-btn"><i class="fas fa-external-link-alt"></i>
                 Demo</a>
               <a href="https://github.com/amineno/SariaBeautyy" class="link-btn"><i class="fab fa-github"></i>
                 GitHub</a>
@@ -1211,22 +1212,26 @@
           </div>
         </div>
 
-        <form class="contact-form fade-up">
-          <div class="form-group">
-            <label for="name" data-i18n="form-name">Name</label>
-            <input type="text" id="name" placeholder="" required>
-          </div>
-          <div class="form-group">
-            <label for="email" data-i18n="form-email">Email</label>
-            <input type="email" id="email" placeholder="" required>
-          </div>
-          <div class="form-group">
-            <label for="message" data-i18n="form-msg">Message</label>
-            <textarea id="message" placeholder="I'd like to talk about a project..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" data-i18n="form-submit">Send Message <i
-              class="fas fa-paper-plane"></i></button>
-        </form>
+        <form id="contact-form" class="contact-form fade-up">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" required></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">
+    Send Message
+  </button>
+</form>
       </div>
     </div>
   </section>
@@ -1276,6 +1281,9 @@
         "contact-title": "Contact", "contact-subtitle": "Let's build something together",
         "contact-email-label": "Email", "contact-phone-label": "Phone", "contact-loc-label": "Location",
         "form-name": "Name", "form-email": "Email", "form-msg": "Message", "form-submit": "Send Message",
+         "form-sending": "Sending...",
+         "form-success": "Message sent successfully!",
+        "form-error": "Failed to send message. Please try again later.",
         "footer-tagline": "Building the future, one pixel at a time."
       },
       fr: {
@@ -1305,6 +1313,9 @@
         "contact-title": "Contact", "contact-subtitle": "Construisons quelque chose ensemble",
         "contact-email-label": "Email", "contact-phone-label": "Téléphone", "contact-loc-label": "Emplacement",
         "form-name": "Nom", "form-email": "Email", "form-msg": "Message", "form-submit": "Envoyer le message",
+         "form-sending": "Envoi...",
+         "form-success": "Message envoyé avec succès !",
+        "form-error": "Échec de l'envoi du message. Veuillez réessayer plus tard.",
         "footer-tagline": "Bâtir le futur, un pixel à la fois."
       },
       ar: {
@@ -1334,6 +1345,9 @@
         "contact-title": "اتصل بي", "contact-subtitle": "فلنبنِ شيئًا معًا",
         "contact-email-label": "البريد الإلكتروني", "contact-phone-label": "الهاتف", "contact-loc-label": "الموقع",
         "form-name": "الاسم", "form-email": "البريد الإلكتروني", "form-msg": "الرسالة", "form-submit": "إرسال الرسالة",
+         "form-sending": "جاري الإرسال...",
+         "form-success": "تم إرسال الرسالة بنجاح!",
+        "form-error": "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى لاحقاً.",
         "footer-tagline": "بناء المستقبل، بكسل تلو الآخر."
       }
     };
@@ -1503,10 +1517,47 @@
       });
     };
 
+    // Contact Form
+    const initContactForm = () => {
+      emailjs.init("UIo5qdpIXiIeTNqpH");
+
+      const contactForm = document.getElementById('contact-form');
+      if (!contactForm) return;
+
+      contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const btn = this.querySelector('button[type="submit"]');
+        const originalBtnText = btn.innerHTML;
+
+        // Disable button and show sending state
+         btn.disabled = true;
+         const lang = localStorage.getItem('lang') || 'en';
+         btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${translations[lang]['form-sending']}`;
+
+         emailjs.sendForm('service_dz1y5dn', 'template_w0f0xlh', this)
+           .then(() => {
+             const lang = localStorage.getItem('lang') || 'en';
+             alert(translations[lang]['form-success']);
+             this.reset();
+           }, (error) => {
+             console.error('EmailJS Error:', error);
+             const lang = localStorage.getItem('lang') || 'en';
+             alert(translations[lang]['form-error']);
+           })
+          .finally(() => {
+            // Restore button state
+            btn.disabled = false;
+            btn.innerHTML = originalBtnText;
+          });
+      });
+    };
+
     window.addEventListener('load', () => {
       initThree();
       initCursor();
       initGSAP();
+      initContactForm();
       updateLanguage(localStorage.getItem('lang') || 'en');
       setTimeout(() => { document.getElementById('loader').style.opacity = '0'; setTimeout(() => document.getElementById('loader').style.display = 'none', 800); }, 1000);
     });
