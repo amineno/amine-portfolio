@@ -1195,7 +1195,7 @@
   <section id="about">
     <div class="container about-grid">
       <div class="about-img-container fade-up">
-        <img src="Amine image.jpeg" alt="Amine" class="about-img">
+        <img src="profile.jpeg" alt="Amine" class="about-img">
       </div>
       <div class="about-text fade-up">
         <p class="section-subtitle" data-i18n="about-subtitle">Problem Solver & Engineering Partner</p>
@@ -1333,14 +1333,14 @@
       <h2 class="section-title fade-up" data-i18n="projects-title">Featured Work</h2>
       <div class="projects-grid">
         <div class="project-card fade-up" data-tilt>
-          <div class="project-img" style="background: linear-gradient(45deg, #B76E79, #f472b6);">SB</div>
+          <img src="sariabeauty-preview.png" alt="Saria Beauty" class="project-img" style="width: 100%; object-fit: cover; opacity: 1;">
           <div class="project-content">
             <span class="project-tag">E-commerce</span>
             <h4 class="project-title" data-i18n="p-sb-title">Saria Beauty: E-Commerce Platform</h4>
             <div class="project-desc" data-i18n="p-sb-desc">
-              <strong>Problem:</strong> Local brands lose sales due to poor digital experiences.<br>
-              <strong>Solution:</strong> A high-performance luxury e-commerce platform.<br>
-              <strong>Result:</strong> Enables seamless online sales, improving user experience and conversion.
+              <strong>Problem:</strong> Traditional beauty stores lose customers to poor digital experiences.<br>
+              <strong>Solution:</strong> A high-performance luxury e-commerce ecosystem designed for the cosmetic industry. It features a responsive React frontend, secure JWT authentication, and a robust admin dashboard for product and order management.<br>
+              <strong>Result:</strong> Enables online sales, enhances user experience, and maximizes conversion rates through a seamless shopping journey.
             </div>
             <div class="project-links">
               <a href="#" class="btn-detail" data-project="sb"><i class="fas fa-plus"></i> <span
@@ -1353,7 +1353,7 @@
           </div>
         </div>
         <div class="project-card fade-up" data-tilt>
-          <div class="project-img" style="background: linear-gradient(45deg, #3b82f6, #0ea5e9);">GG</div>
+          <img src="groomgo-preview.png" alt="GroomGo" class="project-img" style="width: 100%; object-fit: cover; opacity: 1;">
           <div class="project-content">
             <span class="project-tag">SaaS Platform</span>
             <h4 class="project-title" data-i18n="p-gg-title">GroomGo: Booking SaaS</h4>
@@ -1372,7 +1372,7 @@
           </div>
         </div>
         <div class="project-card fade-up" data-tilt>
-          <div class="project-img" style="background: linear-gradient(45deg, #f59e0b, #d97706);">LC</div>
+          <img src="leoclub-preview.png" alt="Leo Club" class="project-img" style="width: 100%; object-fit: cover; opacity: 1;">
           <div class="project-content">
             <span class="project-tag">University Club</span>
             <h4 class="project-title" data-i18n="p-leoclub-title">Leo Club: Recruitment System</h4>
@@ -1523,7 +1523,7 @@
         "exp2-date": "Jun 2024 – Sep 2024", "exp2-title": "BI Intern @ Amen Bank", "exp2-desc": "Spearheaded the automation of recursive banking reports through Power BI, creating interactive visualizations that reduced manual data entry.",
         "projects-title": "Strategic Projects",
         "p-sb-title": "Saria Beauty: E-Commerce Platform",
-        "p-sb-desc": "<strong>Problem:</strong> Local brands lose sales due to poor digital experiences.<br><strong>Solution:</strong> A high-performance luxury e-commerce platform.<br><strong>Result:</strong> Enables seamless online sales, improving user experience and conversion.",
+        "p-sb-desc": "<strong>Problem:</strong> Traditional beauty stores lose customers to poor digital experiences.<br><br><strong>Solution:</strong> A high-performance luxury e-commerce ecosystem designed for the cosmetic industry. It features a responsive React frontend, secure JWT authentication, and a robust admin dashboard for product and order management.<br><br><strong>Result:</strong> Enables online sales, enhances user experience, and maximizes conversion rates through a seamless shopping journey.",
         "p-gg-title": "GroomGo: Booking SaaS",
         "p-gg-desc": "<strong>Problem:</strong> Manual booking processes lead to inefficiency and lost revenue.<br><strong>Solution:</strong> An intelligent booking SaaS platform for pet service providers.<br><strong>Result:</strong> Streamlines the booking process and automates business operations.",
         "p-leoclub-title": "Leo Club: Recruitment System",
@@ -1682,7 +1682,7 @@
 
         document.getElementById('modalTag').innerText = card.querySelector('.project-tag').innerText;
         document.getElementById('modalTitle').innerText = card.querySelector('.project-title').innerText;
-        document.getElementById('modalDesc').innerText = translations[lang][pid + '-full'];
+        document.getElementById('modalDesc').innerHTML = translations[lang][pid + '-full'];
 
         const featuresContainer = document.getElementById('modalFeatures');
         featuresContainer.innerHTML = '';
