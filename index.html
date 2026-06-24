@@ -1173,7 +1173,7 @@
       <p class="hero-desc" data-i18n="hero-desc">Real-world projects • Production-ready apps • Fast delivery</p>
       <div class="hero-stats">
         <div class="stat-item">
-          <h3 class="counter" data-target="3">0</h3>
+          <h3 class="counter" data-target="2">0</h3>
           <p data-i18n="stat-exp">Years EXP</p>
         </div>
         <div class="stat-item">
@@ -1772,7 +1772,7 @@
       gsap.from('.hero-content > *', { opacity: 0, y: 30, duration: 1, stagger: 0.2, ease: "power2.out" });
       document.querySelectorAll('.counter').forEach(c => {
         const target = +c.getAttribute('data-target');
-        gsap.to(c, { innerText: target, duration: 2, snap: { innerText: 1 }, scrollTrigger: { trigger: c, start: "top 90%" }, onUpdate: function () { c.innerText += (target == 3 || target == 10 ? "+" : ""); } });
+        gsap.to(c, { innerText: target, duration: 2, snap: { innerText: 1 }, scrollTrigger: { trigger: c, start: "top 90%" }, onUpdate: function () { c.innerText += (target == 2 || target == 3 || target == 10 ? "+" : ""); } });
       });
       document.querySelectorAll('.skill-progress').forEach(p => {
         gsap.to(p, { width: p.getAttribute('data-width'), duration: 1.5, scrollTrigger: { trigger: p, start: "top 90%" } });
