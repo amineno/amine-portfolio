@@ -689,31 +689,42 @@
       position: relative;
       max-width: 500px;
       margin: 0 auto;
-    }
-
-    .about-img-container::before {
-      content: '';
-      position: absolute;
-      inset: -15px;
-      border: 2px solid var(--accent-color);
-      border-radius: 30px;
-      opacity: 0.2;
-      transform: rotate(-5deg);
-      z-index: -1;
+      aspect-ratio: 4 / 5;
     }
 
     .about-img {
-      width: 100%;
+      position: absolute;
+      width: 72%;
       height: auto;
       border-radius: 30px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
       filter: grayscale(20%);
       transition: 0.5s;
+      object-fit: cover;
+    }
+
+    .about-img.about-img--main {
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+
+    .about-img.about-img--alt {
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+      transform: rotate(4deg);
+      border: 3px solid var(--surface-color);
     }
 
     .about-img:hover {
       filter: grayscale(0%);
       transform: scale(1.02);
+      z-index: 5;
+    }
+
+    .about-img.about-img--alt:hover {
+      transform: rotate(0deg) scale(1.02);
     }
 
     .about-text {
@@ -1195,7 +1206,8 @@
   <section id="about">
     <div class="container about-grid">
       <div class="about-img-container fade-up">
-        <img src="profile.jpeg" alt="Amine" class="about-img">
+        <img src="IMG_0775.JPG.jpeg" alt="Amine" class="about-img about-img--main">
+        <img src="IMG_0776.JPG.jpeg" alt="Amine" class="about-img about-img--alt">
       </div>
       <div class="about-text fade-up">
         <p class="section-subtitle" data-i18n="about-subtitle">Problem Solver & Engineering Partner</p>
