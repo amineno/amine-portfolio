@@ -275,24 +275,19 @@
     text-decoration: line-through;
 }
 
-/* Cart Sidebar Glassmorphism Midnight Prestige */
+/* Cart Sidebar */
 .cart-sidebar {
     position: fixed;
     top: 0;
-    right: -420px;
-    width: 420px;
-    max-width: 90vw;
+    right: -400px;
+    width: 400px;
     height: 100vh;
-    background: rgba(15, 23, 42, 0.96);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: -15px 0 35px rgba(0, 0, 0, 0.6);
-    z-index: 1060;
-    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: white;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+    z-index: 1050;
+    transition: right 0.3s ease;
     display: flex;
     flex-direction: column;
-    color: #f8fafc;
 }
 
 .cart-sidebar.open {
@@ -301,28 +296,27 @@
 
 .cart-header {
     padding: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #e9ecef;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.cart-header h5, .cart-header h4 {
+.cart-header h5 {
     margin: 0;
-    font-weight: 700;
-    color: #ffffff;
+    font-weight: 600;
 }
 
 .cart-body {
     flex-grow: 1;
-    padding: 1.25rem;
+    padding: 1rem;
     overflow-y: auto;
 }
 
 .empty-cart {
     text-align: center;
     padding: 3rem 1rem;
-    color: #94a3b8;
+    color: #718096;
 }
 
 .empty-cart i {
@@ -336,15 +330,14 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid #f7fafc;
 }
 
 .cart-item-image {
-    width: 65px;
-    height: 65px;
-    border-radius: 12px;
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
     overflow: hidden;
-    flex-shrink: 0;
 }
 
 .cart-item-image img {
@@ -359,14 +352,13 @@
 
 .cart-item-title {
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     margin-bottom: 0.25rem;
-    color: #ffffff;
 }
 
 .cart-item-price {
-    color: #38bdf8;
-    font-weight: 700;
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
 .cart-item-quantity {
@@ -377,12 +369,11 @@
 }
 
 .quantity-btn {
-    width: 32px;
-    height: 32px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
-    border-radius: 8px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -391,20 +382,19 @@
 }
 
 .quantity-btn:hover {
-    background: rgba(59, 130, 246, 0.3);
-    border-color: #3b82f6;
+    background: #f7fafc;
+    border-color: var(--primary-color);
 }
 
 .cart-footer {
     padding: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(15, 23, 42, 0.98);
+    border-top: 1px solid #e9ecef;
+    background: #f8f9fa;
 }
 
 .cart-total {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 1rem;
-    color: #ffffff;
 }
 
 .cart-overlay {
@@ -413,10 +403,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    z-index: 1055;
+    background: rgba(0,0,0,0.5);
+    z-index: 1040;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;

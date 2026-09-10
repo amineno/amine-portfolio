@@ -136,10 +136,9 @@ document.addEventListener('DOMContentLoaded', function() {
     async function authenticateUser(email, password) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                const normalizedEmail = (email || '').toLowerCase().trim();
+                // Vérifier d'abord par nom d'utilisateur simple
+                const account = ADMIN_ACCOUNTS[email.toLowerCase()];
                 
-                // 1. Vérifier les comptes prédéfinis
-                const account = ADMIN_ACCOUNTS[normalizedEmail];
                 if (account && account.password === password) {
                     resolve({
                         email: account.email || email,
@@ -149,20 +148,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
                 
-                // 2. Vérifier les utilisateurs inscrits en local
-                const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-                const foundUser = registeredUsers.find(u => (u.email || '').toLowerCase().trim() === normalizedEmail);
-                if (foundUser && foundUser.password === password) {
-                    resolve({
-                        email: foundUser.email,
-                        name: `${foundUser.firstName} ${foundUser.lastName}`,
-                        role: 'client'
-                    });
-                    return;
-                }
-                
-                reject(new Error('Identifiants incorrects. Utilisez admin@groomgo.tn / admin123 ou client@groomgo.tn / client123'));
-            }, 600);
+                reject(new Error('Identifiants incorrects. Utilisez: admin@groomgo.tn/admin123 ou admin/admin123'));
+            }, 1000);
         });
     }
     
@@ -320,30 +307,14 @@ document.addEventListener('DOMContentLoaded', function() {
         setButtonLoading(submitBtn, true);
         
         try {
-            // Sauvegarder dans la liste des utilisateurs enregistrés
-            const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-            // Vérifier si l'email existe déjà
-            if (registeredUsers.some(u => (u.email || '').toLowerCase() === (userData.email || '').toLowerCase())) {
-                throw new Error('Cet email est déjà enregistré. Veuillez vous connecter.');
-            }
-            registeredUsers.push(userData);
-            localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+            // Simulate API call
+            await simulateRegister(userData);
             
-            showSuccessMessage('Compte créé avec succès ! Vos identifiants ont été préremplis pour la connexion.');
-            
-            // Pré-remplir le formulaire de connexion
-            const loginEmail = document.getElementById('loginEmail') || document.querySelector('#loginFormElement input[name="email"]');
-            const loginPassword = document.getElementById('loginPassword') || document.querySelector('#loginFormElement input[name="password"]');
-            if (loginEmail) loginEmail.value = userData.email;
-            if (loginPassword) loginPassword.value = userData.password;
+            showSuccessMessage('Compte créé avec succès! Vérifiez votre email pour l\'activation.');
             
             setTimeout(() => {
-                if (typeof switchAuthTab === 'function') {
-                    switchAuthTab('login');
-                } else {
-                    switchForm('login');
-                }
-            }, 1200);
+                switchForm('login');
+            }, 2000);
             
         } catch (error) {
             showErrorMessage(error.message);
@@ -672,18 +643,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check authentication state
     function checkAuthState() {
-        if (window.location.search.includes('logout')) {
-            localStorage.removeItem('groomgo_user');
-            localStorage.removeItem('user');
-            localStorage.removeItem('adminToken');
-            return;
-        }
-        
-        const user = JSON.parse(localStorage.getItem('groomgo_user') || localStorage.getItem('user') || 'null');
+        const user = getFromLocalStorage('user');
         if (user && window.location.pathname.includes('login.html')) {
-            if (user.role === 'admin') {
-                window.location.href = 'admin-dashboard.html';
-            }
+            // User is already logged in, redirect to dashboard
+            window.location.href = 'dashboard.html';
         }
     }
 });

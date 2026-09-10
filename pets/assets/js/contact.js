@@ -18,16 +18,15 @@ async function handleContactSubmit(e) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Envoi en cours...';
     
-    const serviceVal = formData.get('serviceType') || formData.get('subject') || 'Demande générale';
+    // Préparer les données du message
     const messageData = {
-        senderName: formData.get('senderName') || 'Client GroomGo',
-        senderEmail: formData.get('senderEmail') || '',
-        senderPhone: formData.get('senderPhone') || '',
-        subject: serviceVal,
-        serviceType: serviceVal,
-        message: formData.get('message') || '',
+        senderName: formData.get('senderName'),
+        senderEmail: formData.get('senderEmail'),
+        senderPhone: formData.get('senderPhone'),
+        subject: formData.get('subject'),
+        message: formData.get('message'),
+        serviceType: formData.get('serviceType'),
         timestamp: new Date().toISOString(),
-        date: new Date().toLocaleDateString('fr-FR'),
         status: 'unread',
         priority: 'normal'
     };

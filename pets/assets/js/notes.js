@@ -152,70 +152,11 @@ async function saveReviewToServer(reviewData) {
     }
 }
 
-// Default realistic seed reviews
-const defaultSeedReviews = [
-    {
-        id: 'review_seed_1',
-        clientName: 'Yassine Ben Romdhane',
-        clientEmail: 'yassine@example.com',
-        serviceType: 'Toilettage Complet',
-        rating: 5,
-        reviewText: "Service absolument impeccable directement au bas de ma résidence à La Marsa ! Mon Golden Retriever Charlie est sorti métamorphosé, poil soyeux et détendu. Plus besoin d'attendre des heures en salon.",
-        timestamp: new Date(Date.now() - 86400000 * 2).toISOString(),
-        date: 'Il y a 2 jours',
-        approved: true
-    },
-    {
-        id: 'review_seed_2',
-        clientName: 'Sonia Karray',
-        clientEmail: 'sonia@example.com',
-        serviceType: 'Demi-Complet',
-        rating: 5,
-        reviewText: "Superbe expérience pour mon chat Persan à Ennasr 2. Le van climatisé est d'une propreté chirurgicale et le toiletteur a une patience infinie. Recommandé à 100% !",
-        timestamp: new Date(Date.now() - 86400000 * 5).toISOString(),
-        date: 'Il y a 5 jours',
-        approved: true
-    },
-    {
-        id: 'review_seed_3',
-        clientName: 'Mehdi Triki',
-        clientEmail: 'mehdi@example.com',
-        serviceType: 'Toilettage Complet',
-        rating: 5,
-        reviewText: "Concept révolutionnaire en Tunisie ! Ils sont venus au Lac 2 à l'heure pile. Matériel haut de gamme, table hydraulique, shampoing hypoallergénique. Top niveau.",
-        timestamp: new Date(Date.now() - 86400000 * 9).toISOString(),
-        date: 'Il y a 9 jours',
-        approved: true
-    },
-    {
-        id: 'review_seed_4',
-        clientName: 'Leila Mansour',
-        clientEmail: 'leila@example.com',
-        serviceType: 'Baignoire & Bain',
-        rating: 4,
-        reviewText: "Très bon bain complet pour mon caniche après une sortie plage à Carthage. Séchage et brossage soignés, personnel très poli et bienveillant.",
-        timestamp: new Date(Date.now() - 86400000 * 14).toISOString(),
-        date: 'Il y a 2 semaines',
-        approved: true
-    },
-    {
-        id: 'review_seed_5',
-        clientName: 'Hamza Trabelsi',
-        clientEmail: 'hamza@example.com',
-        serviceType: 'Coupe Griffes / Soins',
-        rating: 5,
-        reviewText: "Coupe de griffes et nettoyage des oreilles sans aucun stress pour mon chiot Husky à Menzah 9. Toiletteurs ponctuels et passionnés.",
-        timestamp: new Date(Date.now() - 86400000 * 20).toISOString(),
-        date: 'Il y a 3 semaines',
-        approved: true
-    }
-];
-
 // Load reviews
 async function loadReviews() {
     try {
         // Charger depuis localStorage
-        let localReviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+        const localReviews = JSON.parse(localStorage.getItem('reviews') || '[]');
         
         // Essayer de charger depuis le serveur
         let serverReviews = [];
@@ -233,12 +174,6 @@ async function loadReviews() {
             }
         }
         
-        // Si aucun avis n'est encore enregistré, initialiser avec les avis modèles
-        if (localReviews.length === 0 && serverReviews.length === 0) {
-            localReviews = defaultSeedReviews;
-            localStorage.setItem('reviews', JSON.stringify(localReviews));
-        }
-        
         // Combiner les avis (serveur + local)
         const allReviews = [...serverReviews, ...localReviews];
         
@@ -254,7 +189,6 @@ async function loadReviews() {
         
         console.log('📋 Avis chargés:', reviews.length);
         displayReviews();
-        updateRatingOverview();
         
     } catch (error) {
         console.error('❌ Erreur lors du chargement des avis:', error);
@@ -355,24 +289,14 @@ function updateRatingOverview() {
 
 // Show success modal
 function showSuccessModal() {
-    const modalEl = document.getElementById('successModal');
-    if (window.bootstrap && bootstrap.Modal) {
-        const modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
-        modal.show();
-    } else {
-        modalEl.style.display = 'block';
-    }
+    const modal = document.getElementById('successModal');
+    modal.style.display = 'flex';
 }
 
 // Close modal
 function closeModal() {
-    const modalEl = document.getElementById('successModal');
-    if (window.bootstrap && bootstrap.Modal) {
-        const modal = bootstrap.Modal.getInstance(modalEl);
-        if (modal) modal.hide();
-    } else {
-        modalEl.style.display = 'none';
-    }
+    const modal = document.getElementById('successModal');
+    modal.style.display = 'none';
 }
 
 // Show notification

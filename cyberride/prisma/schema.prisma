@@ -1,0 +1,120 @@
+// CYBERRIDE PERSISTENT DATABASE SCHEMA
+// Engine: SQLite (Local zero-config self-contained storage)
+// Can be switched to PostgreSQL by updating provider and DATABASE_URL in .env
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  phone        String?
+  role         String    @default("CUSTOMER") // "CUSTOMER", "ADMIN", "SUPER_ADMIN"
+  status       String    @default("ACTIVE")   // "ACTIVE", "SUSPENDED"
+  zone         String?   @default("Dubai")
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  orders       Order[]
+
+  @@map("users")
+}
+
+model Product {
+  id           String      @id
+  sku          String      @unique
+  name         String
+  tagline      String?
+  price        Float
+  stock        Int         @default(10)
+  category     String      @default("BACKPACKS")
+  badge        String?
+  rating       Float       @default(4.9)
+  reviewsCount Int         @default(100)
+  image        String
+  description  String
+  features     String?     // JSON-serialized string of feature list
+  colors       String?     // JSON-serialized string of color options
+  gallery      String?     // JSON-serialized string of gallery items
+  ledPresets   String?     // JSON-serialized string of LED presets
+  isActive     Boolean     @default(true)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  orderItems   OrderItem[]
+
+  @@map("products")
+}
+
+model Order {
+  id             String      @id // e.g. "CR-DXB-882910"
+  userId         String?
+  user           User?       @relation(fields: [userId], references: [id])
+  customer       String
+  email          String
+  phone          String
+  items          String      // e.g. "CYBERRIDE NEXUS LED BACKPACK (x1)"
+  color          String?     @default("STEALTH BLACK")
+  led            String?     @default("RED PULSE EYES")
+  subtotal       Float       @default(0)
+  shippingCost   Float       @default(0)
+  codFee         Float       @default(0)
+  vatAmount      Float       @default(0)
+  total          Float
+  paymentMethod  String      @default("CASH ON DELIVERY")
+  status         String      @default("PENDING DISPATCH") // "PENDING DISPATCH", "CONFIRMED", "SHIPPED", "OUT FOR DELIVERY", "DELIVERED", "CANCELLED"
+  emirate        String      @default("Dubai")
+  zone           String?
+  address        String
+  notes          String?
+  trackingNumber String?     // e.g. "ARM-DXB-991204"
+  courierService String?     @default("Aramex Same-Day Express")
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  orderItems     OrderItem[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id          String   @id @default(uuid())
+  orderId     String
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id])
+  productName String
+  quantity    Int      @default(1)
+  unitPrice   Float
+
+  @@map("order_items")
+}
+
+model PromoCode {
+  id              String   @id @default(uuid())
+  code            String   @unique
+  discountPercent Int      @default(10)
+  isActive        Boolean  @default(true)
+  usesCount       Int      @default(0)
+  createdAt       DateTime @default(now())
+
+  @@map("promo_codes")
+}
+
+model SystemLog {
+  id        String   @id @default(uuid())
+  text      String
+  type      String   @default("info") // "info", "success", "warning", "error"
+  time      String
+  createdAt DateTime @default(now())
+
+  @@map("system_logs")
+}
