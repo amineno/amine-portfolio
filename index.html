@@ -54,6 +54,42 @@
       --footer-bg: linear-gradient(to bottom, #f1f5f9, #e2e8f0);
     }
 
+    body.light-mode .hero-profile-pill {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: rgba(99, 102, 241, 0.2);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.08);
+    }
+
+    body.light-mode .about-ambient-glow {
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(168, 85, 247, 0.18) 50%, transparent 75%);
+    }
+
+    body.light-mode .about-card-deck {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: rgba(99, 102, 241, 0.25);
+      box-shadow: 0 20px 45px rgba(99, 102, 241, 0.15), 0 0 30px var(--accent-glow);
+    }
+
+    body.light-mode .about-switch-bar {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(99, 102, 241, 0.2);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    body.light-mode .about-switch-btn:not(.active) {
+      color: #64748b;
+    }
+
+    body.light-mode .about-switch-btn:hover:not(.active) {
+      color: #0f172a;
+    }
+
+    body.light-mode .about-floating-card {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(99, 102, 241, 0.25);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -677,54 +713,360 @@
       flex-wrap: wrap;
     }
 
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: clamp(2rem, 8vw, 6rem);
+    /* Hero Profile Badge */
+    .hero-badge-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: clamp(1.2rem, 2.5vw, 1.8rem);
+    }
+
+    .hero-profile-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 18px 6px 8px;
+      background: var(--surface-color);
+      border: 1px solid var(--glass-border);
+      border-radius: 9999px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .hero-profile-pill:hover {
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px var(--accent-glow);
+    }
+
+    .hero-avatar-ring {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      padding: 2px;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .hero-avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 15%;
+      background: var(--bg-color);
+    }
+
+    .hero-status-pulse {
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: 12px;
+      height: 12px;
+      background: #10b981;
+      border: 2px solid var(--bg-color);
+      border-radius: 50%;
+      animation: pulseGlowGreen 2s infinite;
+    }
+
+    @keyframes pulseGlowGreen {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .hero-badge-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: clamp(0.8rem, 0.9vw, 0.9rem);
+      font-weight: 500;
+    }
+
+    .hero-badge-name {
+      color: var(--text-primary);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-badge-divider {
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+
+    .hero-badge-status {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .hero-badge-arrow {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+      display: flex;
       align-items: center;
     }
 
-    .about-img-container {
+    .hero-profile-pill:hover .hero-badge-arrow {
+      color: var(--accent-color);
+      transform: translateX(4px);
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: center;
+    }
+
+    .about-visual-showcase {
       position: relative;
-      max-width: 500px;
+      width: 100%;
+      max-width: 440px;
       margin: 0 auto;
-      aspect-ratio: 4 / 5;
     }
 
-    .about-img {
+    .about-ambient-glow {
       position: absolute;
-      width: 72%;
-      height: auto;
-      border-radius: 30px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      filter: grayscale(20%);
-      transition: 0.5s;
-      object-fit: cover;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      height: 90%;
+      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(112, 0, 255, 0.25) 50%, transparent 75%);
+      filter: blur(50px);
+      opacity: 0.6;
+      z-index: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
     }
 
-    .about-img.about-img--main {
-      top: 0;
-      left: 0;
+    .about-card-deck {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      aspect-ratio: 4 / 5.2;
+      border-radius: 28px;
+      overflow: hidden;
+      background: var(--surface-color);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-glow);
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+      transform-style: preserve-3d;
+    }
+
+    .about-card-deck:hover {
+      border-color: var(--accent-color);
+      box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.6), 0 0 45px var(--accent-glow);
+    }
+
+    .about-slides-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .about-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.96);
+      transition: opacity 0.45s cubic-bezier(0.23, 1, 0.32, 1), transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.45s;
+      cursor: pointer;
+    }
+
+    .about-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
       z-index: 2;
     }
 
-    .about-img.about-img--alt {
-      bottom: 0;
-      right: 0;
-      z-index: 1;
-      transform: rotate(4deg);
-      border: 3px solid var(--surface-color);
+    .about-photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
-    .about-img:hover {
-      filter: grayscale(0%);
-      transform: scale(1.02);
+    #aboutSlidePortrait .about-photo-img {
+      object-position: center 15%;
+    }
+
+    #aboutSlideFull .about-photo-img {
+      object-position: center 20%;
+    }
+
+    .about-card-deck:hover .about-slide.active .about-photo-img {
+      transform: scale(1.03);
+    }
+
+    .about-photo-glass-overlay {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .about-photo-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: rgba(10, 10, 20, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      letter-spacing: 0.02em;
+    }
+
+    .about-photo-tag i {
+      color: var(--accent-color);
+    }
+
+    /* Switch Bar inside Card */
+    .about-switch-bar {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      padding: 4px;
+      background: rgba(10, 10, 25, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 9999px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      gap: 4px;
+    }
+
+    .about-switch-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 7px 16px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      font-family: var(--font-main);
+      outline: none;
+    }
+
+    .about-switch-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .about-switch-btn.active {
+      background: var(--primary-gradient);
+      color: #ffffff;
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+
+    /* Floating Experience Badges */
+    .about-floating-card {
+      position: absolute;
       z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 16px;
+      background: var(--surface-color);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+      animation: floatBadge 4s ease-in-out infinite alternate;
+      pointer-events: auto;
+      white-space: nowrap;
     }
 
-    .about-img.about-img--alt:hover {
-      transform: rotate(0deg) scale(1.02);
+    .about-floating-card.badge-top {
+      top: -16px;
+      right: -20px;
+    }
+
+    .about-floating-card.badge-bottom {
+      bottom: -16px;
+      left: -20px;
+      animation-delay: -2s;
+    }
+
+    @keyframes floatBadge {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
+
+    .about-floating-card .status-pulse-dot {
+      width: 10px;
+      height: 10px;
+      background: #10b981;
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: pulseGlowGreen 2s infinite;
+    }
+
+    .about-floating-card .floating-text {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .about-floating-card .badge-icon-box {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--primary-gradient);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .about-floating-card .badge-content {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .about-floating-card .badge-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .about-floating-card .badge-desc {
+      font-size: 0.7rem;
+      color: var(--accent-color);
+      font-weight: 500;
     }
 
     .about-text {
@@ -1041,10 +1383,58 @@
       text-align: right;
     }
 
+    [dir="rtl"] .hero-badge-arrow i {
+      transform: rotate(180deg);
+    }
+
+    [dir="rtl"] .hero-profile-pill:hover .hero-badge-arrow {
+      transform: translateX(-4px);
+    }
+
+    [dir="rtl"] .about-photo-glass-overlay {
+      left: auto;
+      right: 18px;
+    }
+
+    [dir="rtl"] .about-floating-card.badge-top {
+      right: auto;
+      left: -20px;
+    }
+
+    [dir="rtl"] .about-floating-card.badge-bottom {
+      left: auto;
+      right: -20px;
+    }
+
     @media (max-width: 968px) {
       .about-grid {
         grid-template-columns: 1fr;
         text-align: center;
+      }
+
+      .about-visual-showcase {
+        max-width: 380px;
+        margin-bottom: 2.5rem;
+      }
+
+      .about-floating-card.badge-top {
+        top: -12px;
+        right: 4px;
+      }
+
+      .about-floating-card.badge-bottom {
+        bottom: -12px;
+        left: 4px;
+      }
+
+      [dir="rtl"] .about-floating-card.badge-top {
+        right: auto;
+        left: 4px;
+      }
+
+      [dir="rtl"] .about-floating-card.badge-bottom {
+        left: auto;
+        right: 4px;
       }
 
       .about-text {
@@ -1053,6 +1443,47 @@
 
       .about-ctas {
         justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-profile-pill {
+        padding: 5px 14px 5px 6px;
+        gap: 8px;
+      }
+      .hero-avatar-ring {
+        width: 34px;
+        height: 34px;
+      }
+      .hero-badge-info {
+        font-size: 0.78rem;
+        gap: 6px;
+      }
+      .about-card-deck {
+        border-radius: 22px;
+      }
+      .about-floating-card {
+        padding: 8px 12px;
+        border-radius: 12px;
+      }
+      .about-floating-card.badge-top {
+        top: -10px;
+        right: 0px;
+      }
+      .about-floating-card.badge-bottom {
+        bottom: -10px;
+        left: 0px;
+      }
+      .about-floating-card .floating-text,
+      .about-floating-card .badge-title {
+        font-size: 0.72rem;
+      }
+      .about-floating-card .badge-desc {
+        font-size: 0.65rem;
+      }
+      .about-switch-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
       }
 
       .nav-links {
@@ -1161,7 +1592,7 @@
     <div class="container nav-container">
       <a href="#" class="logo">AMINE<span>.</span></a>
       <nav class="nav-links">
-        <a href="#home" data-i18n="nav-about">About</a>
+        <a href="#about" data-i18n="nav-about">About</a>
         <a href="#skills" data-i18n="nav-skills">Skills</a>
         <a href="#experience" data-i18n="nav-experience">Experience</a>
         <a href="#projects" data-i18n="nav-projects">Projects</a>
@@ -1179,6 +1610,20 @@
   <section class="hero" id="home">
 
     <div class="container hero-content">
+      <div class="hero-badge-container fade-up">
+        <a href="#contact" class="hero-profile-pill">
+          <div class="hero-avatar-ring">
+            <img src="profile2.jpg" alt="Mohamed Amine Nouioui" class="hero-avatar-img">
+            <span class="hero-status-pulse"></span>
+          </div>
+          <div class="hero-badge-info">
+            <span class="hero-badge-name">Amine Nouioui</span>
+            <span class="hero-badge-divider">/</span>
+            <span class="hero-badge-status" data-i18n="hero-badge-available">Available for new projects</span>
+          </div>
+          <span class="hero-badge-arrow"><i class="fas fa-arrow-right"></i></span>
+        </a>
+      </div>
       <h1 data-i18n="hero-title">Building Web Platforms That <span>Scale Your Business</span></h1>
       <p class="hero-subtitle" data-i18n="hero-subtitle">React • Node.js • MySQL</p>
       <p class="hero-desc" data-i18n="hero-desc">Real-world projects • Production-ready apps • Fast delivery</p>
@@ -1205,9 +1650,65 @@
 
   <section id="about">
     <div class="container about-grid">
-      <div class="about-img-container fade-up">
-        <img src="profile1.jpg" alt="Amine" class="about-img about-img--main">
-        <img src="profile2.jpg" alt="Amine" class="about-img about-img--alt">
+      <div class="about-visual-showcase fade-up">
+        <!-- Ambient Glow Halo -->
+        <div class="about-ambient-glow" aria-hidden="true"></div>
+
+        <!-- Floating Experience / Status Badge (Top Right) -->
+        <div class="about-floating-card badge-top">
+          <span class="status-pulse-dot"></span>
+          <span class="floating-text" data-i18n="about-floating-status">Available for Freelance & BI</span>
+        </div>
+
+        <!-- The Main 3D Glassmorphic Card Deck -->
+        <div class="about-card-deck" data-tilt data-tilt-max="6" data-tilt-speed="400" data-tilt-perspective="1000">
+          <div class="about-slides-wrapper">
+            <!-- Slide 1: Portrait (Default Active) -->
+            <div class="about-slide active" id="aboutSlidePortrait" data-view="portrait">
+              <img src="profile2.jpg" alt="Mohamed Amine Nouioui - Portrait" class="about-photo-img" loading="eager">
+              <div class="about-photo-glass-overlay">
+                <span class="about-photo-tag">
+                  <i class="fas fa-laptop-code"></i>
+                  <span>Full Stack Engineer</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Slide 2: Full Presence -->
+            <div class="about-slide" id="aboutSlideFull" data-view="full">
+              <img src="profile1.jpg" alt="Mohamed Amine Nouioui - Full Stance" class="about-photo-img" loading="lazy">
+              <div class="about-photo-glass-overlay">
+                <span class="about-photo-tag">
+                  <i class="fas fa-chart-line"></i>
+                  <span>BI & Solution Architect</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Dual-View Switcher Tabs -->
+          <div class="about-switch-bar">
+            <button type="button" class="about-switch-btn active" data-target="portrait" id="btnViewPortrait" aria-label="Portrait View">
+              <i class="fas fa-user"></i>
+              <span data-i18n="about-tab-portrait">Portrait</span>
+            </button>
+            <button type="button" class="about-switch-btn" data-target="full" id="btnViewFull" aria-label="Full Presence View">
+              <i class="fas fa-user-tie"></i>
+              <span data-i18n="about-tab-full">Full View</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Floating Value / Trust Badge (Bottom Left) -->
+        <div class="about-floating-card badge-bottom">
+          <div class="badge-icon-box">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="badge-content">
+            <span class="badge-title" data-i18n="about-badge-partner">Engineering Partner</span>
+            <span class="badge-desc" data-i18n="about-badge-sub">High ROI Delivery</span>
+          </div>
+        </div>
       </div>
       <div class="about-text fade-up">
         <p class="section-subtitle" data-i18n="about-subtitle">Problem Solver & Engineering Partner</p>
@@ -1577,6 +2078,12 @@
   <script>
     const translations = {
       en: {
+        "hero-badge-available": "Available for new projects",
+        "about-floating-status": "Available for Freelance & BI",
+        "about-tab-portrait": "Portrait",
+        "about-tab-full": "Full View",
+        "about-badge-partner": "Engineering Partner",
+        "about-badge-sub": "High ROI Delivery",
         "nav-about": "About", "nav-skills": "Skills", "nav-experience": "Experience", "nav-projects": "Projects", "nav-contact": "Contact",
         "hero-title": "Building Web Platforms That <span>Scale Your Business</span>", "hero-subtitle": "React • Node.js • MySQL",
         "hero-desc": "Real-world projects • Production-ready apps • Fast delivery",
@@ -1621,6 +2128,12 @@
           "footer-tagline": "Building the future, one pixel at a time."
       },
       fr: {
+        "hero-badge-available": "Disponible pour nouveaux projets",
+        "about-floating-status": "Disponible Freelance & BI",
+        "about-tab-portrait": "Portrait",
+        "about-tab-full": "Vue Complète",
+        "about-badge-partner": "Partenaire Ingénierie",
+        "about-badge-sub": "Impact & ROI Élevé",
         "nav-about": "À Propos", "nav-skills": "Compétences", "nav-experience": "Expérience", "nav-projects": "Projets", "nav-contact": "Contact",
         "hero-title": "Apps Rapides & <span>Dashboards BI</span>", "hero-subtitle": "Développeur Full Stack · Analyste BI",
         "hero-desc": "Basé à Tunis, je crée des produits numériques haute performance. Expert en React, Node et Intelligence Données.",
@@ -1666,6 +2179,12 @@
           "footer-tagline": "Bâtir le futur, un pixel à la fois."
       },
       ar: {
+        "hero-badge-available": "متاح للمشاريع الجديدة",
+        "about-floating-status": "متاح للمشاريع والـ BI",
+        "about-tab-portrait": "بورتريه",
+        "about-tab-full": "المظهر الكامل",
+        "about-badge-partner": "شريك هندسي معتمد",
+        "about-badge-sub": "حلول ذات قيمة عالية",
         "nav-about": "عني", "nav-skills": "المهارات", "nav-experience": "الخبرة", "nav-projects": "المشاريع", "nav-contact": "اتصل بي",
         "hero-title": "بناء تطبيقات سريعة و <span>لوحات BI</span>", "hero-subtitle": "مطور Full Stack · محلل BI",
         "hero-desc": "مقيم في تونس، أقوم ببناء منتجات رقمية عالية الأداء لعملاء عالميين. متخصص في React و Node وذكاء البيانات.",
@@ -1956,11 +2475,43 @@
       });
     };
 
+    // Dual Photo Showcase Controller
+    const initPhotoShowcase = () => {
+      const switchBtns = document.querySelectorAll('.about-switch-btn');
+      const slides = document.querySelectorAll('.about-slide');
+
+      function setActiveView(target) {
+        switchBtns.forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-target') === target);
+        });
+        slides.forEach(slide => {
+          slide.classList.toggle('active', slide.getAttribute('data-view') === target);
+        });
+      }
+
+      switchBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const target = btn.getAttribute('data-target');
+          setActiveView(target);
+        });
+      });
+
+      slides.forEach(slide => {
+        slide.addEventListener('click', () => {
+          const current = slide.getAttribute('data-view');
+          const next = current === 'portrait' ? 'full' : 'portrait';
+          setActiveView(next);
+        });
+      });
+    };
+
     window.addEventListener('load', () => {
       initThree();
       initCursor();
       initGSAP();
       initContactForm();
+      initPhotoShowcase();
       updateLanguage(localStorage.getItem('lang') || 'en');
       setTimeout(() => { document.getElementById('loader').style.opacity = '0'; setTimeout(() => document.getElementById('loader').style.display = 'none', 800); }, 1000);
     });
