@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produits & Accessoires - Groom'go</title>
-    <meta name="description" content="Découvrez notre gamme de produits de toilettage et accessoires pour animaux de compagnie de qualité professionnelle.">
+    <title>Boutique & Accessoires - Groom'Go</title>
+    <meta name="description" content="Découvrez notre catalogue exclusif de produits de soin, cosmétiques, accessoires et friandises premium pour chiens et chats en Tunisie.">
     
     <!-- Favicon -->
     <link rel="icon" href="assets/img/logo.png" type="image/png">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -19,43 +19,64 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/design-system.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/products.css">
 </head>
-<body>
+<body class="premium-theme text-main">
+    <!-- Mesh Background Decor -->
+    <div class="mesh-bg"></div>
+
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top glass-panel mx-lg-4 mt-lg-3">
+        <div class="container-fluid px-4">
             <a class="navbar-brand" href="index.html">
-                <img src="assets/img/Gemini_Generated_Image_imsa1bimsa1bimsa-removebg-preview.png" alt="Groom'go Logo" class="navbar-logo">
+                <img src="assets/img/logo.png" alt="Groom'go Logo" class="navbar-logo-new" style="height: 50px;">
+                <span class="ms-2 fw-bold text-gradient fs-4">Groom'Go</span>
             </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars text-white"></i>
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#home">Accueil</a>
+                        <a class="nav-link" href="index.html">Accueil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.html#about">À propos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#services">Services</a>
+                        <a class="nav-link" href="packages.html">Formules</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#contact">Contact</a>
+                        <a class="nav-link active" href="products.html">Boutique</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="adoption.html">Adoption</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="notes.html">Avis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary ms-2" href="login.html">Connexion</a>
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                    <li class="nav-item" id="authNavContainer">
+                        <a class="nav-link btn-premium btn-premium-outline ms-lg-3" href="login.html" id="authNavBtn">
+                            <i class="fas fa-user-circle"></i> Connexion
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary ms-2 text-white" href="booking.html">Réserver</a>
+                        <a class="nav-link btn-premium btn-premium-primary ms-lg-2" href="booking.html">
+                            <i class="fas fa-calendar-alt"></i> Réserver
+                        </a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <button class="btn btn-premium btn-premium-outline position-relative px-3" onclick="toggleCart()" title="Voir mon panier">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="badge bg-primary text-white rounded-pill nav-cart-count position-absolute top-0 start-100 translate-middle" id="cartCount" style="display: none;">0</span>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -63,721 +84,781 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="products-hero">
-        <div class="container">
-            <div class="row align-items-center min-vh-50">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="hero-title">Produits & Accessoires</h1>
-                    <p class="hero-subtitle">Découvrez notre sélection de produits de qualité professionnelle pour le bien-être et la beauté de vos animaux de compagnie</p>
-                    <div class="cart-summary" id="cartSummary">
-                        <button class="btn btn-outline-primary" onclick="toggleCart()">
-                            <i class="fas fa-shopping-cart me-2"></i>
-                            Panier (<span id="cartCount">0</span>)
-                        </button>
-                    </div>
-                </div>
+    <section class="section-premium d-flex align-items-center" style="padding-top: 150px; padding-bottom: 60px;">
+        <div class="container text-center">
+            <span class="badge bg-primary-soft text-primary-light mb-3 px-3 py-2 rounded-pill">
+                🛍️ Sélection d'Élite pour Chiens & Chats
+            </span>
+            <h1 class="display-3 fw-bold mb-4 text-white">
+                Boutique de Soins & <span class="text-gradient">Accessoires Premium</span>
+            </h1>
+            <p class="lead text-muted mx-auto mb-5" style="max-width: 750px;">
+                Offrez le meilleur à votre compagnon avec notre sélection rigoureuse : cosmétiques naturels, brosses de pro, jouets d'éveil et alimentation saine. Livraison rapide sur tout le Grand Tunis.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <button class="btn-premium btn-premium-primary" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart me-2"></i> Mon Panier (<span class="nav-cart-count">0</span>)
+                </button>
+                <a href="#catalogue" class="btn-premium btn-premium-outline">
+                    Explorer les 23 produits <i class="fas fa-arrow-down ms-2"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Filter Section -->
-    <section class="filter-section py-4 bg-light">
+    <!-- Catalogue Section with Filters -->
+    <section id="catalogue" class="section-premium pt-0">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="filter-tabs">
-                        <button class="filter-btn active" data-category="all">Tous les produits</button>
-                        <button class="filter-btn" data-category="shampoo">Produits cosmitiques</button>
-                        <button class="filter-btn" data-category="accessories">Accessoires</button>
-                        <button class="filter-btn" data-category="tools">Produits Alimentaires</button>
-                    </div>
-                </div>
+            <!-- Filter Tabs -->
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+                <button class="btn-premium btn-premium-outline filter-btn active px-4 py-2" data-category="all">
+                    <i class="fas fa-th-large me-2"></i>Tous les produits (23)
+                </button>
+                <button class="btn-premium btn-premium-outline filter-btn px-4 py-2" data-category="shampoo">
+                    <i class="fas fa-pump-soap me-2"></i>Cosmétiques & Soins (9)
+                </button>
+                <button class="btn-premium btn-premium-outline filter-btn px-4 py-2" data-category="accessories">
+                    <i class="fas fa-paw me-2"></i>Accessoires & Confort (10)
+                </button>
+                <button class="btn-premium btn-premium-outline filter-btn px-4 py-2" data-category="food">
+                    <i class="fas fa-bone me-2"></i>Alimentation & Friandises (4)
+                </button>
             </div>
-        </div>
-    </section>
 
-    <!-- Products Section -->
-    <section class="products-section py-5">
-        <div class="container">
+            <!-- Products Grid -->
             <div class="row g-4" id="productsGrid">
-                
-                <!-- Outils de Toilettage -->
-                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.22.jpeg" alt="Peigne Démêloir Anti-Nœuds Professionnel" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(1)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Peigne Démêloir Anti-Nœuds Professionnel pour Animaux</h5>
-                            <p class="product-description">Peigne démêloir double face pour chiens et chats.
-                                 Il enlève les nœuds et le sous-poil mort.
-                                 Facile à utiliser, rend le pelage sain et réduit la perte de poils.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(4.8)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">35 DT</span>
-                                <span class="original-price">40 DT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.22 (2).jpeg" alt="Brosse de Bain en Silicone avec Réservoir" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(2)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 11.38.22.jpeg" alt="Peigne Démêloir Anti-Nœuds Professionnel pour Animaux" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Cosmétique & Soin
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.8)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Peigne Démêloir Anti-Nœuds Professionnel pour Animaux</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Peigne démêloir double face pour chiens et chats. Enlève les nœuds et le sous-poil mort tout en douceur.</p>
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Brosse de Bain en Silicone pour Chiens et Chats avec Réservoir de Shampoing
-
-</h5>
-                            <p class="product-description">Brosse de bain en silicone pour animaux, avec réservoir de shampoing intégré.
-                                 Elle nettoie et masse en même temps. 
-                                Rend le bain plus rapide et agréable pour votre chien ou chat.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(4.2)</span>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">35 DT</div>
+                                <small class="text-muted text-decoration-line-through">40 DT</small>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">28 DT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Brosses de Toilettage -->
-                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-14 at 23.47.27 (2).jpeg" alt="Brosse de Toilettage avec Distributeur de Savon" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(3)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Brosse de Toilettage pour Douche avec Distributeur de Savon</h5>
-                            <p class="product-description">Petite brosse de douche et de massage pour animaux. Elle est dotée d'un réservoir pour le shampoing, ce qui facilite grandement le bain. 
-                                Le silicone doux nettoie en profondeur les chiens et les chats tout en les massant.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(4.9)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">42 DT</span>
-                                <span class="original-price">48 DT</span>
-                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(1)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.22 (1).jpeg" alt="Brosse de Massage Électrique USB" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(4)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 11.38.22 (2).jpeg" alt="Brosse de Bain en Silicone avec Réservoir de Shampoing" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Cosmétique & Soin
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.2)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Brosse de Bain en Silicone avec Réservoir de Shampoing</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Brosse de bain en silicone souple avec réservoir de shampoing intégré. Nettoie et masse en même temps.</p>
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Brosse de Massage Électrique et Nettoyante pour Animaux (USB)</h5>
-                            <p class="product-description">Brosse de toilettage et de bain rechargeable par USB pour chiens et chats. Les picots en silicone massent la peau et améliorent la circulation. Elle peut s'utiliser pour brosser ou pour appliquer le shampoing. Rends le soin plus efficace et relaxant.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(4.3)</span>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">28 DT</div>
+                                <small class="text-muted text-decoration-line-through">35 DT</small>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">38 DT</span>
-                                <span class="original-price">45 DT</span>
-                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(2)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Produits Cosmétiques -->
-                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-14 at 23.57.14.jpeg" alt="Huile de Brillance et Antinœuds" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(5)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Huile de Brillance et Antinœuds pour le Toilettage des Animaux</h5>
-                            <p class="product-description">Spray de soin pour le pelage des animaux, conçu pour faciliter le brossage et le démêlage. Il rend le poil doux, brillant, et aide à prévenir les nœuds. Idéal avant d'utiliser la brosse ou le peigne.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(4.7)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">55 DT</span>
-                                <span class="original-price">62 DT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-14 at 23.57.14 (1).jpeg" alt="Spray de Soin Apaisant à la Lavande" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(6)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-14 at 23.47.27 (2).jpeg" alt="Brosse de Douche & Toilettage avec Distributeur de Savon" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Cosmétique & Soin
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.9)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Brosse de Douche & Toilettage avec Distributeur de Savon</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Petite brosse de douche et massage ergonomique. Le silicone doux nettoie en profondeur sans irriter la peau.</p>
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Spray de Soin Apaisant pour Animaux à la Lavande</h5>
-                            <p class="product-description">Spray de soin pour chiens et chats. Aide à rafraîchir et parfumer le pelage. Le flacon ambré préserve les ingrédients, et la lavande peut aider à apaiser l'animal. Utiliser après le brossage ou entre les bains.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(4.4)</span>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">42 DT</div>
+                                <small class="text-muted text-decoration-line-through">48 DT</small>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">32 DT</span>
-                                <span class="original-price">38 DT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Soins Cosmétiques -->
-                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-14 at 23.57.14 (2).jpeg" alt="Sérum Hydratant Naturel" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(7)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Sérum Hydratant Naturel pour Chien et Chat</h5>
-                            <p class="product-description">Huile concentrée de soin pour la peau et le pelage des chiens et des chats. Le flacon avec pipette assure un dosage précis. Elle nourrit la peau, hydrate le poil sec et aide à maintenir un pelage sain et brillant.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(4.6)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">48 DT</span>
-                                <span class="original-price">55 DT</span>
-                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(3)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.53.jpeg" alt="Kit Complet pour Chat" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(8)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Tout pour Votre Chat : Cage de Transport, Arbre à Chat et Maisonnette</h5>
-                            <p class="product-description">Ensemble d'accessoires de base pour le bien-être de votre chat. Il comprend : une cage de transport solide pour les déplacements, un poteau griffoir en sisal pour les griffes, une maisonnette ou un lit pour le repos, et une gamelle simple. Parfait pour un nouveau propriétaire ou pour renouveler l'équipement.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(4.1)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">65 DT</span>
-                                <span class="original-price">75 DT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.23.jpeg" alt="Balle de Jeu Interactive Lumineuse" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(9)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Balle de Jeu Interactive Lumineuse pour Chat</h5>
-                            <p class="product-description">Balle de jeu lumineuse et interactive pour chat. Elle garde votre chat actif et amusé seul.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(4.8)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">42 DT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-15 at 11.38.24 (1).jpeg" alt="Shampoing Professionnel Hydratant" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(8)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 11.38.22 (1).jpeg" alt="Brosse de Massage Électrique USB Nettoyante pour Animaux" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Cosmétique & Soin
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.3)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Brosse de Massage Électrique USB Nettoyante pour Animaux</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Brosse rechargeable par USB pour chiens et chats. Stimule la microcirculation et détend l'animal durant le bain.</p>
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Shampoing Professionnel Hydratant pour Chien et Chat</h5>
-                            <p class="product-description">Shampoing professionnel enrichi en agents hydratants naturels. Formule douce qui nettoie en profondeur tout en préservant l'équilibre naturel de la peau. Laisse le pelage doux et brillant.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(4.7)</span>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">38 DT</div>
+                                <small class="text-muted text-decoration-line-through">45 DT</small>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">42 DT</span>
-                                <span class="original-price">48 DT</span>
-                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(4)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-15 at 11.38.24 (2).jpeg" alt="Lotion Démêlante Professionnelle" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(9)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-14 at 23.57.14.jpeg" alt="Huile de Brillance et Antinœuds Premium pour Pelage" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Cosmétique & Soin
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.7)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Huile de Brillance et Antinœuds Premium pour Pelage</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Spray lustrant pour pelage soyeux. Prévient les nœuds et protège le poil contre le dessèchement.</p>
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Lotion Démêlante Professionnelle - Tous Pelages</h5>
-                            <p class="product-description">Lotion démêlante professionnelle pour tous types de pelages. Facilite le brossage, élimine les nœuds sans effort et protège le poil des cassures. Formule enrichie en vitamines.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(4.5)</span>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">45 DT</div>
+                                <small class="text-muted text-decoration-line-through">50 DT</small>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">36 DT</span>
-                                <span class="original-price">42 DT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Accessoires de Toilettage -->
-                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.53 (2).jpeg" alt="Ensemble Laisse et Collier Tressés" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(18)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Ensemble Laisse et Collier Tressés pour Chien</h5>
-                            <p class="product-description">Ensemble laisse et collier tressés en corde pour chien. Le collier intègre une chaîne pour un meilleur contrôle. Très solide pour la promenade.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(4.9)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">85 DT</span>
-                                <span class="original-price">95 DT</span>
-                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(5)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.53 (3).jpeg" alt="Jouet Distributeur de Friandises" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(19)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-14 at 23.57.14 (1).jpeg" alt="Spray de Soin Apaisant pour Animaux à la Lavande" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Cosmétique & Soin
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.4)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Spray de Soin Apaisant pour Animaux à la Lavande</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Soin calmant naturel sans rinçage. Idéal pour rafraîchir et apaiser votre compagnon entre deux séances.</p>
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Jouet Distributeur de Friandises pour Chat</h5>
-                            <p class="product-description">Balle qui distribue des croquettes ou friandises. Stimule votre chat mentalement et l'encourage à jouer.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(4.5)</span>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">32 DT</div>
+                                <small class="text-muted text-decoration-line-through">38 DT</small>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">38 DT</span>
-                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(6)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.23 (3).jpeg" alt="Jouet Os à Mâcher Solide" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(20)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-14 at 23.57.14 (2).jpeg" alt="Sérum Hydratant Naturel Chien et Chat" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Cosmétique & Soin
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.6)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Sérum Hydratant Naturel Chien et Chat</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Élixir réparateur à base d'huiles végétales pures pour nourrir la peau sèche et revitaliser la fourrure.</p>
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Jouet Os à Mâcher Solide pour Chien </h5>
-                            <p class="product-description">Os jouet solide pour chien. Idéal pour mâcher ou pour les jeux de lancer et de rapport. Aide à garder le chien actif et occupé.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(4.7)</span>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">48 DT</div>
+                                <small class="text-muted text-decoration-line-through">55 DT</small>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">48 DT</span>
-                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(7)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.23 (2).jpeg" alt="Vêtement de Protection Respirant" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(21)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 11.38.24 (1).jpeg" alt="Shampoing Professionnel Hydratant pour Chien et Chat" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Cosmétique & Soin
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.7)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Shampoing Professionnel Hydratant pour Chien et Chat</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Formule hypoallergénique de qualité salon. Nettoie en profondeur et laisse un parfum délicat et durable.</p>
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Vêtement de Protection Respirant pour Chien</h5>
-                            <p class="product-description">Gilet léger et respirant en tissu mesh pour chien. Idéal pour le confort et une légère protection durant les promenades estivales.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(4.3)</span>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">42 DT</div>
+                                <small class="text-muted text-decoration-line-through">48 DT</small>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">32 DT</span>
-                                <span class="original-price">38 DT</span>
-                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(8)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.24.jpeg" alt="Ensemble Harnais et Laisse Complet" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(22)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="shampoo">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 11.38.24 (2).jpeg" alt="Lotion Démêlante Professionnelle - Tous Pelages" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Cosmétique & Soin
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.5)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Lotion Démêlante Professionnelle - Tous Pelages</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Lotion démêlante facilitant le brossage sans douleur. Élimine les nœuds sans effort et protège le poil.</p>
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Ensemble Harnais, Laisse et Distributeur de Sacs pour Chien</h5>
-                            <p class="product-description">Set Sape De Woof complet : harnais rembourré, laisse, et distributeur de sacs. Très confortable et stylé pour la promenade.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(4.6)</span>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">36 DT</div>
+                                <small class="text-muted text-decoration-line-through">42 DT</small>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">35 DT</span>
-                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(9)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Accessoires et Jouets -->
-                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.54 (3).jpeg" alt="Bandana Tie-Dye Coloré" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(23)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Bandana Tie-Dye Coloré pour Chien et Chat</h5>
-                            <p class="product-description">Bandana coloré (motif tie-dye) pour chiens et chats. C'est l'accessoire parfait pour ajouter une touche de style et de fun. Tissu doux et facile à attacher.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(4.8)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">58 DT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.55.jpeg" alt="Assortiment d'Accessoires Essentiels" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(24)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.53.jpeg" alt="Pack Félin : Cage de Transport, Arbre à Chat et Maisonnette" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Accessoires & Confort
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.1)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Pack Félin : Cage de Transport, Arbre à Chat et Maisonnette</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Kit complet pour l'accueil ou le confort de votre chat. Cage solide, poteau griffoir et coussin douillet.</p>
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Assortiment d'Accessoires Essentiels pour Chien </h5>
-                            <p class="product-description">Ensemble d'accessoires de base pour chien. Il inclut un collier clouté, une laisse rétractable, un jouet en corde, une gamelle à croquettes et un os à mâcher. Tout pour le soin et le jeu.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(4.4)</span>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">65 DT</div>
+                                <small class="text-muted text-decoration-line-through">75 DT</small>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">72 DT</span>
-                                <span class="original-price">80 DT</span>
-                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(10)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets\img\WhatsApp Image 2025-10-15 at 11.38.23 (1).jpeg" alt="Coussin de Luxe en Similicuir" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(25)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 11.38.23.jpeg" alt="Balle de Jeu Interactive Lumineuse pour Chat" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Accessoires & Confort
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.8)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Balle de Jeu Interactive Lumineuse pour Chat</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Balle lumineuse à trajectoire aléatoire avec LED stimulante. Garde votre félin vif, curieux et actif.</p>
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Coussin de Luxe en Similicuir pour Chien</h5>
-                            <p class="product-description">Lit confortable et matelassé pour chien. Fait de cuir ou de similicuir (couleur cognac). Offre un couchage doux avec un design moderne pour votre intérieur.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(4.7)</span>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">42 DT</div>
+                                <small class="text-muted text-decoration-line-through">50 DT</small>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">44 DT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Produits Alimentaires -->
-
-                <div class="col-lg-4 col-md-6 product-item" data-category="tools">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-15 at 11.40.19 (3).jpeg" alt="Nourriture Humide Premium" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(10)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Maxi Pot de Bâtonnets Tendres de Friandises pour Chien et Chat</h5>
-                            <p class="product-description">Friandises en bâtonnets à mâcher, idéales pour la récompense et l'éducation. 
-                                La texture tendre les rend faciles à manger.
-                                 Ce pot grand format convient pour les chiens et les chats de toute taille.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(4.7)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">38 DT</span>
-                                <span class="original-price">42 DT</span>
-                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(11)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 product-item" data-category="tools">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-15 at 11.40.19 (4).jpeg" alt="Croquettes Spéciales Chiot" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(11)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.53 (2).jpeg" alt="Ensemble Laisse et Collier Tressés pour Chien" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Accessoires & Confort
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.9)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Ensemble Laisse et Collier Tressés pour Chien</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Corde tressée ultra résistante inspirée de l'escalade avec maillon métallique. Tenue ferme et grande sécurité.</p>
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Croquettes Complètes Premium pour Chat</h5>
-                            <p class="product-description">Alimentation sèche complète et premium pour votre chat.
-                                 Ces croquettes sont formulées pour apporter tous les nutriments essentiels et assurer une bonne santé digestive.
-                                 La taille et la forme des croquettes sont adaptées aux chats de tous âges.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(4.9)</span>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">85 DT</div>
+                                <small class="text-muted text-decoration-line-through">95 DT</small>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">52 DT</span>
-                                <span class="original-price">58 DT</span>
-                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(12)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 product-item" data-category="tools">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-15 at 11.40.20 (1).jpeg" alt="Alimentation Naturelle Chat" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(12)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.53 (3).jpeg" alt="Jouet Distributeur de Friandises pour Chat" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Accessoires & Confort
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.5)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Jouet Distributeur de Friandises pour Chat</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Balle distributrice de croquettes qui stimule l'intelligence et ralentit la prise alimentaire.</p>
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Nourriture Humide Complète pour Chiens</h5>
-                            <p class="product-description">Alimentation humide en conserve pour chiens ("FRECH FOOD"). 
-                                Repas complet, riche en protéines et facile à servir. 
-                                Une option très appétissante qui assure une bonne hydratation à votre animal.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(4.6)</span>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">38 DT</div>
+                                <small class="text-muted text-decoration-line-through">45 DT</small>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">48 DT</span>
-                                <span class="original-price">55 DT</span>
-                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(13)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 product-item" data-category="tools">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/img/WhatsApp Image 2025-10-15 at 11.40.21.jpeg" alt="Nourriture Bio Chat" class="img-fluid">
-                            <div class="product-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="addToCart(15)">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 11.38.23 (3).jpeg" alt="Jouet Os à Mâcher Solide pour Chien" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Accessoires & Confort
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.7)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Jouet Os à Mâcher Solide pour Chien</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Caoutchouc résistant non toxique. Favorise l'hygiène bucco-dentaire en limitant le tartre dentaire.</p>
                         </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Alimentation Crue (BARF)</h5>
-                            <p class="product-description">Nourriture fraîche pour animaux (type BARF), riche en protéines. Le sachet assure une conservation et une fraîcheur optimales. Repas complet.</p>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(4.9)</span>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">48 DT</div>
+                                <small class="text-muted text-decoration-line-through">55 DT</small>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">62 DT</span>
-                                <span class="original-price">68 DT</span>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(14)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 11.38.23 (2).jpeg" alt="Vêtement de Protection Respirant pour Chien (Mesh)" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Accessoires & Confort
+                                </span>
                             </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="far fa-star text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.3)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Vêtement de Protection Respirant pour Chien (Mesh)</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Gilet léger et respirant en tissu micro-aéré. Idéal pour les promenades estivales en Tunisie.</p>
+                        </div>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">32 DT</div>
+                                <small class="text-muted text-decoration-line-through">38 DT</small>
+                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(15)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 11.38.24.jpeg" alt="Ensemble Harnais, Laisse et Distributeur de Sacs" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Accessoires & Confort
+                                </span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.6)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Ensemble Harnais, Laisse et Distributeur de Sacs</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Set complet et ergonomique : harnais molletonné anti-traction, laisse robuste et pochette à sacs.</p>
+                        </div>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">35 DT</div>
+                                <small class="text-muted text-decoration-line-through">45 DT</small>
+                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(16)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.54 (3).jpeg" alt="Bandana Tie-Dye Coloré pour Chien et Chat" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Accessoires & Confort
+                                </span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.8)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Bandana Tie-Dye Coloré pour Chien et Chat</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Foulard élégant en tissu soyeux pastel. La petite touche branchée pour sublimer les séances photos.</p>
+                        </div>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">58 DT</div>
+                                <small class="text-muted text-decoration-line-through">65 DT</small>
+                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(17)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 00.08.55.jpeg" alt="Assortiment d'Accessoires Essentiels pour Chien" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Accessoires & Confort
+                                </span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.4)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Assortiment d'Accessoires Essentiels pour Chien</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Pack complet avec collier, laisse rétractable, jouet corde et gamelle inox. Prêt à l'emploi.</p>
+                        </div>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">72 DT</div>
+                                <small class="text-muted text-decoration-line-through">85 DT</small>
+                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(18)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="accessories">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 11.38.23 (1).jpeg" alt="Coussin de Luxe en Similicuir pour Chien" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Accessoires & Confort
+                                </span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.7)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Coussin de Luxe en Similicuir pour Chien</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Lit imperméable matelassé en cuir végétal cognac. Confort optimal et entretien d'un coup d'éponge.</p>
+                        </div>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">44 DT</div>
+                                <small class="text-muted text-decoration-line-through">55 DT</small>
+                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(19)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="food">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 11.40.19 (3).jpeg" alt="Maxi Pot de Bâtonnets Tendres de Friandises" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Alimentation & Friandises
+                                </span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.7)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Maxi Pot de Bâtonnets Tendres de Friandises</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Gourmandises tendres riches en viande véritable. Idéales pour l'éducation, le renforcement positif et le plaisir.</p>
+                        </div>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">38 DT</div>
+                                <small class="text-muted text-decoration-line-through">45 DT</small>
+                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(20)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="food">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 11.40.19 (4).jpeg" alt="Croquettes Complètes Premium pour Chat" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Alimentation & Friandises
+                                </span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.9)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Croquettes Complètes Premium pour Chat</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Formule équilibrée riche en protéines digestes, taurine et omégas 3 & 6 pour un poil éclatant.</p>
+                        </div>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">52 DT</div>
+                                <small class="text-muted text-decoration-line-through">60 DT</small>
+                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(21)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="food">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 11.40.20 (1).jpeg" alt="Nourriture Humide Gourmet Fresh Food pour Chien" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Alimentation & Friandises
+                                </span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.6)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Nourriture Humide Gourmet Fresh Food pour Chien</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Pâtée savoureuse aux morceaux de viande fraîche et légumes mijotés. Très appétente et hydratante.</p>
+                        </div>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">48 DT</div>
+                                <small class="text-muted text-decoration-line-through">55 DT</small>
+                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(22)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="food">
+                    <div class="glass-card h-100 d-flex flex-column justify-content-between p-3 position-relative">
+                        <div>
+                            <div class="product-image-container position-relative overflow-hidden rounded-4 mb-3" style="height: 240px; background: rgba(0,0,0,0.2);">
+                                <img src="assets/img/WhatsApp Image 2025-10-15 at 11.40.21.jpeg" alt="Alimentation Crue Naturelle Fraîche (BARF)" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <span class="badge bg-primary-soft text-primary-light position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill small">
+                                    Alimentation & Friandises
+                                </span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="small">
+                                    <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i>
+                                    <span class="text-muted ms-1 small">(4.9)</span>
+                                </div>
+                                <span class="badge bg-success-soft text-success rounded-pill px-2 py-1 small">En stock</span>
+                            </div>
+                            <h5 class="text-white fw-bold fs-6 mb-2" style="min-height: 48px;">Alimentation Crue Naturelle Fraîche (BARF)</h5>
+                            <p class="text-muted small mb-3" style="min-height: 40px;">Repas cru congelé haute valeur nutritive respectant la physiologie digestive des carnivores.</p>
+                        </div>
+                        <div class="pt-3 border-top border-secondary d-flex align-items-center justify-content-between mt-auto">
+                            <div>
+                                <div class="fs-4 fw-bold text-gradient">62 DT</div>
+                                <small class="text-muted text-decoration-line-through">70 DT</small>
+                            </div>
+                            <button class="btn btn-premium btn-premium-primary btn-sm px-3" onclick="addToCart(23)">
+                                <i class="fas fa-cart-plus me-1"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -786,34 +867,166 @@
         </div>
     </section>
 
-    <!-- Cart Sidebar -->
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h5>Panier d'achat</h5>
-            <button class="btn-close" onclick="toggleCart()"></button>
+    <!-- Cart Overlay & Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar glass-panel" id="cartSidebar">
+        <div class="cart-header p-4 border-bottom border-secondary d-flex align-items-center justify-content-between">
+            <h4 class="text-white mb-0 fw-bold">
+                <i class="fas fa-shopping-bag text-primary-light me-2"></i> Mon Panier
+            </h4>
+            <button type="button" class="btn-close btn-close-white" onclick="toggleCart()"></button>
         </div>
-        <div class="cart-body" id="cartBody">
-            <div class="empty-cart">
-                <i class="fas fa-shopping-cart"></i>
-                <p>Votre panier est vide</p>
-            </div>
+        <div class="cart-body p-4" id="cartBody" style="max-height: calc(100vh - 280px); overflow-y: auto;">
+            <!-- Cart items loaded by products.js -->
         </div>
-        <div class="cart-footer" id="cartFooter">
-            <div class="cart-total">
-                <strong>Total: <span id="cartTotal">0 DT</span></strong>
+        <div class="cart-footer p-4 border-top border-secondary mt-auto">
+            <div class="d-flex justify-content-between text-muted small mb-2">
+                <span>Sous-total</span>
+                <span class="text-white fw-bold" id="cartSubtotal">0 DT</span>
             </div>
-            <button class="btn btn-primary w-100 mt-3" onclick="checkout()">
-                Passer commande
+            <div class="d-flex justify-content-between text-muted small mb-3">
+                <span>Livraison Grand Tunis</span>
+                <span id="cartShipping">7 DT</span>
+            </div>
+            <div class="d-flex justify-content-between fs-5 fw-bold text-white mb-4">
+                <span>Total</span>
+                <span class="text-gradient" id="cartTotal">0 DT</span>
+            </div>
+            <button class="btn-premium btn-premium-primary w-100 py-3" onclick="openCheckoutModal()">
+                Passer la commande <i class="fas fa-arrow-right ms-2"></i>
             </button>
+            <div class="text-center mt-2">
+                <small class="text-muted"><i class="fas fa-truck text-success me-1"></i> Livraison gratuite dès 60 DT</small>
+            </div>
         </div>
     </div>
 
-    <!-- Cart Overlay -->
-    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <!-- Checkout Modal -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content glass-card border-primary p-4">
+                <div class="modal-header border-bottom border-secondary pb-3">
+                    <h4 class="modal-title text-white fw-bold">
+                        <i class="fas fa-truck-loading text-primary-light me-2"></i> Finaliser votre Commande
+                    </h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <div id="modalOrderSummary"></div>
+                    <form id="checkoutForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small text-uppercase fw-bold">Nom & Prénom *</label>
+                                <input type="text" id="orderFullName" class="form-control form-control-premium" placeholder="Ex: Mohamed Ben Salem" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small text-uppercase fw-bold">Téléphone (WhatsApp) *</label>
+                                <input type="tel" id="orderPhone" class="form-control form-control-premium" placeholder="+216 20 000 000" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small text-uppercase fw-bold">Email</label>
+                                <input type="email" id="orderEmail" class="form-control form-control-premium" placeholder="mohamed@example.com">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small text-uppercase fw-bold">Zone de livraison *</label>
+                                <select id="orderCity" class="form-select form-control-premium" required>
+                                    <option value="Tunis Centre">Tunis Centre</option>
+                                    <option value="La Marsa" selected>La Marsa / Gammarth</option>
+                                    <option value="Carthage">Carthage / Sidi Bou Saïd</option>
+                                    <option value="Ennasr">Ennasr / Menzah</option>
+                                    <option value="Ariana">Ariana / Soukra</option>
+                                    <option value="Ben Arous">Ben Arous / Mégrine</option>
+                                    <option value="Autre Grand Tunis">Autre localité Grand Tunis</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-muted small text-uppercase fw-bold">Adresse exacte de livraison *</label>
+                                <input type="text" id="orderAddress" class="form-control form-control-premium" placeholder="Rue, N° de villa / bâtiment, étage, repère..." required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-muted small text-uppercase fw-bold">Remarques ou instructions de livraison</label>
+                                <textarea id="orderNotes" class="form-control form-control-premium" rows="2" placeholder="Ex: Appeler avant d'arriver..."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <div class="glass-panel p-3 d-flex align-items-center gap-3">
+                                    <i class="fas fa-hand-holding-usd text-success fs-3"></i>
+                                    <div>
+                                        <h6 class="text-white mb-0">Paiement à la livraison (Espèces)</h6>
+                                        <small class="text-muted">Vous réglez votre commande en espèces directement au livreur lors de la réception.</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-top border-secondary d-flex gap-3">
+                            <button type="button" class="btn btn-premium btn-premium-outline flex-grow-1" data-bs-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-premium btn-premium-primary flex-grow-1">
+                                Confirmer ma commande <i class="fas fa-check-circle ms-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark-2 pt-5">
+        <div class="container pt-5">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <a class="navbar-brand mb-4 d-inline-block" href="index.html">
+                        <img src="assets/img/logo.png" alt="Logo" style="height: 45px;">
+                        <span class="ms-2 fw-bold text-gradient fs-4">Groom'Go</span>
+                    </a>
+                    <p class="text-muted">
+                        Votre partenaire de confiance pour le toilettage mobile d'élite et les produits de soin en Tunisie. Des formules pensées pour le bien-être de vos animaux.
+                    </p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link-premium"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener" class="social-link-premium"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener" class="social-link-premium"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/21629123456" target="_blank" rel="noopener" class="social-link-premium"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1">
+                    <h5 class="fw-bold mb-4 text-white">Services</h5>
+                    <ul class="list-unstyled footer-links-premium">
+                        <li><a href="packages.html">Formules & Tarifs</a></li>
+                        <li><a href="booking.html">Prendre Rendez-vous</a></li>
+                        <li><a href="products.html">Boutique & Soins</a></li>
+                        <li><a href="adoption.html">Adoption Solidaire</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="fw-bold mb-4 text-white">Navigation</h5>
+                    <ul class="list-unstyled footer-links-premium">
+                        <li><a href="index.html#home">Accueil</a></li>
+                        <li><a href="index.html#about">À propos</a></li>
+                        <li><a href="notes.html">Avis Clients</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="login.html">Espace Membre / Admin</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="fw-bold mb-4 text-white">Newsletter</h5>
+                    <p class="text-muted small">Recevez nos conseils et offres exclusives sur les soins animaliers.</p>
+                    <form id="newsletterForm" class="input-group mb-3">
+                        <input type="email" class="form-control form-control-premium" placeholder="Votre email" required>
+                        <button class="btn btn-primary bg-gradient px-3" type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <small class="text-muted"><i class="fas fa-shield-alt text-success me-1"></i> Respect de votre vie privée garanti.</small>
+                </div>
+            </div>
+            <div class="border-top border-secondary py-4 text-center">
+                <p class="text-muted mb-0">&copy; 2026 Groom'Go Tunisie. Fait avec passion et dévouement pour vos animaux.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
     <script src="assets/js/products.js"></script>
 </body>
 </html>

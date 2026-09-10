@@ -3,273 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion - Groom'go</title>
-    <meta name="description" content="Connectez-vous à votre compte Groom'go pour gérer vos réservations">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="assets/img/logo.png" type="image/png">
+    <title>Espace Membre & Connexion - Groom'Go Tunisie</title>
+    <meta name="description" content="Connectez-vous à votre compte Groom'Go pour suivre vos réservations et commandes de toilettage mobile.">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/design-system.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/auth.css">
 </head>
-<body class="auth-body">
-    <!-- Floating Bubbles -->
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+<body class="auth-body premium-theme text-main">
+    <div class="mesh-bg"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top modern-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="assets/img/Gemini_Generated_Image_imsa1bimsa1bimsa-removebg-preview.png" alt="Groom'go Logo" class="navbar-logo">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="assets/img/Gemini_Generated_Image_imsa1bimsa1bimsa-removebg-preview.png" alt="Groom'go Logo" class="brand-logo">
+                <span class="brand-text">Groom<span class="text-accent">'Go</span></span>
             </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="toggler-icon"></span>
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#home">Accueil</a>
+                        <a class="nav-link" href="index.html">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#about">À propos</a>
+                        <a class="nav-link" href="packages.html">Forfaits</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#services">Services</a>
+                        <a class="nav-link" href="products.html">Boutique</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#contact">Contact</a>
+                        <a class="nav-link" href="adoption.html">Adoption</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="notes.html">Avis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary ms-2" href="login.html">Connexion</a>
+                        <a class="nav-link" href="index.html#contact">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-primary ms-2 text-white" href="booking.html">Réserver</a>
+                    
+                    <!-- Dynamic Auth container -->
+                    <li class="nav-item ms-lg-2" id="authNavContainer">
+                        <a class="nav-link nav-btn-outline active" href="login.html">
+                            <i class="fas fa-user me-1"></i> Connexion
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link nav-btn-primary" href="booking.html">
+                            <i class="fas fa-calendar-check me-1"></i> Réserver
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Auth Container -->
-    <div class="auth-container">
+    <!-- Auth Main Container -->
+    <div class="auth-container d-flex align-items-center py-5" style="min-height: 85vh; padding-top: 120px !important;">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-7">
-                    <div class="auth-card">
-                        <!-- Login Form -->
+                <div class="col-lg-5 col-md-8">
+                    <div class="auth-card glass-card p-4 p-sm-5 border border-secondary" style="max-width: 480px; margin: auto;">
+                        
+                        <!-- Form Toggle / Tabs -->
+                        <div class="d-flex justify-content-center mb-4 border-bottom border-secondary pb-3 gap-3">
+                            <button type="button" class="btn btn-sm btn-link text-decoration-none fw-bold fs-6 active-auth-tab" id="tabLoginBtn" onclick="switchAuthTab('login')">
+                                <i class="fas fa-sign-in-alt me-1"></i> Connexion
+                            </button>
+                            <button type="button" class="btn btn-sm btn-link text-decoration-none text-muted-custom fw-bold fs-6" id="tabRegisterBtn" onclick="switchAuthTab('register')">
+                                <i class="fas fa-user-plus me-1"></i> Créer un compte
+                            </button>
+                        </div>
+
+                        <!-- 1. LOGIN FORM -->
                         <div class="auth-form" id="loginForm">
-                            <div class="auth-header">
-                                <h2>Connexion</h2>
-                                <p>Connectez-vous à votre compte Groom'go</p>
+                            <div class="text-center mb-4">
+                                <h3 class="fw-bold mb-1">Bienvenue !</h3>
+                                <p class="text-muted-custom small">Accédez à votre espace ou tableau de bord</p>
                             </div>
                             
                             <form id="loginFormElement">
                                 <div class="mb-3">
-                                    <label class="form-label">Email</label>
+                                    <label class="form-label text-light small fw-bold">Adresse Email</label>
                                     <div class="input-group">
-                                        <span class="input-group-text">
+                                        <span class="input-group-text bg-dark border-secondary text-muted-custom">
                                             <i class="fas fa-envelope"></i>
                                         </span>
-                                        <input type="email" class="form-control" name="email" placeholder="votre@email.com" required>
+                                        <input type="email" class="form-control" name="email" id="loginEmail" placeholder="votre@email.com" required>
                                     </div>
                                 </div>
                                 
                                 <div class="mb-3">
-                                    <label class="form-label">Mot de passe</label>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <label class="form-label text-light small fw-bold mb-0">Mot de passe</label>
+                                        <a href="#" class="text-accent small text-decoration-none" id="forgotPasswordLink">Oublié ?</a>
+                                    </div>
                                     <div class="input-group">
-                                        <span class="input-group-text">
+                                        <span class="input-group-text bg-dark border-secondary text-muted-custom">
                                             <i class="fas fa-lock"></i>
                                         </span>
-                                        <input type="password" class="form-control" name="password" placeholder="Votre mot de passe" required>
+                                        <input type="password" class="form-control" name="password" id="loginPassword" placeholder="••••••••" required>
                                         <button type="button" class="btn btn-outline-secondary" id="togglePassword">
-                                            <i class="fas fa-eye"></i>
+                                            <i class="fas fa-eye text-muted-custom"></i>
                                         </button>
                                     </div>
                                 </div>
                                 
-                                <div class="mb-3 d-flex justify-content-between align-items-center">
+                                <div class="mb-4 d-flex justify-content-between align-items-center">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="rememberMe">
-                                        <label class="form-check-label" for="rememberMe">
+                                        <input class="form-check-input" type="checkbox" id="rememberMe" checked>
+                                        <label class="form-check-label text-muted-custom small" for="rememberMe">
                                             Se souvenir de moi
                                         </label>
                                     </div>
-                                    <a href="#" class="text-primary" id="forgotPasswordLink">Mot de passe oublié?</a>
                                 </div>
                                 
-                                <button type="submit" class="btn btn-primary w-100 mb-3">
-                                    <i class="fas fa-sign-in-alt me-2"></i>Se connecter
+                                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold mb-3">
+                                    <i class="fas fa-sign-in-alt me-2"></i> Se connecter
                                 </button>
-                                
-                                <div class="text-center">
-                                    <p>Pas encore de compte? 
-                                        <a href="#" class="text-primary" id="showRegister">Créer un compte</a>
-                                    </p>
-                                </div>
                             </form>
                             
-                            <div class="auth-divider">
-                                <span>ou</span>
-                            </div>
-                            
-                            <!-- Comptes de test -->
-                            <div class="demo-accounts mt-3">
-                                <div class="alert alert-info">
-                                    <h6><i class="fas fa-key me-2"></i>Compte administrateur</h6>
-                                    <div class="demo-list">
-                                        <div><strong>Email:</strong> admin@groomgo.tn</div>
-                                        <div><strong>Mot de passe:</strong> admin123</div>
-                                    </div>
+                            <!-- 1-Click Fast Test Buttons -->
+                            <div class="p-3 rounded bg-dark bg-opacity-75 border border-secondary mt-4">
+                                <div class="text-center small text-muted-custom mb-2 fw-bold">
+                                    <i class="fas fa-bolt text-warning me-1"></i> Accès Test Rapide (1-Clic)
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn btn-sm btn-outline-primary flex-fill" id="btnQuickClient" onclick="quickFillLogin('client')">
+                                        <i class="fas fa-user me-1"></i> Client Démo
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-warning flex-fill" id="btnQuickAdmin" onclick="quickFillLogin('admin')">
+                                        <i class="fas fa-shield-alt me-1"></i> Admin Pro
+                                    </button>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Register Form -->
+                        <!-- 2. REGISTER FORM -->
                         <div class="auth-form d-none" id="registerForm">
-                            <div class="auth-header">
-                                <h2>Créer un compte</h2>
-                                <p>Rejoignez Groom'go pour réserver facilement</p>
+                            <div class="text-center mb-4">
+                                <h3 class="fw-bold mb-1">Créer un compte</h3>
+                                <p class="text-muted-custom small">Gérez vos animaux, réservations et commandes</p>
                             </div>
                             
                             <form id="registerFormElement">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label">Prénom</label>
-                                        <input type="text" class="form-control" name="firstName" placeholder="Votre prénom" required>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-6">
+                                        <label class="form-label text-light small fw-bold">Prénom *</label>
+                                        <input type="text" class="form-control" name="firstName" placeholder="Prénom" required>
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label">Nom</label>
-                                        <input type="text" class="form-control" name="lastName" placeholder="Votre nom" required>
-                                    </div>
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label class="form-label">Email</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-envelope"></i>
-                                        </span>
-                                        <input type="email" class="form-control" name="email" placeholder="votre@email.com" required>
+                                    <div class="col-6">
+                                        <label class="form-label text-light small fw-bold">Nom *</label>
+                                        <input type="text" class="form-control" name="lastName" placeholder="Nom" required>
                                     </div>
                                 </div>
                                 
                                 <div class="mb-3">
-                                    <label class="form-label">Téléphone</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-phone"></i>
-                                        </span>
-                                        <input type="tel" class="form-control" name="phone" placeholder="+216 XX XXX XXX" required>
-                                    </div>
+                                    <label class="form-label text-light small fw-bold">Email *</label>
+                                    <input type="email" class="form-control" name="email" placeholder="votre@email.com" required>
                                 </div>
                                 
                                 <div class="mb-3">
-                                    <label class="form-label">Mot de passe</label>
+                                    <label class="form-label text-light small fw-bold">Téléphone *</label>
+                                    <input type="tel" class="form-control" name="phone" placeholder="+216 50 123 456" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label text-light small fw-bold">Mot de passe *</label>
                                     <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-lock"></i>
-                                        </span>
-                                        <input type="password" class="form-control" name="password" placeholder="Choisir un mot de passe" required>
+                                        <input type="password" class="form-control" name="password" id="registerPassword" placeholder="Minimum 6 caractères" required>
                                         <button type="button" class="btn btn-outline-secondary" id="toggleRegisterPassword">
-                                            <i class="fas fa-eye"></i>
+                                            <i class="fas fa-eye text-muted-custom"></i>
                                         </button>
                                     </div>
-                                    <div class="password-strength mt-2">
-                                        <div class="progress" style="height: 5px;">
-                                            <div class="progress-bar" role="progressbar" style="width: 0%"></div>
-                                        </div>
-                                        <small class="text-muted">Force du mot de passe</small>
-                                    </div>
                                 </div>
                                 
                                 <div class="mb-3">
-                                    <label class="form-label">Confirmer le mot de passe</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-lock"></i>
-                                        </span>
-                                        <input type="password" class="form-control" name="confirmPassword" placeholder="Confirmer le mot de passe" required>
-                                    </div>
+                                    <label class="form-label text-light small fw-bold">Confirmer le mot de passe *</label>
+                                    <input type="password" class="form-control" name="confirmPassword" placeholder="Répéter le mot de passe" required>
                                 </div>
                                 
-                                <div class="mb-3">
+                                <div class="mb-4">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="acceptTerms" required>
-                                        <label class="form-check-label" for="acceptTerms">
-                                            J'accepte les <a href="#" class="text-primary">conditions d'utilisation</a> et la <a href="#" class="text-primary">politique de confidentialité</a>
+                                        <input class="form-check-input" type="checkbox" id="acceptTerms" required checked>
+                                        <label class="form-check-label text-muted-custom small" for="acceptTerms">
+                                            J'accepte les conditions d'utilisation de Groom'Go
                                         </label>
                                     </div>
                                 </div>
                                 
-                                <button type="submit" class="btn btn-primary w-100 mb-3">
-                                    <i class="fas fa-user-plus me-2"></i>Créer mon compte
+                                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold mb-3">
+                                    <i class="fas fa-user-plus me-2"></i> Créer mon compte
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- 3. FORGOT PASSWORD FORM -->
+                        <div class="auth-form d-none" id="forgotPasswordForm">
+                            <div class="text-center mb-4">
+                                <h3 class="fw-bold mb-1">Mot de passe oublié</h3>
+                                <p class="text-muted-custom small">Entrez votre email pour réinitialiser votre accès</p>
+                            </div>
+                            
+                            <form id="forgotPasswordFormElement">
+                                <div class="mb-4">
+                                    <label class="form-label text-light small fw-bold">Email du compte</label>
+                                    <input type="email" class="form-control" name="email" placeholder="votre@email.com" required>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold mb-3">
+                                    <i class="fas fa-paper-plane me-2"></i> Envoyer les instructions
                                 </button>
                                 
                                 <div class="text-center">
-                                    <p>Déjà un compte? 
-                                        <a href="#" class="text-primary" id="showLogin">Se connecter</a>
-                                    </p>
+                                    <button type="button" class="btn btn-link text-accent text-decoration-none small" id="backToLogin" onclick="switchAuthTab('login')">
+                                        <i class="fas fa-arrow-left me-1"></i> Revenir à la connexion
+                                    </button>
                                 </div>
                             </form>
                         </div>
 
-                        <!-- Forgot Password Form -->
-                        <div class="auth-form d-none" id="forgotPasswordForm">
-                            <div class="auth-header">
-                                <h2>Mot de passe oublié</h2>
-                                <p>Entrez votre email pour recevoir un lien de réinitialisation</p>
-                            </div>
-                            
-                            <form id="forgotPasswordFormElement">
-                                <div class="mb-3">
-                                    <label class="form-label">Email</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-envelope"></i>
-                                        </span>
-                                        <input type="email" class="form-control" name="email" placeholder="votre@email.com" required>
-                                    </div>
-                                </div>
-                                
-                                <button type="submit" class="btn btn-primary w-100 mb-3">
-                                    <i class="fas fa-paper-plane me-2"></i>Envoyer le lien
-                                </button>
-                                
-                                <div class="text-center">
-                                    <a href="#" class="text-primary" id="backToLogin">
-                                        <i class="fas fa-arrow-left me-2"></i>Retour à la connexion
-                                    </a>
-                                </div>
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
+    <!-- Modern Footer -->
+    <footer class="modern-footer pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-brand mb-3">
+                        <img src="assets/img/Gemini_Generated_Image_imsa1bimsa1bimsa-removebg-preview.png" alt="Groom'Go Logo" height="42">
+                        <span class="brand-text ms-2">Groom<span class="text-accent">'Go</span></span>
+                    </div>
+                    <p class="text-muted-custom mb-4">
+                        Premier van de toilettage mobile premium en Tunisie. Le salon professionnel qui se déplace chez vous pour le bonheur de vos animaux.
+                    </p>
+                    <div class="social-links d-flex gap-2">
+                        <a href="https://instagram.com" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://tiktok.com" target="_blank" class="social-btn"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/21654321000" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-title">Navigation</h5>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="packages.html">Nos Forfaits</a></li>
+                        <li><a href="products.html">Boutique & Soins</a></li>
+                        <li><a href="adoption.html">Adoption Responsable</a></li>
+                        <li><a href="notes.html">Avis Clients</a></li>
+                        <li><a href="booking.html">Réservation en ligne</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Zone d'intervention</h5>
+                    <ul class="footer-links list-unstyled">
+                        <li><i class="fas fa-map-pin text-accent me-2"></i> Grand Tunis & Banlieue Nord</li>
+                        <li><i class="fas fa-check text-success me-2"></i> La Marsa, Carthage, Gammarth</li>
+                        <li><i class="fas fa-check text-success me-2"></i> Lac 1 & Lac 2, Sidi Bou Saïd</li>
+                        <li><i class="fas fa-check text-success me-2"></i> Ennasr, Menzah, Ariana</li>
+                        <li><i class="fas fa-phone-alt text-accent me-2"></i> +216 54 321 000 / 71 890 123</li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <p class="text-muted-custom small mb-3">Recevez nos offres exclusives et conseils bien-être pour vos compagnons.</p>
+                    <form id="newsletterForm" class="footer-newsletter">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom border-top border-secondary pt-4 text-center text-muted-custom small">
+                <p class="mb-0">&copy; 2026 Groom'Go Tunisie. Tous droits réservés. Toilettage Mobile Haut de Gamme.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/auth.js"></script>
+    <script>
+        function switchAuthTab(type) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const forgotForm = document.getElementById('forgotPasswordForm');
+            const tabLoginBtn = document.getElementById('tabLoginBtn');
+            const tabRegBtn = document.getElementById('tabRegisterBtn');
+
+            if (type === 'login') {
+                loginForm.classList.remove('d-none');
+                registerForm.classList.add('d-none');
+                forgotForm.classList.add('d-none');
+                tabLoginBtn.classList.add('active-auth-tab');
+                tabLoginBtn.classList.remove('text-muted-custom');
+                tabRegBtn.classList.remove('active-auth-tab');
+                tabRegBtn.classList.add('text-muted-custom');
+            } else if (type === 'register') {
+                loginForm.classList.add('d-none');
+                registerForm.classList.remove('d-none');
+                forgotForm.classList.add('d-none');
+                tabRegBtn.classList.add('active-auth-tab');
+                tabRegBtn.classList.remove('text-muted-custom');
+                tabLoginBtn.classList.remove('active-auth-tab');
+                tabLoginBtn.classList.add('text-muted-custom');
+            } else if (type === 'forgot') {
+                loginForm.classList.add('d-none');
+                registerForm.classList.add('d-none');
+                forgotForm.classList.remove('d-none');
+            }
+        }
+
+        function quickFillLogin(role) {
+            switchAuthTab('login');
+            const emailInput = document.getElementById('loginEmail');
+            const pwdInput = document.getElementById('loginPassword');
+            if (role === 'admin') {
+                emailInput.value = 'admin@groomgo.tn';
+                pwdInput.value = 'admin123';
+            } else {
+                emailInput.value = 'client@groomgo.tn';
+                pwdInput.value = 'client123';
+            }
+        }
+    </script>
 </body>
 </html>

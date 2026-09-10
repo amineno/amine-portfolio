@@ -58,6 +58,21 @@ function initBookingSystem() {
     // Configuration du formulaire de soumission
     setupFormSubmission();
     
+    // Détection du paramètre d'URL service (ex: booking.html?service=complet)
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceParam = urlParams.get('service');
+    if (serviceParam) {
+        let targetService = 'complet';
+        if (serviceParam.includes('demi')) targetService = 'demi-complet';
+        else if (serviceParam.includes('baignoire')) targetService = 'baignoire';
+        else if (serviceParam.includes('complet')) targetService = 'complet';
+        
+        console.log('📌 Formule demandée via URL:', targetService);
+        setTimeout(() => {
+            selectService(targetService);
+        }, 150);
+    }
+    
     console.log('✅ Système de réservation initialisé avec succès!');
 }
 
@@ -142,9 +157,11 @@ function selectService(serviceType) {
     document.querySelectorAll('.service-option').forEach(card => {
         card.classList.remove('selected');
         card.style.transform = 'translateY(0)';
-        card.style.boxShadow = '0 5px 15px rgba(0,0,0,0.08)';
-        card.style.borderColor = '#e5e7eb';
-        card.style.backgroundColor = 'white';
+        card.style.boxShadow = 'none';
+        card.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+        card.style.backgroundColor = 'rgba(30, 41, 59, 0.7)';
+        const check = card.querySelector('.check-icon');
+        if (check) check.remove();
     });
     
     // Sélectionner la nouvelle carte
@@ -152,9 +169,9 @@ function selectService(serviceType) {
     if (selectedCard) {
         selectedCard.classList.add('selected');
         selectedCard.style.transform = 'translateY(-5px)';
-        selectedCard.style.boxShadow = '0 15px 30px rgba(79, 70, 229, 0.3)';
-        selectedCard.style.borderColor = '#4f46e5';
-        selectedCard.style.backgroundColor = 'rgba(79, 70, 229, 0.05)';
+        selectedCard.style.boxShadow = '0 15px 30px rgba(59, 130, 246, 0.3)';
+        selectedCard.style.borderColor = 'var(--accent-blue)';
+        selectedCard.style.backgroundColor = 'rgba(59, 130, 246, 0.15)';
         
         // Ajouter une icône de validation
         let checkIcon = selectedCard.querySelector('.check-icon');
@@ -280,20 +297,24 @@ function setupNavigation() {
 function goToStep(step) {
     console.log(`📍 Passage à l'étape ${step}`);
     
-    // Cacher l'étape actuelle
-    const currentStepElement = document.querySelector('.booking-step.active');
-    if (currentStepElement) {
-        currentStepElement.classList.remove('active');
-    }
+    // Cacher toutes les étapes
+    document.querySelectorAll('.booking-step').forEach(el => {
+        el.classList.remove('active');
+        el.style.display = 'none';
+    });
     
     // Afficher la nouvelle étape
     const newStepElement = document.getElementById(`step${step}`);
     if (newStepElement) {
         newStepElement.classList.add('active');
+        newStepElement.style.display = 'block';
         currentStep = step;
         
-        // Scroll vers le haut
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Scroll fluide vers le formulaire
+        const bookingCard = document.querySelector('.booking-card');
+        if (bookingCard) {
+            bookingCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
         
         // Mettre à jour la barre de progression
         updateProgressBar();
@@ -858,36 +879,49 @@ function showBookingConfirmation(bookingId) {
     const bookingForm = document.querySelector('.booking-form');
     
     if (bookingForm) {
+        const waMessage = `Bonjour Groom'Go, je confirme ma réservation #${bookingId} :%0A- Formule : ${bookingData.service.name}%0A- Animal : ${bookingData.pet.name} (${bookingData.pet.type})%0A- Date : ${bookingData.datetime.dateFormatted} à ${bookingData.datetime.timeFormatted}%0A- Tarif : ${calculateTotalPrice()} DT%0A- Adresse : ${bookingData.contact.address || ''}`;
+        const waLink = `https://wa.me/21629123456?text=${waMessage}`;
+
         bookingForm.innerHTML = `
-            <div class="text-center py-5">
-                <div class="success-icon mb-4">
-                    <i class="fas fa-check-circle"></i>
+            <div class="text-center py-4">
+                <div class="icon-box bg-success-soft text-success p-3 rounded-circle mx-auto mb-3" style="width: 75px; height: 75px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-check-circle fs-1"></i>
                 </div>
-                <h3 class="text-success mb-3">Réservation Confirmée!</h3>
-                <p class="lead mb-4">Votre réservation a été enregistrée avec succès.</p>
+                <h3 class="text-white fw-bold mb-2">Réservation Confirmée !</h3>
+                <p class="text-muted">Votre rendez-vous a bien été enregistré. Notre van mobile sera présent à votre adresse.</p>
                 
-                <div class="booking-confirmation-details">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Détails de votre réservation</h5>
-                            <div class="row text-start">
-                                <div class="col-md-6">
-                                    <p><strong>N° de réservation:</strong> ${bookingId}</p>
-                                    <p><strong>Service:</strong> ${bookingData.service.name}</p>
-                                    <p><strong>Animal:</strong> ${bookingData.pet.name} (${bookingData.pet.type})</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <p><strong>Date:</strong> ${bookingData.datetime.dateFormatted}</p>
-                                    <p><strong>Heure:</strong> ${bookingData.datetime.timeFormatted}</p>
-                                    <p><strong>Prix total:</strong> ${calculateTotalPrice()} DT</p>
-                                </div>
-                            </div>
+                <div class="glass-card p-4 my-4 text-start">
+                    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+                        <span class="text-muted small">Référence :</span>
+                        <span class="badge bg-primary text-white fs-6">#${bookingId}</span>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <small class="text-muted d-block">Formule choisie :</small>
+                            <span class="text-white fw-bold">${bookingData.service.name}</span>
+                        </div>
+                        <div class="col-sm-6">
+                            <small class="text-muted d-block">Compagnon :</small>
+                            <span class="text-white fw-bold">${bookingData.pet.name} (${bookingData.pet.type})</span>
+                        </div>
+                        <div class="col-sm-6">
+                            <small class="text-muted d-block">Date & Heure :</small>
+                            <span class="text-white fw-bold">${bookingData.datetime.dateFormatted} à ${bookingData.datetime.timeFormatted}</span>
+                        </div>
+                        <div class="col-sm-6">
+                            <small class="text-muted d-block">Montant total estimé :</small>
+                            <span class="text-gradient fw-bold fs-5">${calculateTotalPrice()} DT</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="mt-4">
-                    <a href="index.html" class="btn btn-primary">Retour à l'accueil</a>
+                <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 mt-4">
+                    <a href="${waLink}" target="_blank" class="btn btn-success btn-premium">
+                        <i class="fab fa-whatsapp me-2"></i> Envoyer rappel sur WhatsApp
+                    </a>
+                    <a href="index.html" class="btn-premium btn-premium-outline">
+                        Retour à l'accueil
+                    </a>
                 </div>
             </div>
         `;

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Réservation - Groom'go</title>
-    <meta name="description" content="Réservez votre service de toilettage mobile Groom'go en ligne">
+    <title>Réservation en Ligne - Groom'Go</title>
+    <meta name="description" content="Réservez votre séance de toilettage mobile à domicile en quelques clics. Choisissez votre formule, date et créneau horaire sur le Grand Tunis.">
     
     <!-- Favicon -->
     <link rel="icon" href="assets/img/logo.png" type="image/png">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -18,47 +18,62 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Flatpickr CSS for date/time picker -->
+    <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/design-system.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/booking.css">
 </head>
-<body>
+<body class="premium-theme text-main">
+    <!-- Mesh Background Decor -->
+    <div class="mesh-bg"></div>
+
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top glass-panel mx-lg-4 mt-lg-3">
+        <div class="container-fluid px-4">
             <a class="navbar-brand" href="index.html">
-                <img src="assets/img/Gemini_Generated_Image_imsa1bimsa1bimsa-removebg-preview.png" alt="Groom'go Logo" class="navbar-logo">
+                <img src="assets/img/logo.png" alt="Groom'go Logo" class="navbar-logo-new" style="height: 50px;">
+                <span class="ms-2 fw-bold text-gradient fs-4">Groom'Go</span>
             </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars text-white"></i>
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#home">Accueil</a>
+                        <a class="nav-link" href="index.html">Accueil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.html#about">À propos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#services">Services</a>
+                        <a class="nav-link" href="packages.html">Formules</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#contact">Contact</a>
+                        <a class="nav-link" href="products.html">Boutique</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="adoption.html">Adoption</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="notes.html">Avis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary ms-2" href="login.html">Connexion</a>
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                    <li class="nav-item" id="authNavContainer">
+                        <a class="nav-link btn-premium btn-premium-outline ms-lg-3" href="login.html" id="authNavBtn">
+                            <i class="fas fa-user-circle"></i> Connexion
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary ms-2 text-white" href="booking.html">Réserver</a>
+                        <a class="nav-link btn-premium btn-premium-primary ms-lg-2 active" href="booking.html">
+                            <i class="fas fa-calendar-alt"></i> Réserver
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -66,281 +81,259 @@
     </nav>
 
     <!-- Booking Container -->
-    <div class="booking-container">
-        <br></br>
-                    <br></br>
+    <div class="booking-container" style="padding-top: 140px; padding-bottom: 80px;">
         <div class="container">
-            <div class="row">
+            <!-- Progress Bar -->
+            <div class="progress-container mb-5">
+                <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                    <div class="progress-bar bg-gradient-premium" role="progressbar" style="width: 20%; background: linear-gradient(135deg, var(--accent-blue), #2563eb);"></div>
+                </div>
+                <div class="progress-steps mt-3 d-flex justify-content-between text-center">
+                    <div class="progress-step active small fw-bold">1. Formule</div>
+                    <div class="progress-step small text-muted">2. Animal</div>
+                    <div class="progress-step small text-muted">3. Date & Heure</div>
+                    <div class="progress-step small text-muted">4. Coordonnées</div>
+                    <div class="progress-step small text-muted">5. Confirmation</div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Formulaire Principal -->
                 <div class="col-lg-8">
-                    <!-- Booking Form -->
-                    
-                    <div class="booking-card">
-                        
-                        <div class="booking-header">
-                            <div class="header-icon">
-                                <i class="fas fa-calendar-alt"></i>
+                    <div class="booking-card glass-panel p-4 p-md-5">
+                        <div class="booking-header text-center mb-4 pb-3 border-bottom border-secondary">
+                            <div class="icon-box bg-primary-soft text-primary p-3 rounded-circle mx-auto mb-3" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-calendar-alt fs-3 text-gradient"></i>
                             </div>
-                            <h2>Réserver votre service</h2>
-                            <p>Choisissez votre service et planifiez votre rendez-vous en quelques clics</p>
-                            <div class="header-decoration">
-                                <div class="decoration-dot"></div>
-                                <div class="decoration-dot"></div>
-                                <div class="decoration-dot"></div>
-                            </div>
+                            <h2 class="text-white fw-bold">Réservez votre séance</h2>
+                            <p class="text-muted small">Notre van autonome se déplace chez vous à la date et heure convenues</p>
                         </div>
 
                         <form id="bookingForm" class="booking-form">
-                            <!-- Step 1: Service Selection -->
+                            <!-- Étape 1 : Formule -->
                             <div class="booking-step active" id="step1">
-                                <div class="step-header">
-                                    <h4><span class="step-number">1</span> Choisissez votre service</h4>
+                                <div class="step-header mb-4">
+                                    <h4 class="text-white fw-bold"><span class="badge bg-primary text-white rounded-circle me-2">1</span> Choisissez votre formule</h4>
                                 </div>
                                 
-                                <div class="service-selection">
+                                <div class="service-selection mb-4">
                                     <div class="row g-3">
                                         <div class="col-md-4">
-                                            <div class="service-option" data-service="complet" data-price="80" data-duration="2-3h">
-                                                <div class="service-icon">
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <h5>Paquet Complet</h5>
-                                                <p class="service-price">À partir de 80 DT</p>
-                                                <p class="service-duration">2h - 3h</p>
-                                                <ul class="service-includes">
-                                                    <li>Bain complet avec shampooing adapté</li>
-                                                    <li>Coupe/Tonte selon vos souhaits</li>
-                                                    <li>Coupe des griffes</li>
-                                                    <li>Nettoyage oreilles et yeux</li>
-                                                    <li>Parfumage et finition</li>
+                                            <div class="service-option glass-card p-3 text-center h-100 position-relative" data-service="complet" data-price="80" data-duration="2-3h" style="cursor: pointer;">
+                                                <div class="badge bg-primary position-absolute top-0 end-0 m-2 rounded-pill small">Populaire</div>
+                                                <i class="fas fa-crown text-warning fs-3 mb-2 mt-2"></i>
+                                                <h5 class="text-white fw-bold fs-6">Paquet Complet</h5>
+                                                <div class="text-gradient fw-bold fs-5">80 DT</div>
+                                                <div class="text-muted small mb-2"><i class="fas fa-clock me-1"></i> 2h - 3h</div>
+                                                <p class="text-muted small mb-0">Bain, tonte/coupe, griffes, dents, oreilles, parfum.</p>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="service-option" data-service="demi-complet" data-price="50" data-duration="1.5-2h">
-                                                <div class="service-icon">
-                                                    <i class="fas fa-location-dot"></i>
-                                                </div>
-                                                <h5>Paquet Demi-Complet</h5>
-                                                <p class="service-price">À partir de 50 DT</p>
-                                                <p class="service-duration">1h30 - 2h</p>
-                                                <ul class="service-includes">
-                                                    <li>Bain avec shampooing adapté</li>
-                                                    <li>Séchage professionnel</li>
-                                                    <li>Coupe des griffes</li>
-                                                    <li>Brossage et nettoyage des dents</li>
-                                                </ul>
+                                            <div class="service-option glass-card p-3 text-center h-100 position-relative" data-service="demi-complet" data-price="50" data-duration="1.5-2h" style="cursor: pointer;">
+                                                <i class="fas fa-heart text-danger fs-3 mb-2 mt-2"></i>
+                                                <h5 class="text-white fw-bold fs-6">Demi-Complet</h5>
+                                                <div class="text-white fw-bold fs-5">50 DT</div>
+                                                <div class="text-muted small mb-2"><i class="fas fa-clock me-1"></i> 1h30 - 2h</div>
+                                                <p class="text-muted small mb-0">Bain, séchage, griffes, brossage & dents.</p>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="service-option" data-service="baignoire" data-price="30" data-duration="45min-1h">
-                                                <div class="service-icon">
-                                                    <i class="fas fa-bath"></i>
-                                                </div>
-                                                <h5>Paquet Baignoire</h5>
-                                                <p class="service-price">À partir de 30 DT</p>
-                                                <p class="service-duration">45min - 1h</p>
-                                                <ul class="service-includes">
-                                                    <li>Bain avec shampooing adapté</li>
-                                                    <li>Séchage professionnel</li>
-                                                </ul>
+                                            <div class="service-option glass-card p-3 text-center h-100 position-relative" data-service="baignoire" data-price="30" data-duration="45min-1h" style="cursor: pointer;">
+                                                <i class="fas fa-bath text-info fs-3 mb-2 mt-2"></i>
+                                                <h5 class="text-white fw-bold fs-6">Baignoire Express</h5>
+                                                <div class="text-white fw-bold fs-5">30 DT</div>
+                                                <div class="text-muted small mb-2"><i class="fas fa-clock me-1"></i> 45min - 1h</div>
+                                                <p class="text-muted small mb-0">Bain tiède shampooing bio & séchage rapide.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div class="step-actions">
-                                    <button type="button" class="btn btn-primary" id="nextStep1" disabled>
-                                        Suivant <i class="fas fa-arrow-right ms-2"></i>
+                                <div class="d-flex justify-content-end pt-3 border-top border-secondary">
+                                    <button type="button" class="btn btn-premium btn-premium-primary px-4 py-2" id="nextStep1" disabled>
+                                        Étape suivante <i class="fas fa-arrow-right ms-2"></i>
                                     </button>
                                 </div>
                             </div>
 
-                            <!-- Step 2: Pet Information -->
-                            <div class="booking-step" id="step2">
-                                <div class="step-header">
-                                    <h4><span class="step-number">2</span> Informations sur votre animal</h4>
+                            <!-- Étape 2 : Animal -->
+                            <div class="booking-step" id="step2" style="display: none;">
+                                <div class="step-header mb-4">
+                                    <h4 class="text-white fw-bold"><span class="badge bg-primary text-white rounded-circle me-2">2</span> Informations sur votre compagnon</h4>
                                 </div>
                                 
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label class="form-label">Nom de l'animal *</label>
-                                        <input type="text" class="form-control" name="petName" placeholder="Ex: Rex" required>
+                                        <label class="form-label text-muted small text-uppercase fw-bold">Nom de l'animal *</label>
+                                        <input type="text" class="form-control form-control-premium" name="petName" placeholder="Ex: Max, Luna..." required>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Type d'animal *</label>
-                                        <select class="form-select" name="petType" required>
-                                            <option value="">Sélectionner</option>
-                                            <option value="chien">Chien</option>
-                                            <option value="chat">Chat</option>
+                                        <label class="form-label text-muted small text-uppercase fw-bold">Espèce *</label>
+                                        <select class="form-select form-control-premium" name="petType" required>
+                                            <option value="" selected>Sélectionner</option>
+                                            <option value="chien">Chien 🐶</option>
+                                            <option value="chat">Chat 🐱</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Race</label>
-                                        <input type="text" class="form-control" name="petBreed" placeholder="Ex: Golden Retriever">
+                                        <label class="form-label text-muted small text-uppercase fw-bold">Race</label>
+                                        <input type="text" class="form-control form-control-premium" name="petBreed" placeholder="Ex: Caniche, Berger, Persan...">
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Âge</label>
-                                        <select class="form-select" name="petAge">
-                                            <option value="">Sélectionner</option>
-                                            <option value="chiot">Chiot (0-1 an)</option>
-                                            <option value="jeune">Jeune (1-3 ans)</option>
-                                            <option value="adulte">Adulte (3-7 ans)</option>
+                                        <label class="form-label text-muted small text-uppercase fw-bold">Tranche d'âge</label>
+                                        <select class="form-select form-control-premium" name="petAge">
+                                            <option value="bebe">Bébé (0 - 1 an)</option>
+                                            <option value="jeune" selected>Jeune (1 - 3 ans)</option>
+                                            <option value="adulte">Adulte (3 - 7 ans)</option>
                                             <option value="senior">Senior (7+ ans)</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Taille *</label>
-                                        <select class="form-select" name="petSize" required>
-                                            <option value="">Sélectionner</option>
-                                            <option value="petit">Petit (0-10kg)</option>
-                                            <option value="moyen">Moyen (10-25kg)</option>
-                                            <option value="grand">Grand (25-40kg)</option>
-                                            <option value="tres-grand">Très grand (40kg+)</option>
+                                        <label class="form-label text-muted small text-uppercase fw-bold">Gabarit / Taille *</label>
+                                        <select class="form-select form-control-premium" name="petSize" required>
+                                            <option value="petit" selected>Petit (&lt; 10 kg) - Sans supplément</option>
+                                            <option value="moyen">Moyen (10 - 25 kg) (+15 DT)</option>
+                                            <option value="grand">Grand (25 - 40 kg) (+25 DT)</option>
+                                            <option value="tres-grand">Très Grand (40 kg+) (+40 DT)</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Tempérament</label>
-                                        <select class="form-select" name="petTemperament">
-                                            <option value="">Sélectionner</option>
-                                            <option value="calme">Calme</option>
-                                            <option value="actif">Actif</option>
-                                            <option value="nerveux">Nerveux</option>
-                                            <option value="agressif">Agressif</option>
+                                        <label class="form-label text-muted small text-uppercase fw-bold">Tempérament</label>
+                                        <select class="form-select form-control-premium" name="petTemperament">
+                                            <option value="calme" selected>Calme et docile</option>
+                                            <option value="actif">Actif / Joueur</option>
+                                            <option value="nerveux">Nerveux / Anxieux</option>
+                                            <option value="agressif">Peut grogner ou mordre</option>
                                         </select>
                                     </div>
                                     <div class="col-12">
-                                        <label class="form-label">Notes spéciales</label>
-                                        <textarea class="form-control" name="petNotes" rows="3" placeholder="Allergies, comportements particuliers, préférences..."></textarea>
+                                        <label class="form-label text-muted small text-uppercase fw-bold">Remarques ou sensibilité particulière</label>
+                                        <textarea class="form-control form-control-premium" name="petNotes" rows="2" placeholder="Ex: Otite récente, nœuds sous les pattes, aime les caresses..."></textarea>
                                     </div>
                                 </div>
                                 
-                                <div class="step-actions">
-                                    <button type="button" class="btn btn-outline-primary" id="prevStep2">
+                                <div class="d-flex justify-content-between pt-4 mt-3 border-top border-secondary">
+                                    <button type="button" class="btn btn-premium btn-premium-outline px-4" id="prevStep2">
                                         <i class="fas fa-arrow-left me-2"></i> Précédent
                                     </button>
-                                    <button type="button" class="btn btn-primary" id="nextStep2">
-                                        Suivant <i class="fas fa-arrow-right ms-2"></i>
+                                    <button type="button" class="btn btn-premium btn-premium-primary px-4" id="nextStep2">
+                                        Étape suivante <i class="fas fa-arrow-right ms-2"></i>
                                     </button>
                                 </div>
                             </div>
 
-                            <!-- Step 3: Date & Time -->
-                            <div class="booking-step" id="step3">
-                                <div class="step-header">
-                                    <h4><span class="step-number">3</span> Date et heure</h4>
+                            <!-- Étape 3 : Date & Heure -->
+                            <div class="booking-step" id="step3" style="display: none;">
+                                <div class="step-header mb-4">
+                                    <h4 class="text-white fw-bold"><span class="badge bg-primary text-white rounded-circle me-2">3</span> Planifier votre créneau</h4>
                                 </div>
                                 
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label class="form-label">Date souhaitée *</label>
-                                        <input type="date" class="form-control" id="bookingDate" name="bookingDate" required>
+                                        <label class="form-label text-muted small text-uppercase fw-bold">Date souhaitée *</label>
+                                        <input type="date" class="form-control form-control-premium" id="bookingDate" name="bookingDate" required>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Heure souhaitée *</label>
-                                        <select class="form-select" name="bookingTime" required>
-                                            <option value="">Sélectionner une heure</option>
-                                            <option value="08:00">08:00</option>
-                                            <option value="09:00">09:00</option>
-                                            <option value="10:00">10:00</option>
-                                            <option value="11:00">11:00</option>
-                                            <option value="14:00">14:00</option>
-                                            <option value="15:00">15:00</option>
-                                            <option value="16:00">16:00</option>
-                                            <option value="17:00">17:00</option>
+                                        <label class="form-label text-muted small text-uppercase fw-bold">Créneau horaire *</label>
+                                        <select class="form-select form-control-premium" name="bookingTime" required>
+                                            <option value="" selected>Choisir une heure d'arrivée</option>
+                                            <option value="08:30">08:30 - Matin</option>
+                                            <option value="10:30">10:30 - Matin</option>
+                                            <option value="12:30">12:30 - Midi</option>
+                                            <option value="14:30">14:30 - Après-midi</option>
+                                            <option value="16:30">16:30 - Fin de journée</option>
                                         </select>
                                     </div>
                                     <div class="col-12">
-                                        <div class="availability-info">
-                                            <i class="fas fa-info-circle me-2"></i>
-                                            <span>Réservation recommandée 48h à l'avance. Service d'urgence disponible avec supplément.</span>
+                                        <div class="glass-panel p-3 d-flex align-items-center gap-3">
+                                            <i class="fas fa-clock text-warning fs-4"></i>
+                                            <small class="text-muted">
+                                                Nos toiletteurs arrivent directement avec le van devant votre domicile. Merci de prévoir un stationnement accessible dans la rue ou l'allée.
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div class="step-actions">
-                                    <button type="button" class="btn btn-outline-primary" id="prevStep3">
+                                <div class="d-flex justify-content-between pt-4 mt-3 border-top border-secondary">
+                                    <button type="button" class="btn btn-premium btn-premium-outline px-4" id="prevStep3">
                                         <i class="fas fa-arrow-left me-2"></i> Précédent
                                     </button>
-                                    <button type="button" class="btn btn-primary" id="nextStep3">
-                                        Suivant <i class="fas fa-arrow-right ms-2"></i>
+                                    <button type="button" class="btn btn-premium btn-premium-primary px-4" id="nextStep3">
+                                        Étape suivante <i class="fas fa-arrow-right ms-2"></i>
                                     </button>
                                 </div>
                             </div>
 
-                            <!-- Step 4: Contact Information -->
-                            <div class="booking-step" id="step4">
-                                <div class="step-header">
-                                    <h4><span class="step-number">4</span> Vos informations</h4>
+                            <!-- Étape 4 : Coordonnées -->
+                            <div class="booking-step" id="step4" style="display: none;">
+                                <div class="step-header mb-4">
+                                    <h4 class="text-white fw-bold"><span class="badge bg-primary text-white rounded-circle me-2">4</span> Vos coordonnées & Adresse</h4>
                                 </div>
                                 
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label class="form-label">Prénom *</label>
-                                        <input type="text" class="form-control" name="firstName" placeholder="Votre prénom" required>
+                                        <label class="form-label text-muted small text-uppercase fw-bold">Prénom *</label>
+                                        <input type="text" class="form-control form-control-premium" name="firstName" placeholder="Votre prénom" required>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Nom *</label>
-                                        <input type="text" class="form-control" name="lastName" placeholder="Votre nom" required>
+                                        <label class="form-label text-muted small text-uppercase fw-bold">Nom *</label>
+                                        <input type="text" class="form-control form-control-premium" name="lastName" placeholder="Votre nom" required>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Email *</label>
-                                        <input type="email" class="form-control" name="email" placeholder="votre@email.com" required>
+                                        <label class="form-label text-muted small text-uppercase fw-bold">Email *</label>
+                                        <input type="email" class="form-control form-control-premium" name="email" placeholder="votre@email.com" required>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Téléphone *</label>
-                                        <input type="tel" class="form-control" name="phone" placeholder="+216 XX XXX XXX" required>
+                                        <label class="form-label text-muted small text-uppercase fw-bold">Téléphone (WhatsApp) *</label>
+                                        <input type="tel" class="form-control form-control-premium" name="phone" placeholder="+216 XX XXX XXX" required>
                                     </div>
                                     <div class="col-12">
-                                        <label class="form-label">Adresse complète *</label>
-                                        <textarea class="form-control" name="address" rows="3" placeholder="Adresse complète avec détails d'accès" required></textarea>
+                                        <label class="form-label text-muted small text-uppercase fw-bold">Adresse exacte d'intervention *</label>
+                                        <textarea class="form-control form-control-premium" name="address" rows="2" placeholder="Numéro, rue, résidence, ville (ex: La Marsa, Tunis) et repère d'accès..." required></textarea>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="smsNotifications" id="smsNotifications" checked>
-                                            <label class="form-check-label" for="smsNotifications">
-                                                Recevoir des notifications SMS
+                                            <label class="form-check-label text-muted small" for="smsNotifications">
+                                                Recevoir la confirmation et les rappels par SMS / WhatsApp
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div class="step-actions">
-                                    <button type="button" class="btn btn-outline-primary" id="prevStep4">
+                                <div class="d-flex justify-content-between pt-4 mt-3 border-top border-secondary">
+                                    <button type="button" class="btn btn-premium btn-premium-outline px-4" id="prevStep4">
                                         <i class="fas fa-arrow-left me-2"></i> Précédent
                                     </button>
-                                    <button type="button" class="btn btn-primary" id="nextStep4">
-                                        Suivant <i class="fas fa-arrow-right ms-2"></i>
+                                    <button type="button" class="btn btn-premium btn-premium-primary px-4" id="nextStep4">
+                                        Vérifier le récapitulatif <i class="fas fa-arrow-right ms-2"></i>
                                     </button>
                                 </div>
                             </div>
 
-                            <!-- Step 5: Confirmation -->
-                            <div class="booking-step" id="step5">
-                                <div class="step-header">
-                                    <h4><span class="step-number">5</span> Confirmation</h4>
+                            <!-- Étape 5 : Récapitulatif -->
+                            <div class="booking-step" id="step5" style="display: none;">
+                                <div class="step-header mb-4">
+                                    <h4 class="text-white fw-bold"><span class="badge bg-primary text-white rounded-circle me-2">5</span> Récapitulatif & Validation</h4>
                                 </div>
                                 
-                                <div class="booking-summary">
-                                    <h5>Résumé de votre réservation</h5>
-                                    <div class="summary-content" id="bookingSummary">
-                                        <!-- Summary will be populated by JavaScript -->
-                                    </div>
+                                <div class="booking-summary glass-panel p-4 mb-4" id="bookingSummary">
+                                    <!-- Populated by booking.js -->
                                 </div>
                                 
-                                <div class="terms-acceptance">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="acceptTerms" required>
-                                        <label class="form-check-label" for="acceptTerms">
-                                            J'accepte les <a href="#" class="text-primary">conditions générales</a> et la <a href="#" class="text-primary">politique d'annulation</a>
-                                        </label>
-                                    </div>
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="acceptTerms" required checked>
+                                    <label class="form-check-label text-muted small" for="acceptTerms">
+                                        J'accepte les conditions de service de Groom'Go et je certifie l'exactitude des informations renseignées.
+                                    </label>
                                 </div>
                                 
-                                <div class="step-actions">
-                                    <button type="button" class="btn btn-outline-primary" id="prevStep5">
-                                        <i class="fas fa-arrow-left me-2"></i> Précédent
+                                <div class="d-flex justify-content-between pt-3 border-top border-secondary">
+                                    <button type="button" class="btn btn-premium btn-premium-outline px-4" id="prevStep5">
+                                        <i class="fas fa-arrow-left me-2"></i> Modifier
                                     </button>
-                                    <button type="submit" class="btn btn-success">
-                                        <i class="fas fa-check me-2"></i> Confirmer la réservation
+                                    <button type="submit" class="btn btn-premium btn-premium-primary px-4 py-3">
+                                        <i class="fas fa-check-circle me-2"></i> Confirmer ma Réservation
                                     </button>
                                 </div>
                             </div>
@@ -348,44 +341,35 @@
                     </div>
                 </div>
 
+                <!-- Colonne d'Information Latérale -->
                 <div class="col-lg-4">
-                    <!-- Booking Summary Sidebar -->
-                    <div class="booking-sidebar">
-                        <div class="sidebar-card">
-                            <h5><i class="fas fa-clipboard-list me-2"></i>Votre réservation</h5>
-                            <div class="booking-details" id="sidebarSummary">
-                                <p class="text-muted">Sélectionnez un service pour commencer</p>
+                    <div class="booking-sidebar d-flex flex-column gap-4">
+                        <div class="sidebar-card glass-panel p-4">
+                            <h5 class="text-white fw-bold mb-3"><i class="fas fa-clipboard-check text-primary-light me-2"></i>Votre Réservation</h5>
+                            <div id="sidebarSummary">
+                                <p class="text-muted small mb-0">Sélectionnez une formule pour voir le calcul en direct.</p>
                             </div>
                         </div>
 
-                        <div class="sidebar-card">
-                            <h5><i class="fas fa-map-marker-alt me-2"></i>Zone de service</h5>
-                            <p><strong>Grand Tunis et environs</strong></p>
-                            <ul class="service-info">
-                                <li><i class="fas fa-check text-success me-2"></i>Déplacement gratuit (15km)</li>
-                                <li><i class="fas fa-info-circle text-info me-2"></i>5 DT au-delà de 15km</li>
-                                <li><i class="fas fa-clock text-warning me-2"></i>Réservation 48h à l'avance</li>
+                        <div class="sidebar-card glass-panel p-4">
+                            <h5 class="text-white fw-bold mb-3"><i class="fas fa-truck-moving text-primary-light me-2"></i>Zone d'Intervention</h5>
+                            <ul class="list-unstyled text-muted small mb-0 d-flex flex-column gap-2">
+                                <li><i class="fas fa-check text-success me-2"></i>Grand Tunis (Tunis, Marsa, Carthage)</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Ariana, Ennasr, Menzah, Soukra</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Ben Arous, Mégrine, Radès</li>
+                                <li><i class="fas fa-bolt text-warning me-2"></i>Van 100% autonome en eau & courant</li>
                             </ul>
                         </div>
 
-                        <div class="sidebar-card">
-                            <h5><i class="fas fa-paw me-2"></i>Suppléments taille</h5>
-                            <ul class="service-info">
-                                <li><i class="fas fa-dog text-success me-2"></i>Petit (0-10kg): Inclus</li>
-                                <li><i class="fas fa-dog text-info me-2"></i>Moyen (10-25kg): +15 DT</li>
-                                <li><i class="fas fa-dog text-warning me-2"></i>Grand (25-40kg): +25 DT</li>
-                                <li><i class="fas fa-dog text-danger me-2"></i>Très grand (40kg+): +40 DT</li>
-                            </ul>
-                        </div>
-
-                        <div class="sidebar-card">
-                            <h5><i class="fas fa-phone me-2"></i>Besoin d'aide ?</h5>
-                            <p>Notre équipe est là pour vous aider</p>
-                            <a href="tel:+216XXXXXXXX" class="btn btn-outline-primary w-100 mb-2">
-                                <i class="fas fa-phone me-2"></i>Appeler
+                        <div class="sidebar-card glass-panel p-4 text-center">
+                            <i class="fas fa-headset fs-2 text-gradient mb-3"></i>
+                            <h5 class="text-white fw-bold mb-2">Une question ?</h5>
+                            <p class="text-muted small mb-3">Notre équipe vous répond immédiatement pour ajuster votre rendez-vous.</p>
+                            <a href="https://wa.me/21629123456" target="_blank" class="btn btn-premium btn-premium-outline w-100 mb-2">
+                                <i class="fab fa-whatsapp me-2"></i> WhatsApp (+216 29 123 456)
                             </a>
-                            <a href="https://wa.me/216XXXXXXXX" class="btn btn-outline-success w-100">
-                                <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                            <a href="tel:+21629123456" class="btn btn-premium btn-premium-primary w-100">
+                                <i class="fas fa-phone-alt me-2"></i> Nous appeler
                             </a>
                         </div>
                     </div>
@@ -394,19 +378,59 @@
         </div>
     </div>
 
-    <!-- Progress Bar -->
-    <div class="progress-container">
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 20%"></div>
+    <!-- Footer -->
+    <footer class="footer bg-dark-2 pt-5">
+        <div class="container pt-5">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <a class="navbar-brand mb-4 d-inline-block" href="index.html">
+                        <img src="assets/img/logo.png" alt="Logo" style="height: 45px;">
+                        <span class="ms-2 fw-bold text-gradient fs-4">Groom'Go</span>
+                    </a>
+                    <p class="text-muted">
+                        Premier service de toilettage mobile d'élite en Tunisie. Un salon entièrement équipé directement devant votre porte pour le bien-être sans stress de vos compagnons.
+                    </p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link-premium"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener" class="social-link-premium"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener" class="social-link-premium"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/21629123456" target="_blank" rel="noopener" class="social-link-premium"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1">
+                    <h5 class="fw-bold mb-4 text-white">Services</h5>
+                    <ul class="list-unstyled footer-links-premium">
+                        <li><a href="packages.html">Formules & Tarifs</a></li>
+                        <li><a href="booking.html">Prendre Rendez-vous</a></li>
+                        <li><a href="products.html">Boutique & Soins</a></li>
+                        <li><a href="adoption.html">Adoption Solidaire</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="fw-bold mb-4 text-white">Navigation</h5>
+                    <ul class="list-unstyled footer-links-premium">
+                        <li><a href="index.html#home">Accueil</a></li>
+                        <li><a href="index.html#about">À propos</a></li>
+                        <li><a href="notes.html">Avis Clients</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="login.html">Espace Membre / Admin</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="fw-bold mb-4 text-white">Newsletter</h5>
+                    <p class="text-muted small">Recevez nos conseils et offres exclusives sur les soins animaliers.</p>
+                    <form id="newsletterForm" class="input-group mb-3">
+                        <input type="email" class="form-control form-control-premium" placeholder="Votre email" required>
+                        <button class="btn btn-primary bg-gradient px-3" type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <small class="text-muted"><i class="fas fa-shield-alt text-success me-1"></i> Respect de votre vie privée garanti.</small>
+                </div>
+            </div>
+            <div class="border-top border-secondary py-4 text-center">
+                <p class="text-muted mb-0">&copy; 2026 Groom'Go Tunisie. Fait avec passion et dévouement pour vos animaux.</p>
+            </div>
         </div>
-        <div class="progress-steps">
-            <div class="progress-step active">Service</div>
-            <div class="progress-step">Animal</div>
-            <div class="progress-step">Date</div>
-            <div class="progress-step">Contact</div>
-            <div class="progress-step">Confirmation</div>
-        </div>
-    </div>
+    </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -323,3 +323,75 @@
         gap: 0.5rem;
     }
 }
+
+/* Premium Dark Theme Overrides */
+body.premium-theme .adoption-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+}
+
+body.premium-theme .adoption-card:hover {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: var(--accent-blue);
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+}
+
+body.premium-theme .adoption-card-title {
+    color: #ffffff;
+}
+
+body.premium-theme .adoption-card-description {
+    color: #94a3b8;
+}
+
+body.premium-theme .info-item {
+    color: #cbd5e1;
+}
+
+body.premium-theme .filters-section {
+    background: transparent !important;
+    box-shadow: none;
+}
+
+body.premium-theme .filters-section .form-select {
+    background-color: rgba(30, 41, 59, 0.8);
+    color: #f8fafc;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.premium-theme .modal-content {
+    background: #0f172a !important;
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #f8fafc;
+}
+
+body.premium-theme .modal-content .form-control,
+body.premium-theme .modal-content .form-select {
+    background-color: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+body.premium-theme .modal-content .form-control:focus,
+body.premium-theme .modal-content .form-select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+    background-color: #1e293b;
+    color: #ffffff;
+}
+
+body.premium-theme .modal-content label {
+    color: #e2e8f0;
+}
+
+body.premium-theme .detail-list li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.premium-theme .detail-list strong {
+    color: #93c5fd;
+}
+

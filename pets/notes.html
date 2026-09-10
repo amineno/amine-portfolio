@@ -3,196 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Évaluations - GroomGo</title>
+    <title>Avis & Évaluations Clients - Groom'Go Tunisie</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS Dependencies -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/design-system.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/notes.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="notes-page">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+<body class="notes-page premium-theme text-main">
+    <div class="mesh-bg"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top modern-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="assets/img/Gemini_Generated_Image_imsa1bimsa1bimsa-removebg-preview.png" alt="Groom'go Logo" class="navbar-logo">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="assets/img/Gemini_Generated_Image_imsa1bimsa1bimsa-removebg-preview.png" alt="Groom'go Logo" class="brand-logo">
+                <span class="brand-text">Groom<span class="text-accent">'Go</span></span>
             </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="toggler-icon"></span>
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#home">Accueil</a>
+                        <a class="nav-link" href="index.html">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#about">À propos</a>
+                        <a class="nav-link" href="packages.html">Forfaits</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#services">Services</a>
+                        <a class="nav-link" href="products.html">Boutique</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="adoption.html">Adoption</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="notes.html">Avis</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.html#contact">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="notes.html">Avis</a>
+                    
+                    <!-- Dynamic Auth container -->
+                    <li class="nav-item ms-lg-2" id="authNavContainer">
+                        <a class="nav-link nav-btn-outline" href="login.html">
+                            <i class="fas fa-user me-1"></i> Connexion
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary ms-2" href="login.html">Connexion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-primary ms-2 text-white" href="booking.html">Réserver</a>
+                    
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link nav-btn-primary" href="booking.html">
+                            <i class="fas fa-calendar-check me-1"></i> Réserver
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main class="main">
-        <div class="container">
-            <!-- Hero Section -->
-            <section class="hero">
-                <h1>Évaluations & Avis Clients</h1>
-                <p>Partagez votre expérience et découvrez les avis de nos clients</p>
-            </section>
+    <main class="main" style="padding-top: 100px;">
+        <!-- Hero Section -->
+        <section class="py-5 text-center position-relative">
+            <div class="container">
+                <div class="badge-pill mb-3">
+                    <i class="fas fa-star text-warning me-1"></i> Retours d'expérience vérifiés
+                </div>
+                <h1 class="display-4 fw-bold mb-3">Avis & Évaluations Clients</h1>
+                <p class="text-muted-custom mx-auto" style="max-width: 650px; font-size: 1.15rem;">
+                    Découvrez ce que les propriétaires de chiens et chats pensent de notre camion de toilettage mobile en Tunisie.
+                </p>
+            </div>
+        </section>
 
-            <!-- Rating Overview -->
-            <section class="rating-overview">
+        <div class="container mb-5">
+            <!-- Rating Overview Card -->
+            <div class="rating-overview glass-card mb-5">
                 <div class="rating-summary">
-                    <div class="average-rating">
-                        <div class="rating-number" id="averageRating">4.8</div>
-                        <div class="rating-stars" id="averageStars">
+                    <div class="average-rating text-center">
+                        <div class="rating-number" id="averageRating">4.9</div>
+                        <div class="rating-stars mb-2" id="averageStars">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
-                        <div class="rating-count">Basé sur <span id="totalReviews">0</span> avis</div>
+                        <div class="rating-count text-muted-custom">
+                            Basé sur <span id="totalReviews" class="fw-bold text-white">5</span> avis vérifiés
+                        </div>
                     </div>
+                    
                     <div class="rating-breakdown">
                         <div class="rating-bar">
                             <span>5 étoiles</span>
                             <div class="bar">
-                                <div class="fill" id="stars5" style="width: 70%"></div>
+                                <div class="fill" id="stars5" style="width: 80%"></div>
                             </div>
-                            <span id="count5">0</span>
+                            <span id="count5">4</span>
                         </div>
                         <div class="rating-bar">
                             <span>4 étoiles</span>
                             <div class="bar">
                                 <div class="fill" id="stars4" style="width: 20%"></div>
                             </div>
-                            <span id="count4">0</span>
+                            <span id="count4">1</span>
                         </div>
                         <div class="rating-bar">
                             <span>3 étoiles</span>
                             <div class="bar">
-                                <div class="fill" id="stars3" style="width: 7%"></div>
+                                <div class="fill" id="stars3" style="width: 0%"></div>
                             </div>
                             <span id="count3">0</span>
                         </div>
                         <div class="rating-bar">
                             <span>2 étoiles</span>
                             <div class="bar">
-                                <div class="fill" id="stars2" style="width: 2%"></div>
+                                <div class="fill" id="stars2" style="width: 0%"></div>
                             </div>
                             <span id="count2">0</span>
                         </div>
                         <div class="rating-bar">
                             <span>1 étoile</span>
                             <div class="bar">
-                                <div class="fill" id="stars1" style="width: 1%"></div>
+                                <div class="fill" id="stars1" style="width: 0%"></div>
                             </div>
                             <span id="count1">0</span>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Add Review Form -->
-            <section class="add-review">
-                <h2>Laisser un avis</h2>
-                <form id="reviewForm" class="review-form">
-                    <div class="form-group">
-                        <label for="clientName">Nom *</label>
-                        <input type="text" id="clientName" name="clientName" required>
+            <div class="row g-4">
+                <!-- Left: Add Review Form -->
+                <div class="col-lg-5">
+                    <div class="glass-card p-4 p-md-5 sticky-lg-top" style="top: 100px;">
+                        <h3 class="fw-bold mb-3 d-flex align-items-center gap-2">
+                            <i class="fas fa-pen text-accent"></i> Laisser un avis
+                        </h3>
+                        <p class="text-muted-custom small mb-4">
+                            Votre animal a profité d'un soin Groom'Go ? Donnez votre impression et aidez la communauté !
+                        </p>
+                        
+                        <form id="reviewForm" class="review-form">
+                            <div class="mb-3">
+                                <label for="clientName" class="form-label text-light small fw-bold">Nom complet ou Prénom *</label>
+                                <input type="text" class="form-control" id="clientName" name="clientName" placeholder="Ex: Yassine B." required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="clientEmail" class="form-label text-light small fw-bold">Email (ne sera pas publié)</label>
+                                <input type="email" class="form-control" id="clientEmail" name="clientEmail" placeholder="votre@email.com">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="serviceType" class="form-label text-light small fw-bold">Service utilisé *</label>
+                                <select class="form-select" id="serviceType" name="serviceType" required>
+                                    <option value="">Sélectionner une formule</option>
+                                    <option value="Toilettage Complet">Toilettage Complet (80 DT)</option>
+                                    <option value="Demi-Complet">Demi-Complet (50 DT)</option>
+                                    <option value="Baignoire & Bain">Baignoire & Séchage (30 DT)</option>
+                                    <option value="Coupe Griffes / Soins">Coupe Griffes & Soins express</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label text-light small fw-bold d-block">Votre note *</label>
+                                <div class="star-rating d-flex gap-2 p-2 bg-dark rounded border border-secondary" id="starRating" style="cursor: pointer;">
+                                    <i class="far fa-star fs-4" data-rating="1"></i>
+                                    <i class="far fa-star fs-4" data-rating="2"></i>
+                                    <i class="far fa-star fs-4" data-rating="3"></i>
+                                    <i class="far fa-star fs-4" data-rating="4"></i>
+                                    <i class="far fa-star fs-4" data-rating="5"></i>
+                                </div>
+                                <input type="hidden" id="rating" name="rating" required>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="reviewText" class="form-label text-light small fw-bold">Votre commentaire *</label>
+                                <textarea class="form-control" id="reviewText" name="reviewText" rows="4" placeholder="Décrivez le déroulement du rendez-vous, le comportement de l'animal, la propreté du van..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary w-100 py-3 fw-bold">
+                                <i class="fas fa-paper-plane me-2"></i> Publier mon avis
+                            </button>
+                        </form>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="clientEmail">Email</label>
-                        <input type="email" id="clientEmail" name="clientEmail">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="serviceType">Service utilisé</label>
-                        <select id="serviceType" name="serviceType">
-                            <option value="">Sélectionner un service</option>
-                            <option value="Toilettage Complet">Toilettage Complet</option>
-                            <option value="Demi-Complet">Demi-Complet</option>
-                            <option value="Baignoire">Baignoire</option>
-                            <option value="Coupe Griffes">Coupe Griffes</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Note *</label>
-                        <div class="star-rating" id="starRating">
-                            <i class="far fa-star" data-rating="1"></i>
-                            <i class="far fa-star" data-rating="2"></i>
-                            <i class="far fa-star" data-rating="3"></i>
-                            <i class="far fa-star" data-rating="4"></i>
-                            <i class="far fa-star" data-rating="5"></i>
-                        </div>
-                        <input type="hidden" id="rating" name="rating" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="reviewText">Votre avis *</label>
-                        <textarea id="reviewText" name="reviewText" rows="4" required 
-                                placeholder="Partagez votre expérience avec nos services..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn-submit">
-                        <i class="fas fa-paper-plane"></i>
-                        Publier l'avis
-                    </button>
-                </form>
-            </section>
+                </div>
 
-            <!-- Reviews List -->
-            <section class="reviews-list">
-                <h2>Avis des clients</h2>
-                <div class="reviews-container" id="reviewsContainer">
-                    <!-- Reviews will be loaded here -->
+                <!-- Right: Reviews List -->
+                <div class="col-lg-7">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="fw-bold mb-0">Tous les avis</h3>
+                        <span class="badge bg-primary bg-opacity-25 text-primary border border-primary px-3 py-2 rounded-pill">
+                            <i class="fas fa-shield-alt me-1"></i> 100% Vérifiés
+                        </span>
+                    </div>
+
+                    <div class="reviews-container d-flex flex-column gap-3" id="reviewsContainer">
+                        <!-- Reviews populated dynamically by notes.js -->
+                    </div>
                 </div>
-                
-                <div class="load-more">
-                    <button id="loadMoreBtn" class="btn-load-more" style="display: none;">
-                        Voir plus d'avis
-                    </button>
-                </div>
-            </section>
+            </div>
         </div>
     </main>
 
     <!-- Success Modal -->
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fas fa-check-circle"></i> Merci !</h3>
-                <button class="close-modal" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>Votre avis a été publié avec succès. Merci pour votre retour !</p>
-            </div>
-            <div class="modal-footer">
-                <button onclick="closeModal()" class="btn-primary">Fermer</button>
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card border border-secondary text-center p-4">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                    </div>
+                    <h3 class="fw-bold mb-2">Merci pour votre avis !</h3>
+                    <p class="text-muted-custom mb-4">Votre retour aide considérablement notre équipe de toiletteurs mobiles à maintenir l'excellence de nos services partout en Tunisie.</p>
+                    <button type="button" class="btn btn-primary px-4 py-2" data-bs-dismiss="modal">Fermer</button>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Modern Footer -->
+    <footer class="modern-footer pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-brand mb-3">
+                        <img src="assets/img/Gemini_Generated_Image_imsa1bimsa1bimsa-removebg-preview.png" alt="Groom'Go Logo" height="42">
+                        <span class="brand-text ms-2">Groom<span class="text-accent">'Go</span></span>
+                    </div>
+                    <p class="text-muted-custom mb-4">
+                        Premier van de toilettage mobile premium en Tunisie. Le salon professionnel qui se déplace chez vous pour le bonheur de vos animaux.
+                    </p>
+                    <div class="social-links d-flex gap-2">
+                        <a href="https://instagram.com" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://tiktok.com" target="_blank" class="social-btn"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/21654321000" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-title">Navigation</h5>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="packages.html">Nos Forfaits</a></li>
+                        <li><a href="products.html">Boutique & Soins</a></li>
+                        <li><a href="adoption.html">Adoption Responsable</a></li>
+                        <li><a href="notes.html">Avis Clients</a></li>
+                        <li><a href="booking.html">Réservation en ligne</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Zone d'intervention</h5>
+                    <ul class="footer-links list-unstyled">
+                        <li><i class="fas fa-map-pin text-accent me-2"></i> Grand Tunis & Banlieue Nord</li>
+                        <li><i class="fas fa-check text-success me-2"></i> La Marsa, Carthage, Gammarth</li>
+                        <li><i class="fas fa-check text-success me-2"></i> Lac 1 & Lac 2, Sidi Bou Saïd</li>
+                        <li><i class="fas fa-check text-success me-2"></i> Ennasr, Menzah, Ariana</li>
+                        <li><i class="fas fa-phone-alt text-accent me-2"></i> +216 54 321 000 / 71 890 123</li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <p class="text-muted-custom small mb-3">Recevez nos offres exclusives et conseils bien-être pour vos compagnons.</p>
+                    <form id="newsletterForm" class="footer-newsletter">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom border-top border-secondary pt-4 text-center text-muted-custom small">
+                <p class="mb-0">&copy; 2026 Groom'Go Tunisie. Tous droits réservés. Toilettage Mobile Haut de Gamme.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
     <script src="assets/js/notes.js"></script>
 </body>
 </html>

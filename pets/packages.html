@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos Paquets - Groom'go</title>
-    <meta name="description" content="Découvrez nos trois formules de toilettage mobile à domicile : Paquet Complet, Demi-Complet et Baignoire.">
+    <title>Formules & Tarifs de Toilettage - Groom'Go</title>
+    <meta name="description" content="Découvrez nos 3 formules de toilettage mobile à domicile en Tunisie : Paquet Complet, Demi-Complet et Baignoire Express. Soins sur-mesure sans stress.">
     
     <!-- Favicon -->
     <link rel="icon" href="assets/img/logo.png" type="image/png">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -19,22 +19,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/design-system.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="premium-theme text-main">
+    <!-- Mesh Background Decor -->
+    <div class="mesh-bg"></div>
+
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top glass-panel mx-lg-4 mt-lg-3">
+        <div class="container-fluid px-4">
             <a class="navbar-brand" href="index.html">
-                <img src="assets/img/Gemini_Generated_Image_imsa1bimsa1bimsa-removebg-preview.png" alt="Groom'go Logo" class="navbar-logo">
+                <img src="assets/img/logo.png" alt="Groom'go Logo" class="navbar-logo-new" style="height: 50px;">
+                <span class="ms-2 fw-bold text-gradient fs-4">Groom'Go</span>
             </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars text-white"></i>
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Accueil</a>
                     </li>
@@ -42,19 +47,29 @@
                         <a class="nav-link" href="index.html#about">À propos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html#services">Services</a>
+                        <a class="nav-link active" href="packages.html">Formules</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#contact">Contact</a>
+                        <a class="nav-link" href="products.html">Boutique</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="adoption.html">Adoption</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="notes.html">Avis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary ms-2" href="login.html">Connexion</a>
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                    <li class="nav-item" id="authNavContainer">
+                        <a class="nav-link btn-premium btn-premium-outline ms-lg-3" href="login.html" id="authNavBtn">
+                            <i class="fas fa-user-circle"></i> Connexion
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary ms-2 text-white" href="booking.html">Réserver</a>
+                        <a class="nav-link btn-premium btn-premium-primary ms-lg-2" href="booking.html">
+                            <i class="fas fa-calendar-alt"></i> Réserver
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -62,167 +77,235 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section" style="padding-top: 120px; padding-bottom: 60px;">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h1 class="hero-title mb-4">Nos Paquets de Toilettage</h1>
-                    <p class="hero-subtitle">Choisissez la formule qui convient le mieux à votre animal</p>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Paquets</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
+    <section class="section-premium d-flex align-items-center" style="padding-top: 150px; padding-bottom: 60px;">
+        <div class="container text-center">
+            <span class="badge bg-primary-soft text-primary-light mb-3 px-3 py-2 rounded-pill">
+                ✨ Tarifs Transparents & Tout Inclus
+            </span>
+            <h1 class="display-3 fw-bold mb-4 text-white">
+                Nos Formules de <span class="text-gradient">Toilettage Mobile</span>
+            </h1>
+            <p class="lead text-muted mx-auto mb-4" style="max-width: 700px;">
+                Un camion atelier ultra-moderne se déplace à votre porte. Électricité et eau chaude 100% autonomes, sans aucun stress pour votre boule de poils.
+            </p>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-muted text-decoration-none">Accueil</a></li>
+                    <li class="breadcrumb-item active text-primary-light" aria-current="page">Formules & Tarifs</li>
+                </ol>
+            </nav>
         </div>
     </section>
 
-    <!-- Packages Section -->
-    <section class="py-5 bg-light">
+    <!-- Packages Pricing Cards -->
+    <section class="section-premium pt-0">
         <div class="container">
-            <div class="row g-4">
-                <!-- Paquet Complet -->
-                <div class="col-lg-4">
-                    <div class="service-card h-100 position-relative">
-                        <div class="popular-badge">
-                            <i class="fas fa-crown"></i> Plus Populaire
+            <div class="row g-4 justify-content-center">
+                <!-- Paquet Complet (Featured) -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-card h-100 p-4 d-flex flex-column justify-content-between position-relative" style="border: 2px solid var(--accent-blue);">
+                        <div class="position-absolute top-0 end-0 m-3">
+                            <span class="badge bg-primary text-white px-3 py-2 rounded-pill shadow-sm">
+                                <i class="fas fa-crown text-warning me-1"></i> Plus Populaire
+                            </span>
                         </div>
-                        <div class="service-header text-center">
-                            <div class="service-icon mb-3">
-                                <i class="fas fa-star"></i>
+                        <div>
+                            <div class="icon-box bg-primary-soft text-primary p-3 rounded-4 mb-4" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-star fs-3 text-gradient"></i>
                             </div>
-                            <h3>Paquet Complet</h3>
-                            <p class="service-subtitle">Service premium tout inclus</p>
-                            <div class="service-duration">2h - 3h</div>
-                            <div class="service-price">
-                                <span class="price-amount">À partir de 80 DT</span>
-                                <small class="price-note">Selon la taille de l'animal</small>
+                            <h3 class="text-white fw-bold mb-1">Paquet Complet</h3>
+                            <p class="text-muted small mb-3">Soin spa prestige intégrale de la tête aux pattes</p>
+                            
+                            <div class="mb-4">
+                                <div class="d-flex align-items-baseline gap-2">
+                                    <span class="fs-1 fw-bold text-gradient">80 DT</span>
+                                    <span class="text-muted small">+ selon taille</span>
+                                </div>
+                                <span class="badge bg-primary-soft text-primary-light rounded-pill px-3 py-1">
+                                    <i class="fas fa-clock me-1"></i> Durée : 2h à 3h
+                                </span>
                             </div>
-                        </div>
-                        <div class="service-features">
-                            <ul>
-                                <li><i class="fas fa-check"></i> Bain complet avec shampooing professionnel</li>
-                                <li><i class="fas fa-check"></i> Séchage et brushing</li>
-                                <li><i class="fas fa-check"></i> Brossage et démêlage</li>
-                                <li><i class="fas fa-check"></i> Coupe / Tonte selon vos préférences</li>
-                                <li><i class="fas fa-check"></i> Coupe des griffes</li>
-                                <li><i class="fas fa-check"></i> Nettoyage des oreilles et des yeux</li>
-                                <li><i class="fas fa-check"></i> Parfumage et finition</li>
-                                <li><i class="fas fa-check"></i> Brossage et nettoyage des dents</li>
-                                <li><i class="fas fa-check"></i> Recommandations personnalisées</li>
+
+                            <ul class="list-unstyled mb-4">
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Bain complet avec shampooings bio adaptés
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Séchage doux pulsé & brushing volumateur
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Brossage profond & démêlage soyeux
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Coupe ciseaux ou tonte personnalisée
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Coupe des griffes & limage
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Nettoyage délicat des oreilles & yeux
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Nettoyage des dents & haleine fraîche
+                                </li>
+                                <li class="py-2 d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Parfumage naturel hypoallergénique
+                                </li>
                             </ul>
                         </div>
-                        <div class="service-footer text-center mt-auto">
-                            <a href="booking.html?service=complet" class="btn btn-primary btn-lg w-100">
-                                <i class="fas fa-calendar-alt me-2"></i>Réserver maintenant
+
+                        <div class="mt-auto pt-3">
+                            <a href="booking.html?service=complet" class="btn-premium btn-premium-primary w-100 py-3 text-center">
+                                <i class="fas fa-calendar-alt me-2"></i> Réserver cette Formule
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Paquet Demi-Complet -->
-                <div class="col-lg-4">
-                    <div class="service-card h-100">
-                        <div class="service-header text-center">
-                            <div class="service-icon mb-3">
-                                <i class="fas fa-heart"></i>
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-card h-100 p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="icon-box bg-primary-soft text-primary p-3 rounded-4 mb-4" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-heart fs-3 text-gradient"></i>
                             </div>
-                            <h3>Paquet Demi-Complet</h3>
-                            <p class="service-subtitle">Service essentiel et pratique</p>
-                            <div class="service-duration">1h30 - 2h</div>
-                            <div class="service-price">
-                                <span class="price-amount">À partir de 50 DT</span>
-                                <small class="price-note">Selon la taille de l'animal</small>
+                            <h3 class="text-white fw-bold mb-1">Paquet Demi-Complet</h3>
+                            <p class="text-muted small mb-3">Hygiène essentielle & rafraîchissement complet</p>
+                            
+                            <div class="mb-4">
+                                <div class="d-flex align-items-baseline gap-2">
+                                    <span class="fs-1 fw-bold text-white">50 DT</span>
+                                    <span class="text-muted small">+ selon taille</span>
+                                </div>
+                                <span class="badge bg-secondary-soft text-light rounded-pill px-3 py-1">
+                                    <i class="fas fa-clock me-1"></i> Durée : 1h30 à 2h
+                                </span>
                             </div>
-                        </div>
-                        <div class="service-features">
-                            <ul>
-                                <li><i class="fas fa-check"></i> Bain complet avec shampooing</li>
-                                <li><i class="fas fa-check"></i> Séchage professionnel</li>
-                                <li><i class="fas fa-check"></i> Coupe des griffes</li>
-                                <li><i class="fas fa-check"></i> Brossage et nettoyage des dents</li>
-                                <li><i class="fas fa-times text-muted"></i> Coupe / Tonte</li>
-                                <li><i class="fas fa-times text-muted"></i> Nettoyage oreilles/yeux</li>
-                                <li><i class="fas fa-times text-muted"></i> Parfumage</li>
-                                <li><i class="fas fa-times text-muted"></i> Démêlage complet</li>
+
+                            <ul class="list-unstyled mb-4">
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Bain complet avec shampooing professionnel
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Séchage et brushing soyeux
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Coupe des griffes
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Brossage & démêlage de base
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Nettoyage des dents
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-muted small">
+                                    <i class="fas fa-times-circle text-danger me-2 fs-6 opacity-50"></i> Coupe stylisée ou tonte intégrale
+                                </li>
+                                <li class="py-2 d-flex align-items-center text-muted small">
+                                    <i class="fas fa-times-circle text-danger me-2 fs-6 opacity-50"></i> Soin yeux & oreilles poussé
+                                </li>
                             </ul>
                         </div>
-                        <div class="service-footer text-center mt-auto">
-                            <a href="booking.html?service=demi-complet" class="btn btn-primary btn-lg w-100">
-                                <i class="fas fa-calendar-alt me-2"></i>Réserver maintenant
+
+                        <div class="mt-auto pt-3">
+                            <a href="booking.html?service=demi-complet" class="btn-premium btn-premium-outline w-100 py-3 text-center">
+                                <i class="fas fa-calendar-alt me-2"></i> Réserver cette Formule
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Paquet Baignoire -->
-                <div class="col-lg-4">
-                    <div class="service-card h-100">
-                        <div class="service-header text-center">
-                            <div class="service-icon mb-3">
-                                <i class="fas fa-bath"></i>
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-card h-100 p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="icon-box bg-primary-soft text-primary p-3 rounded-4 mb-4" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-bath fs-3 text-gradient"></i>
                             </div>
-                            <h3>Paquet Baignoire</h3>
-                            <p class="service-subtitle">Service de base pour la propreté</p>
-                            <div class="service-duration">45min - 1h</div>
-                            <div class="service-price">
-                                <span class="price-amount">À partir de 30 DT</span>
-                                <small class="price-note">Selon la taille de l'animal</small>
+                            <h3 class="text-white fw-bold mb-1">Paquet Baignoire</h3>
+                            <p class="text-muted small mb-3">La formule propreté rapide après la promenade</p>
+                            
+                            <div class="mb-4">
+                                <div class="d-flex align-items-baseline gap-2">
+                                    <span class="fs-1 fw-bold text-white">30 DT</span>
+                                    <span class="text-muted small">+ selon taille</span>
+                                </div>
+                                <span class="badge bg-secondary-soft text-light rounded-pill px-3 py-1">
+                                    <i class="fas fa-clock me-1"></i> Durée : 45min à 1h
+                                </span>
                             </div>
-                        </div>
-                        <div class="service-features">
-                            <ul>
-                                <li><i class="fas fa-check"></i> Bain avec shampooing</li>
-                                <li><i class="fas fa-check"></i> Séchage</li>
-                                <li><i class="fas fa-times text-muted"></i> Coupe des griffes</li>
-                                <li><i class="fas fa-times text-muted"></i> Nettoyage des dents</li>
-                                <li><i class="fas fa-times text-muted"></i> Coupe / Tonte</li>
-                                <li><i class="fas fa-times text-muted"></i> Nettoyage oreilles/yeux</li>
-                                <li><i class="fas fa-times text-muted"></i> Parfumage</li>
-                                <li><i class="fas fa-times text-muted"></i> Démêlage</li>
+
+                            <ul class="list-unstyled mb-4">
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Bain tiède avec shampooing hydratant
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Séchage rapide complet
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-white small">
+                                    <i class="fas fa-check-circle text-success me-2 fs-6"></i> Brossage superficiel
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-muted small">
+                                    <i class="fas fa-times-circle text-danger me-2 fs-6 opacity-50"></i> Coupe des griffes
+                                </li>
+                                <li class="py-2 border-bottom border-secondary d-flex align-items-center text-muted small">
+                                    <i class="fas fa-times-circle text-danger me-2 fs-6 opacity-50"></i> Tonte ou coupe ciseaux
+                                </li>
+                                <li class="py-2 d-flex align-items-center text-muted small">
+                                    <i class="fas fa-times-circle text-danger me-2 fs-6 opacity-50"></i> Soin dentaire & oreilles
+                                </li>
                             </ul>
                         </div>
-                        <div class="service-footer text-center mt-auto">
-                            <a href="booking.html?service=baignoire" class="btn btn-primary btn-lg w-100">
-                                <i class="fas fa-calendar-alt me-2"></i>Réserver maintenant
+
+                        <div class="mt-auto pt-3">
+                            <a href="booking.html?service=baignoire" class="btn-premium btn-premium-outline w-100 py-3 text-center">
+                                <i class="fas fa-calendar-alt me-2"></i> Réserver cette Formule
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Additional Information -->
-            <div class="row mt-5">
-                <div class="col-lg-12">
-                    <div class="info-section">
-                        <div class="row g-4">
-                            <div class="col-md-4">
-                                <div class="info-card text-center">
-                                    <div class="info-icon">
-                                        <i class="fas fa-truck"></i>
-                                    </div>
-                                    <h5>Déplacement Gratuit</h5>
-                                    <p>Dans un rayon de 15km du Grand Tunis. Au-delà, seulement 5 DT de frais de déplacement.</p>
+            <!-- Grille des suppléments par gabarit -->
+            <div class="glass-panel p-4 p-lg-5 mt-5">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-4">
+                        <span class="badge bg-primary-soft text-primary-light mb-2 px-3 py-1 rounded-pill">Guide des tailles</span>
+                        <h4 class="text-white fw-bold">Supplément selon le gabarit</h4>
+                        <p class="text-muted small mb-0">Les tarifs de base correspondent aux petits animaux. Un supplément s'applique selon le gabarit pour couvrir le temps et les produits nécessaires.</p>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row g-3">
+                            <div class="col-6 col-md-3">
+                                <div class="glass-card p-3 text-center">
+                                    <i class="fas fa-dog text-primary-light mb-2 fs-4"></i>
+                                    <h6 class="text-white small fw-bold mb-1">Petit (&lt; 10 kg)</h6>
+                                    <div class="text-gradient fw-bold">+0 DT</div>
+                                    <small class="text-muted">Chat, Chihuahua...</small>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="info-card text-center">
-                                    <div class="info-icon">
-                                        <i class="fas fa-clock"></i>
-                                    </div>
-                                    <h5>Réservation Facile</h5>
-                                    <p>Réservez 48h à l'avance. Disponible 7j/7 de 8h à 18h pour s'adapter à votre emploi du temps.</p>
+                            <div class="col-6 col-md-3">
+                                <div class="glass-card p-3 text-center">
+                                    <i class="fas fa-dog text-primary-light mb-2 fs-4"></i>
+                                    <h6 class="text-white small fw-bold mb-1">Moyen (10-25 kg)</h6>
+                                    <div class="text-gradient fw-bold">+15 DT</div>
+                                    <small class="text-muted">Caniche, Cocker...</small>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="info-card text-center">
-                                    <div class="info-icon">
-                                        <i class="fas fa-shield-alt"></i>
-                                    </div>
-                                    <h5>Matériel Professionnel</h5>
-                                    <p>Véhicule entièrement équipé avec matériel de qualité professionnelle et produits adaptés.</p>
+                            <div class="col-6 col-md-3">
+                                <div class="glass-card p-3 text-center">
+                                    <i class="fas fa-dog text-primary-light mb-2 fs-4"></i>
+                                    <h6 class="text-white small fw-bold mb-1">Grand (25-40 kg)</h6>
+                                    <div class="text-gradient fw-bold">+25 DT</div>
+                                    <small class="text-muted">Labrador, Berger...</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="glass-card p-3 text-center">
+                                    <i class="fas fa-dog text-primary-light mb-2 fs-4"></i>
+                                    <h6 class="text-white small fw-bold mb-1">Très Grand (&gt; 40 kg)</h6>
+                                    <div class="text-gradient fw-bold">+40 DT</div>
+                                    <small class="text-muted">Rottweiler, Dogue...</small>
                                 </div>
                             </div>
                         </div>
@@ -230,19 +313,78 @@
                 </div>
             </div>
 
-            <!-- Call to Action -->
-            <div class="row mt-5">
-                <div class="col-lg-12 text-center">
-                    <div class="cta-section">
-                        <h3>Besoin d'aide pour choisir ?</h3>
-                        <p class="mb-4">Nos experts sont là pour vous conseiller sur la formule la mieux adaptée à votre animal</p>
-                        <div class="cta-buttons">
-                            <a href="index.html#contact" class="btn btn-outline-primary btn-lg me-3">
-                                <i class="fas fa-phone me-2"></i>Nous contacter
-                            </a>
-                            <a href="booking.html" class="btn btn-primary btn-lg">
-                                <i class="fas fa-calendar-check me-2"></i>Réserver maintenant
-                            </a>
+            <!-- Avantages du Van Groom'Go -->
+            <div class="row g-4 mt-4">
+                <div class="col-md-4">
+                    <div class="glass-card p-4 text-center h-100">
+                        <div class="icon-box bg-primary-soft text-primary p-3 rounded-circle mx-auto mb-3" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-bolt fs-3 text-gradient"></i>
+                        </div>
+                        <h5 class="text-white fw-bold">100% Autonome</h5>
+                        <p class="text-muted small mb-0">Aucun besoin de brancher d'eau ni d'électricité chez vous. Le van dispose de ses propres réservoirs et générateurs insonorisés.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card p-4 text-center h-100">
+                        <div class="icon-box bg-primary-soft text-primary p-3 rounded-circle mx-auto mb-3" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-map-marked-alt fs-3 text-gradient"></i>
+                        </div>
+                        <h5 class="text-white fw-bold">Grand Tunis Couvert</h5>
+                        <p class="text-muted small mb-0">Nous intervenons à Tunis, La Marsa, Carthage, Gammarth, Ennasr, Menzah, Ariana, Ben Arous et leurs environs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card p-4 text-center h-100">
+                        <div class="icon-box bg-primary-soft text-primary p-3 rounded-circle mx-auto mb-3" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-shield-virus fs-3 text-gradient"></i>
+                        </div>
+                        <h5 class="text-white fw-bold">Hygiène & Désinfection</h5>
+                        <p class="text-muted small mb-0">Désinfection intégrale et stérilisation du matériel entre chaque animal pour garantir sécurité et santé irréprochables.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="glass-panel p-4 p-lg-5 mt-5">
+                <div class="text-center mb-5">
+                    <span class="badge bg-primary-soft text-primary-light mb-2 px-3 py-1 rounded-pill">Des questions ?</span>
+                    <h3 class="text-white fw-bold">Foire Aux Questions</h3>
+                </div>
+                <div class="accordion accordion-flush" id="faqAccordion">
+                    <div class="accordion-item bg-transparent border-secondary">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-transparent text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                <i class="fas fa-question-circle text-primary me-2"></i> Dois-je fournir de l'eau ou de l'électricité ?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Non, absolument pas ! Notre véhicule est un salon mobile 100% autonome. Il possède son propre réservoir d'eau douce tempérée, un système d'évacuation des eaux usées et son alimentation électrique propre.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-transparent border-secondary">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-transparent text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                <i class="fas fa-question-circle text-primary me-2"></i> Mon animal est très anxieux, comment cela se passe-t-il ?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                C'est précisément l'avantage majeur du toilettage mobile à domicile : aucun trajet stressant en voiture, aucune cage d'attente et aucun contact avec d'autres animaux bruyants. Votre toiletteur consacre 100% de son attention à votre animal avec patience et douceur.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-transparent border-secondary">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-transparent text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                <i class="fas fa-question-circle text-primary me-2"></i> Quels moyens de paiement acceptez-vous ?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Le règlement s'effectue directement sur place auprès de notre toiletteur après la fin de la séance, en espèces ou par virement bancaire instantané (D17 / Flouci).
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -251,90 +393,55 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row g-4">
-                <!-- About Section -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="footer-section">
-                        <img src="assets/img/Gemini_Generated_Image_imsa1bimsa1bimsa-removebg-preview.png" alt="Groom'go Logo" class="footer-logo mb-3">
-                        <p class="footer-text">Votre partenaire de confiance pour le toilettage professionnel de vos animaux à domicile. Service de qualité dans tout le Grand Tunis.</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
+    <footer class="footer bg-dark-2 pt-5">
+        <div class="container pt-5">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <a class="navbar-brand mb-4 d-inline-block" href="index.html">
+                        <img src="assets/img/logo.png" alt="Logo" style="height: 45px;">
+                        <span class="ms-2 fw-bold text-gradient fs-4">Groom'Go</span>
+                    </a>
+                    <p class="text-muted">
+                        Premier service de toilettage mobile d'élite en Tunisie. Un salon entièrement équipé directement devant votre porte pour le bien-être sans stress de vos compagnons.
+                    </p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link-premium"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener" class="social-link-premium"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener" class="social-link-premium"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/21629123456" target="_blank" rel="noopener" class="social-link-premium"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-
-                <!-- Quick Links -->
-                <div class="col-lg-2 col-md-6">
-                    <div class="footer-section">
-                        <h5 class="footer-title">Liens Rapides</h5>
-                        <ul class="footer-links">
-                            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
-                            <li><a href="index.html#about"><i class="fas fa-chevron-right"></i> À propos</a></li>
-                            <li><a href="index.html#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-                            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Produits</a></li>
-                            <li><a href="notes.html"><i class="fas fa-chevron-right"></i> Avis</a></li>
-                        </ul>
-                    </div>
+                <div class="col-lg-2 offset-lg-1">
+                    <h5 class="fw-bold mb-4 text-white">Services</h5>
+                    <ul class="list-unstyled footer-links-premium">
+                        <li><a href="packages.html">Formules & Tarifs</a></li>
+                        <li><a href="booking.html">Prendre Rendez-vous</a></li>
+                        <li><a href="products.html">Boutique & Soins</a></li>
+                        <li><a href="adoption.html">Adoption Solidaire</a></li>
+                    </ul>
                 </div>
-
-                <!-- Services -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-section">
-                        <h5 class="footer-title">Nos Paquets</h5>
-                        <ul class="footer-links">
-                            <li><a href="packages.html"><i class="fas fa-chevron-right"></i> Paquet Complet</a></li>
-                            <li><a href="packages.html"><i class="fas fa-chevron-right"></i> Paquet Demi-Complet</a></li>
-                            <li><a href="packages.html"><i class="fas fa-chevron-right"></i> Paquet Baignoire</a></li>
-                            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Vente Produits</a></li>
-                            <li><a href="adoption.html"><i class="fas fa-chevron-right"></i> Adoption</a></li>
-                        </ul>
-                    </div>
+                <div class="col-lg-2">
+                    <h5 class="fw-bold mb-4 text-white">Navigation</h5>
+                    <ul class="list-unstyled footer-links-premium">
+                        <li><a href="index.html#home">Accueil</a></li>
+                        <li><a href="index.html#about">À propos</a></li>
+                        <li><a href="notes.html">Avis Clients</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="login.html">Espace Membre / Admin</a></li>
+                    </ul>
                 </div>
-
-                <!-- Contact Info -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-section">
-                        <h5 class="footer-title">Contact</h5>
-                        <ul class="footer-contact">
-                            <li>
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Grand Tunis, Tunisie</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-phone"></i>
-                                <span>+216 XX XXX XXX</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-envelope"></i>
-                                <span>contact@groomgo.tn</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-clock"></i>
-                                <span>Lun - Dim: 8h - 18h</span>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="col-lg-3">
+                    <h5 class="fw-bold mb-4 text-white">Newsletter</h5>
+                    <p class="text-muted small">Recevez nos conseils et offres exclusives sur les soins animaliers.</p>
+                    <form id="newsletterForm" class="input-group mb-3">
+                        <input type="email" class="form-control form-control-premium" placeholder="Votre email" required>
+                        <button class="btn btn-primary bg-gradient px-3" type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <small class="text-muted"><i class="fas fa-shield-alt text-success me-1"></i> Respect de votre vie privée garanti.</small>
                 </div>
             </div>
-
-            <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start">
-                        <p class="mb-0">&copy; 2024 Groom'go. Tous droits réservés.</p>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <ul class="footer-bottom-links">
-                            <li><a href="#">Politique de confidentialité</a></li>
-                            <li><a href="#">Conditions d'utilisation</a></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="border-top border-secondary py-4 text-center">
+                <p class="text-muted mb-0">&copy; 2026 Groom'Go Tunisie. Fait avec passion et dévouement pour vos animaux.</p>
             </div>
         </div>
     </footer>

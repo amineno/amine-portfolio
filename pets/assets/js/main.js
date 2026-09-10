@@ -55,114 +55,100 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', highlightNavigation);
     highlightNavigation(); // Call on page load
     
-    // Setup contact form
-    setupContactForm();
+    // Gestion universelle de l'état d'authentification dans la navbar
+    updateNavbarAuth();
 
-    // Animation on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+    // Gestion du formulaire newsletter
+    setupNewsletterForm();
 
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in-up');
-            }
-        });
-    }, observerOptions);
-
-    // Observe elements for animation
-    const animateElements = document.querySelectorAll('.feature-card, .service-card, .contact-item, .reveal');
-    animateElements.forEach(el => observer.observe(el));
-
-    // Handle Reveal on Scroll
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealOnScroll = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    revealElements.forEach(el => revealOnScroll.observe(el));
+    // Gestion du compteur de panier dans la navigation
+    updateNavbarCartBadge();
 });
 
-// Setup contact form
-function setupContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+// Mettre à jour la navigation selon l'état de connexion (Client ou Admin)
+function updateNavbarAuth() {
+    const authContainers = document.querySelectorAll('#authNavContainer, .auth-nav-item');
+    if (!authContainers.length) return;
+
+    const user = JSON.parse(localStorage.getItem('groomgo_user') || 'null');
+    const adminToken = localStorage.getItem('adminToken');
+
+    authContainers.forEach(container => {
+        if (adminToken || (user && user.role === 'admin')) {
+            container.innerHTML = `
+                <div class="d-flex align-items-center gap-2 ms-lg-3">
+                    <a href="admin-dashboard.html" class="btn-premium btn-premium-primary py-2 px-3 fs-6">
+                        <i class="fas fa-shield-alt"></i> Dashboard Admin
+                    </a>
+                    <button onclick="logoutGroomGo()" class="btn btn-outline-danger btn-sm rounded-pill px-3" title="Déconnexion">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            `;
+        } else if (user) {
+            const firstName = user.name ? user.name.split(' ')[0] : 'Mon Compte';
+            container.innerHTML = `
+                <div class="d-flex align-items-center gap-2 ms-lg-3">
+                    <span class="badge bg-primary-soft text-primary-light py-2 px-3 rounded-pill">
+                        <i class="fas fa-user-circle me-1"></i> ${firstName}
+                    </span>
+                    <button onclick="logoutGroomGo()" class="btn btn-outline-danger btn-sm rounded-pill px-3" title="Déconnexion">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            `;
+        } else {
+            container.innerHTML = `
+                <a class="nav-link btn-premium btn-premium-outline ms-lg-3" href="login.html" id="authNavBtn">
+                    <i class="fas fa-user-circle"></i> Connexion
+                </a>
+            `;
+        }
+    });
+}
+
+// Fonction globale de déconnexion
+window.logoutGroomGo = function() {
+    localStorage.removeItem('groomgo_user');
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('userToken');
+    showNotification('Vous avez été déconnecté avec succès.', 'info');
+    setTimeout(() => {
+        window.location.reload();
+    }, 800);
+};
+
+// Gestion de la Newsletter
+function setupNewsletterForm() {
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            handleContactForm(this);
+            const emailInput = this.querySelector('input[type="email"]');
+            const email = emailInput ? emailInput.value.trim() : '';
+            if (email) {
+                // Sauvegarder dans les abonnés
+                const subscribers = JSON.parse(localStorage.getItem('groomgo_newsletter') || '[]');
+                if (!subscribers.includes(email)) {
+                    subscribers.push(email);
+                    localStorage.setItem('groomgo_newsletter', JSON.stringify(subscribers));
+                }
+                showNotification('Merci pour votre inscription à la newsletter Groom\'Go ! 🎉', 'success');
+                this.reset();
+            }
         });
     }
 }
 
-// Contact form handler
-function handleContactForm(form) {
-    const formData = new FormData(form);
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    
-    // Validate form
-    if (!validateForm(form)) {
-        return;
-    }
-    
-    // Show loading state
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Envoi en cours...';
-    submitBtn.disabled = true;
-    
-    // Create message object
-    const message = {
-        id: 'MSG' + Date.now().toString().slice(-6),
-        senderName: formData.get('senderName'),
-        senderEmail: formData.get('senderEmail'),
-        subject: formData.get('subject'),
-        message: formData.get('message'),
-        timestamp: new Date().toISOString(),
-        date: new Date().toLocaleDateString('fr-FR'),
-        time: new Date().toLocaleTimeString('fr-FR'),
-        status: 'unread',
-        type: 'contact'
-    };
-    
-    // Simulate form submission
-    setTimeout(() => {
-        // Save message to localStorage for admin notifications
-        saveContactMessage(message);
-        
-        showNotification('Message envoyé avec succès! Nous vous répondrons bientôt.', 'success');
-        form.reset();
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-        
-        console.log('📧 Message de contact sauvegardé:', message.id);
-    }, 2000);
-}
-
-// Save contact message for admin notifications
-function saveContactMessage(message) {
-    try {
-        // Get existing messages
-        const existingMessages = getFromLocalStorage('admin_notifications') || [];
-        
-        // Add new message
-        existingMessages.push(message);
-        
-        // Save back to localStorage
-        saveToLocalStorage('admin_notifications', existingMessages);
-        
-        console.log('💾 Message sauvegardé dans les notifications admin');
-        console.log('📊 Total notifications:', existingMessages.length);
-        
-        return true;
-    } catch (error) {
-        console.error('❌ Erreur lors de la sauvegarde du message:', error);
-        return false;
-    }
+// Badge de panier dans la navbar
+function updateNavbarCartBadge() {
+    const cart = JSON.parse(localStorage.getItem('groomgo_cart') || '[]');
+    const totalCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    const badges = document.querySelectorAll('.nav-cart-count');
+    badges.forEach(badge => {
+        badge.textContent = totalCount;
+        badge.style.display = totalCount > 0 ? 'inline-block' : 'none';
+    });
 }
 
 // Notification system
