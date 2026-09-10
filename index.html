@@ -84,12 +84,6 @@
       color: #0f172a;
     }
 
-    body.light-mode .about-floating-card {
-      background: rgba(255, 255, 255, 0.92);
-      border-color: rgba(99, 102, 241, 0.25);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -913,35 +907,6 @@
       transform: scale(1.03);
     }
 
-    .about-photo-glass-overlay {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      z-index: 4;
-      pointer-events: none;
-    }
-
-    .about-photo-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: #ffffff;
-      background: rgba(10, 10, 20, 0.65);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      letter-spacing: 0.02em;
-    }
-
-    .about-photo-tag i {
-      color: var(--accent-color);
-    }
-
     /* Switch Bar inside Card */
     .about-switch-bar {
       position: absolute;
@@ -986,87 +951,6 @@
       background: var(--primary-gradient);
       color: #ffffff;
       box-shadow: 0 4px 15px var(--accent-glow);
-    }
-
-    /* Floating Experience Badges */
-    .about-floating-card {
-      position: absolute;
-      z-index: 5;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 16px;
-      border-radius: 16px;
-      background: var(--surface-color);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
-      animation: floatBadge 4s ease-in-out infinite alternate;
-      pointer-events: auto;
-      white-space: nowrap;
-    }
-
-    .about-floating-card.badge-top {
-      top: -16px;
-      right: -20px;
-    }
-
-    .about-floating-card.badge-bottom {
-      bottom: -16px;
-      left: -20px;
-      animation-delay: -2s;
-    }
-
-    @keyframes floatBadge {
-      0% { transform: translateY(0px); }
-      100% { transform: translateY(-8px); }
-    }
-
-    .about-floating-card .status-pulse-dot {
-      width: 10px;
-      height: 10px;
-      background: #10b981;
-      border-radius: 50%;
-      flex-shrink: 0;
-      animation: pulseGlowGreen 2s infinite;
-    }
-
-    .about-floating-card .floating-text {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .about-floating-card .badge-icon-box {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      background: var(--primary-gradient);
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      flex-shrink: 0;
-    }
-
-    .about-floating-card .badge-content {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.2;
-    }
-
-    .about-floating-card .badge-title {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    .about-floating-card .badge-desc {
-      font-size: 0.7rem;
-      color: var(--accent-color);
-      font-weight: 500;
     }
 
     .about-text {
@@ -1391,21 +1275,6 @@
       transform: translateX(-4px);
     }
 
-    [dir="rtl"] .about-photo-glass-overlay {
-      left: auto;
-      right: 18px;
-    }
-
-    [dir="rtl"] .about-floating-card.badge-top {
-      right: auto;
-      left: -20px;
-    }
-
-    [dir="rtl"] .about-floating-card.badge-bottom {
-      left: auto;
-      right: -20px;
-    }
-
     @media (max-width: 968px) {
       .about-grid {
         grid-template-columns: 1fr;
@@ -1415,26 +1284,6 @@
       .about-visual-showcase {
         max-width: 380px;
         margin-bottom: 2.5rem;
-      }
-
-      .about-floating-card.badge-top {
-        top: -12px;
-        right: 4px;
-      }
-
-      .about-floating-card.badge-bottom {
-        bottom: -12px;
-        left: 4px;
-      }
-
-      [dir="rtl"] .about-floating-card.badge-top {
-        right: auto;
-        left: 4px;
-      }
-
-      [dir="rtl"] .about-floating-card.badge-bottom {
-        left: auto;
-        right: 4px;
       }
 
       .about-text {
@@ -1461,25 +1310,6 @@
       }
       .about-card-deck {
         border-radius: 22px;
-      }
-      .about-floating-card {
-        padding: 8px 12px;
-        border-radius: 12px;
-      }
-      .about-floating-card.badge-top {
-        top: -10px;
-        right: 0px;
-      }
-      .about-floating-card.badge-bottom {
-        bottom: -10px;
-        left: 0px;
-      }
-      .about-floating-card .floating-text,
-      .about-floating-card .badge-title {
-        font-size: 0.72rem;
-      }
-      .about-floating-card .badge-desc {
-        font-size: 0.65rem;
       }
       .about-switch-btn {
         padding: 6px 12px;
@@ -1654,35 +1484,17 @@
         <!-- Ambient Glow Halo -->
         <div class="about-ambient-glow" aria-hidden="true"></div>
 
-        <!-- Floating Experience / Status Badge (Top Right) -->
-        <div class="about-floating-card badge-top">
-          <span class="status-pulse-dot"></span>
-          <span class="floating-text" data-i18n="about-floating-status">Available for Freelance & BI</span>
-        </div>
-
         <!-- The Main 3D Glassmorphic Card Deck -->
         <div class="about-card-deck" data-tilt data-tilt-max="6" data-tilt-speed="400" data-tilt-perspective="1000">
           <div class="about-slides-wrapper">
             <!-- Slide 1: Portrait (Default Active) -->
             <div class="about-slide active" id="aboutSlidePortrait" data-view="portrait">
               <img src="profile2.jpg" alt="Mohamed Amine Nouioui - Portrait" class="about-photo-img" loading="eager">
-              <div class="about-photo-glass-overlay">
-                <span class="about-photo-tag">
-                  <i class="fas fa-laptop-code"></i>
-                  <span>Full Stack Engineer</span>
-                </span>
-              </div>
             </div>
 
             <!-- Slide 2: Full Presence -->
             <div class="about-slide" id="aboutSlideFull" data-view="full">
               <img src="profile1.jpg" alt="Mohamed Amine Nouioui - Full Stance" class="about-photo-img" loading="lazy">
-              <div class="about-photo-glass-overlay">
-                <span class="about-photo-tag">
-                  <i class="fas fa-chart-line"></i>
-                  <span>BI & Solution Architect</span>
-                </span>
-              </div>
             </div>
           </div>
 
@@ -1696,17 +1508,6 @@
               <i class="fas fa-user-tie"></i>
               <span data-i18n="about-tab-full">Full View</span>
             </button>
-          </div>
-        </div>
-
-        <!-- Floating Value / Trust Badge (Bottom Left) -->
-        <div class="about-floating-card badge-bottom">
-          <div class="badge-icon-box">
-            <i class="fas fa-check"></i>
-          </div>
-          <div class="badge-content">
-            <span class="badge-title" data-i18n="about-badge-partner">Engineering Partner</span>
-            <span class="badge-desc" data-i18n="about-badge-sub">High ROI Delivery</span>
           </div>
         </div>
       </div>
