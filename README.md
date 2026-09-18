@@ -11,7 +11,20 @@ All apps are built using the **React.js + Node.js/Express + MySQL/MongoDB** stac
 - **Features:** Sophisticated shopping experience, multilingual interface (EN, FR, AR), and an AI-powered chat assistant.
 - **Tech Highlights:** React, Node.js, MongoDB, OpenAI API, Stripe, Tailwind CSS.
 
+### 2. [Leo Club Recruitment](https://leoclub-recrutement.vercel.app/)
+- **Domain:** University Club (Recruitment Ecosystem)
+- **Features:** 6-step responsive form, real-time validation, glassmorphism UI, secure admin portal with analytics.
+- **Tech Highlights:** React, Node.js, MongoDB, Express.
 
+### 3. [CyberRide](https://cyberride.vercel.app/)
+- **Domain:** E-commerce (LED Smart Motorcycle Gear)
+- **Features:** Three.js 3D interactive product viewer, customizable LED matrix presets, cash-on-delivery & BNPL checkout, admin telemetry.
+- **Tech Highlights:** React, Vite, Tailwind CSS, Three.js, Node.js/Express, Prisma.
+
+### 4. [Lions Club Archive](https://lions-archives.vercel.app/)
+- **Domain:** Enterprise Platform (Secure Archiving & Records Management)
+- **Features:** RBAC access control (Admin vs Member), 6 business modules, Supabase cloud storage, full audit trails.
+- **Tech Highlights:** Next.js 14 App Router, TypeScript, Prisma, PostgreSQL, NextAuth.js v5, Supabase.
 
 ## 🛠 Setup & Installation
 
@@ -19,11 +32,11 @@ I have included a Windows batch script to make setting up the repository effortl
 
 ### Prerequisites:
 - **Node.js** (v18+)
-- **MySQL Server** / **MongoDB**
+- **MySQL Server** / **MongoDB** / **PostgreSQL**
 - **Git**
 
 ### Step 1: Initialize Databases
-Each project has its own database requirements. Please refer to the specific project directories (`SariaBeautyy/`) for detailed instructions on setting up the backend.
+Each project has its own database requirements. Please refer to the specific project directories (`SariaBeautyy/`, `cyberride/`, `leoclub/`, `lions_club_archive/`) for detailed instructions on setting up the backend.
 
 ### Step 2: Install Dependencies
 Simply run the included batch script to recursively install dependencies across the projects:
