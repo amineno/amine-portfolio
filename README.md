@@ -11,12 +11,7 @@ All apps are built using the **React.js + Node.js/Express + MySQL/MongoDB** stac
 - **Features:** Sophisticated shopping experience, multilingual interface (EN, FR, AR), and an AI-powered chat assistant.
 - **Tech Highlights:** React, Node.js, MongoDB, OpenAI API, Stripe, Tailwind CSS.
 
-### 2. [Groom'go](https://groom-go-three.vercel.app)
-- **Domain:** Service Platform (Mobile Pet Grooming)
-- **Features:** Intelligent booking system, automated price calculation, glassmorphic admin dashboard.
-- **Tech Highlights:** HTML/JS, Node.js, MySQL, Sequelize, Chart.js.
 
----
 
 ## 🛠 Setup & Installation
 
@@ -28,7 +23,7 @@ I have included a Windows batch script to make setting up the repository effortl
 - **Git**
 
 ### Step 1: Initialize Databases
-Each project has its own database requirements. Please refer to the specific project directories (`SariaBeautyy/`, `pets/`) for detailed instructions on setting up the backend.
+Each project has its own database requirements. Please refer to the specific project directories (`SariaBeautyy/`) for detailed instructions on setting up the backend.
 
 ### Step 2: Install Dependencies
 Simply run the included batch script to recursively install dependencies across the projects:
